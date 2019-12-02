@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { View, Component } from 'react';
 import Rating from './Rating';
 import './App.css'
 
@@ -9,8 +9,8 @@ class Movie extends Component {
         window.location.href = url
     }
     render() {
-        return <div width = "50%">
-        <table key={this.props.movie.id}>
+        return <View style={{flex: 1, flexDirection: 'column'}} width = "50%">
+        <table width ="40%" key={this.props.movie.id}>
             <tbody>
             <tr>
                 <td>
@@ -19,12 +19,12 @@ class Movie extends Component {
                 </td>
                 <h3 align="top">{this.props.movie.title}</h3>
                 <p>{this.props.movie.vote_average} |  {this.props.movie.release_date}</p>
-                <p>{this.props.movie.overview}</p>
+                <p style={{textAlign: 'justify'}}>{this.props.movie.overview}</p>
                 <input type="button" onClick={this.viewMovie.bind(this)} value="View"/>
             </tr>
             </tbody>
         </table>
-      </div>
+      </View>
     }
 }
 

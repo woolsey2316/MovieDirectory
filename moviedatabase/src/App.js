@@ -19,9 +19,7 @@ class App extends Component {
       url: urlString,
       success: (searchResults) => {
         console.log("Fetched data successfully")
-        // console.log(searchResults)
         const results = searchResults.results
-        // console.log(results[0])
 
         var movieRows = []
 
@@ -32,7 +30,7 @@ class App extends Component {
           movieRows.push(movieRow)
         })
 
-        this.setState({rows: movieRows})
+        this.setState({rows: movieRows});
       },
       error: (xhr, status, err) => {
         console.error("Failed to fetch data")
@@ -49,32 +47,33 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <table className="title">
-          <tbody>
-            <tr>
-              <td>
-                <img alt="app icon" width="50" src="green_app_icon.png"/>
-              </td>
-              <td width="8"/>
-              <td>
-                <h1>Pick Me A Movie</h1>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <table className="title">
+            <tbody>
+              <tr>
+                <td>
+                  <img alt="app icon" width="50%" src="green_app_icon.png"/>
+                </td>
+                <td width="8"/>
+                <td>
+                  <h1>Pick Me A Movie</h1>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-        <input style={{
-          fontSize: 24,
-          display: 'block',
-          width: "99%",
-          paddingTop: 8,
-          paddingBottom: 8,
-          paddingLeft: 16
-        }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term"/>
+          <input style={{
+            fontSize: 24,
+            display: 'block',
+            width: "50%",
+            align: "right",
+            paddingTop: 8,
+            paddingBottom: 8,
+            paddingLeft: 16
+          }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term"/>
 
-        {this.state.rows}
-      </div>
+          {this.state.rows}
+        </div>
 
     );
   }
