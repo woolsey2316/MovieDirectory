@@ -1,0 +1,14 @@
+td {
+    vertical-align:top;
+}
+
+img {
+
+}
+
+div.container {
+    border: 1px solid #DDDDDD;
+    width: 230px;
+    height: 200px;
+    position: relative;
+ }

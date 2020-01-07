@@ -5,6 +5,29 @@
   padding-left: 16px
 }
 
+.search-result-canvas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+img.logo {
+  width: 50px;
+  height: 50px;
+  display: inline;
+  vertical-align: middle;
+}
+
+input.search-bar {
+  display: inline;
+
+}
+
+div.header {
+  background-color: #243238;
+}
+
 .App {
   text-align: center;
 }

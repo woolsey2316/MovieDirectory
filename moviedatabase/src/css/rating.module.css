@@ -1,0 +1,35 @@
+div .ratingIcon {
+    background-color:white;
+    box-shadow: 1px 2px 5px 1px #3332328a;
+    border-radius: 10px;
+    width: 65px;
+    height: 65px;
+    z-index: 1000;
+    position: absolute;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin: 10px;
+}
+
+.heart {
+    margin: 5px 3px;
+    max-width: 27%;
+    max-height: 27%;
+}
+
+.score {
+    font-size: 16px;
+    font-family: roboto; 
+    font-weight: 600;
+    color: #3a3b45;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.voteCount {
+    color: #797985;
+    margin: 0;
+    font-size: 12px;
+}

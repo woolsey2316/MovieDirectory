@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import Style from './App.css';
 import Movie from './Movie.js'
 import $ from 'jquery'
 
@@ -7,9 +7,8 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
-
-    this.performSearch("ant man")
+    this.state = {};
+    this.performSearch("ant man");
   }
 
   performSearch(searchTerm) {
@@ -61,21 +60,24 @@ class App extends Component {
               </tr>
             </tbody>
           </table>
-
-          <input style={{
-            fontSize: 24,
-            display: 'block',
-            width: "50%",
-            align: "right",
-            paddingTop: 8,
-            paddingBottom: 8,
-            paddingLeft: 16
-          }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term"/>
-
-          {this.state.rows}
+          <div className='header'>
+          <div><a href="https://www.flaticon.com/authors/freepik" 
+          title="Freepik"></a><a href="https://www.flaticon.com/"     
+          title="Flaticon"></a></div>
+          <img className='logo' src="./ticket.svg" alt="ticket"></img>
+            <input classname='search-bar' style={{
+              fontSize: 24,
+              display: 'inline',
+              width: "50%",
+              paddingTop: 8,
+              paddingBottom: 8,
+              paddingLeft: 16,
+              borderRadius: 5
+            }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" />
+          </div>
+          <div className='search-result-canvas'>{this.state.rows}</div>
         </div>
-
-    );
+    )
   }
 }
 
