@@ -65,15 +65,10 @@ class App extends Component {
           title="Freepik"></a><a href="https://www.flaticon.com/"     
           title="Flaticon"></a></div>
           <img className='logo' src="./ticket.svg" alt="ticket"></img>
-            <input classname='search-bar' style={{
-              fontSize: 24,
-              display: 'inline',
-              width: "50%",
-              paddingTop: 8,
-              paddingBottom: 8,
-              paddingLeft: 16,
-              borderRadius: 5
-            }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search term" />
+            <input className='search-bar' 
+            onChange={this.searchChangeHandler.bind(this)} 
+            placeholder="Search for Movies..." 
+            />
           </div>
           <div className='search-result-canvas'>{this.state.rows}</div>
         </div>
