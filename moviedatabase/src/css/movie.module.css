@@ -1,14 +1,41 @@
 td {
-    vertical-align:top;
+    vertical-align: top;
 }
 
-img {
+.movieTitle {
+    margin-top: 0;
+    transition: opacity 0.5s ease;
+    padding-top: 20px;
+}
 
+.movieTitle:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.image {
+    margin-top: 0;
+    transition: opacity 0.5s ease;
+}
+
+.image:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+p {
+    text-align: justify;
+    text-justify: inter-character;
+    margin: 10px;
+}
+
+table {
+    width: 40%;
 }
 
 div.container {
-    border: 1px solid #DDDDDD;
     width: 230px;
-    height: 200px;
+    height: 350px;
     position: relative;
+    padding-top: 20px;
  }
