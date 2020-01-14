@@ -11,20 +11,6 @@ class TelevisionSearch extends Component {
       this.state = {scrollingLock: false, rows: []};
       this.performSearch('tv',"suits");
     }
-    
-    processAPI_Response(results) {
-        var televisionRows = [];
-
-        results.forEach((show) => {
-            show.poster_src = "https://image.tmdb.org/t/p/w185" + show.poster_path
-            const televisionRow = <Television src={Movie} key={show.id} show={show}/>
-            televisionRows.push(televisionRow)
-        })
-
-        console.log(televisionRows);
-
-        this.setState({rows: televisionRows});
-    }
 
     performSearch(searchType, searchTerm) {
         console.log("Perform search using moviedb")
@@ -34,7 +20,17 @@ class TelevisionSearch extends Component {
             success: (searchResults) => {
                 console.log("Fetched data successfully")
                 const results = searchResults.results;
-                this.processAPI_Response(searchType, results);
+                var televisionRows = [];
+
+                results.forEach((show) => {
+                    show.poster_src = "https://image.tmdb.org/t/p/w185" + show.poster_path
+                    const televisionRow = <Television src={Movie} key={show.id} show={show}/>
+                    televisionRows.push(televisionRow)
+                })
+
+                console.log(televisionRows);
+
+                this.setState({rows: televisionRows});
             },
             error: (xhr, status, err) => {
                 console.error("Failed to fetch data")

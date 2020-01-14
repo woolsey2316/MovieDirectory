@@ -45,6 +45,8 @@ div.header {
   top: 0px;
   left: 0px;
   text-align: left;
+  position: sticky;
+  z-index: 10000;
 }
 
 .App {

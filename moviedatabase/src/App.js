@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import MovieSearch from './MovieSearch.js';
 import ActorSearch from './ActorSearch.js';
 import TelevisionSearch from './TelevisionSearch.js';
+import Home from './Home.js';
 import Style from './App.css';
 import Actor from './Actor.js';
 import $ from 'jquery';
@@ -46,6 +47,7 @@ class App extends Component {
         <Navbar bg="primary" variant="dark">
           <Navbar.Brand href="#home">Movies</Navbar.Brand>
           <Nav className="mr-auto">
+            <Nav.Link href="home">Home</Nav.Link>
             <Nav.Link href="movie">Movie</Nav.Link>
             <Nav.Link href="television">Television</Nav.Link>
             <Nav.Link href="actor">Actor</Nav.Link>
@@ -53,6 +55,7 @@ class App extends Component {
         </Navbar>
         <div className='search-result-canvas'>{this.state.rows}</div>
           <Switch>
+            <Route exact path="/home" ><Home/></Route>
             <Route exact path="/movie" ><MovieSearch/></Route>
             <Route exact path="/television" ><TelevisionSearch/></Route>
             <Route exact path="/actor" ><ActorSearch/></Route>

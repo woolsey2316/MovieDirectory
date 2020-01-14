@@ -4,7 +4,7 @@ div .ratingIcon {
     background-color:white;
     box-shadow: 1px 2px 5px 1px #3332328a;
     border-radius: 10px;
-    width: 65px;
+    width: 75px;
     height: 65px;
     z-index: 1000;
     position: absolute;
@@ -24,6 +24,14 @@ div .ratingIcon {
     margin: 5px 3px;
     max-width: 27%;
     max-height: 27%;
+}
+
+.person {
+    margin-top: 2px;
+    margin-right: 2px;
+    max-width: 23%;
+    max-height: 23%;
+    fill: #5e595a;
 }
 
 .score {

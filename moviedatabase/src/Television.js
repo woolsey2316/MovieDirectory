@@ -6,7 +6,7 @@ import Style from './css/movie.module.css'
 class Television extends Component {
     viewTelevision() {
         console.log("Trying to view television")
-        const url = "https://www.themoviedb.org/television/" + this.props.show.id
+        const url = "https://www.themoviedb.org/tv/" + this.props.show.id
         window.location.href = url
     }
     
@@ -23,10 +23,8 @@ class Television extends Component {
                             <img alt="poster" height="350" width="230" src ={this.props.show.poster_src}></img>
                         </div>
                         </td>
-                        <h3 align="top">{this.props.show.title}</h3>
-                        <p>{this.props.show.vote_average} |  {this.props.show.release_date}</p>
+                        <h3 style={{margin: "20px"}} onClick={this.viewTelevision.bind(this)} >{this.props.show.name}</h3>
                         <p style={{textAlign: 'justify'}}>{this.props.show.overview}</p>
-                        <input type="button" onClick={this.viewTelevision.bind(this)} value="View"/>
                     </tr>
                     </tbody>
                 </table>
