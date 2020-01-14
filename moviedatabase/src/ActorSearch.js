@@ -12,7 +12,7 @@ class ActorSearch extends Component {
       this.performSearch('person','Brad');
     }
 
-    processAPI_Response(searchType, results) {
+    processAPI_Response(results) {
         var movieRows = [];
 
         results.forEach((res) => {
@@ -25,7 +25,7 @@ class ActorSearch extends Component {
         return;
     }
 
-    performSearch(searchType, searchTerm) {
+    performSearch(searchTerm) {
         console.log("Perform search using moviedb")
         const urlString = `https://api.themoviedb.org/3/search/person?api_key=1b5adf76a72a13bad99b8fc0c68cb085&query=${searchTerm}`
         $.ajax({
@@ -33,7 +33,7 @@ class ActorSearch extends Component {
             success: (searchResults) => {
                 console.log("Fetched data successfully")
                 const results = searchResults.results;
-                this.processAPI_Response(searchType, results);
+                this.processAPI_Response(results);
             },
             error: (xhr, status, err) => {
                 console.error("Failed to fetch data")
@@ -52,7 +52,10 @@ class ActorSearch extends Component {
         return <div>
                 <div id="search-header" className='header' position={this.state.scrollingLock ? "fixed" : "relative"}>
                     <img className='logo' src="./ticket.svg" alt="ticket" href="https://www.flaticon.com/authors/freepik"></img>
-                        <input className='search-bar' placeholder="Search for Actors..." ></input>
+                        <input 
+                        className='search-bar' 
+                        placeholder="Search for Movies..." 
+                        onChange={this.searchChangeHandler.bind(this)}></input>
                     </div>
                 <div className='search-result-canvas'>{this.state.rows}</div>
             </div>

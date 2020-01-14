@@ -14,9 +14,7 @@ class Movie extends Component {
         const url = "https://www.themoviedb.org/movie/" + this.props.show.id
         window.location.href = url
     }
-    componentDidUpdate() {
-        this.setState({display:true})
-    }
+
     render() {
         if (!this.props.show) {
             return <div/>;
@@ -30,7 +28,7 @@ class Movie extends Component {
                             <img className={Style.image} alt="poster" height="350" width="230" src ={this.props.show.poster_src} style={{backgroundRepeat:"no-repeat"}}></img>
                         </div>
                         </td>
-                        <h3 className={Style.movieTitle} align="top" onMouseOver={() => this.display=true} onClick={this.viewMovie.bind(this)} >{this.props.show.title}</h3>
+                        <h3 className={Style.movieTitle} align="top" onClick={this.viewMovie.bind(this)} >{this.props.show.title}</h3>
                         <p>{this.props.show.vote_average} |  {this.props.show.release_date}</p>
                         <p style={{textAlign: 'justify'}}>{this.props.show.overview}</p>
                     </tr>

@@ -12,7 +12,7 @@ class TelevisionSearch extends Component {
       this.performSearch('tv',"suits");
     }
     
-    processAPI_Response(searchType, results) {
+    processAPI_Response(results) {
         var televisionRows = [];
 
         results.forEach((show) => {
@@ -55,7 +55,10 @@ class TelevisionSearch extends Component {
         return <div>
                 <div id="search-header" className='header' position={this.state.scrollingLock ? "fixed" : "relative"}>
                     <img className='logo' src="./ticket.svg" alt="ticket" href="https://www.flaticon.com/authors/freepik"></img>
-                        <input className='search-bar' placeholder="Search for Television..." ></input>
+                        <input 
+                        className='search-bar' 
+                        placeholder="Search for Movies..." 
+                        onChange={this.searchChangeHandler.bind(this)}></input>
                     </div>
                 <div className='search-result-canvas'>{this.state.rows}</div>
             </div>
