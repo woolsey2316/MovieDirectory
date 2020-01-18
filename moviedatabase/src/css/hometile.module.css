@@ -1,0 +1,63 @@
+.tvContainer {
+    height: 500px;
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movieContainer {
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nonExpandingContainerMinor {
+    overflow: hidden;
+    height: 150px;
+    width: 50%;
+}
+
+.nonExpandingContainerMajor {
+    overflow: hidden;
+    width: 100%;
+    height: 350px;
+}
+
+.flexGridHalves:hover, .flexGridHalves:focus {
+    transform: scale(1.1);
+}
+
+.flexGridWholeRow:hover, .flexGridWholeRow:focus {
+    transform: scale(1.1);
+}
+
+.flexGridHalves {
+    height: 150px;
+    width: 100%;
+    display: table;
+    transition: all .5s;
+}
+
+.flexGridWholeRow {
+    width: 100%;
+    height: 350px;
+    display: table;
+    transition: all .5s;
+}
+
+.backdrop {
+    width: 100%;
+}
+
+.title {
+    color: #fff;
+    vertical-align: bottom;
+    display: table-cell;
+    text-shadow: 1px 1px 3px black;
+    padding-bottom: 10px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+  }

@@ -45,7 +45,7 @@ class App extends Component {
       <Router>
         <div className="App">
         <Navbar bg="primary" variant="dark">
-          <Navbar.Brand href="#home">Movies</Navbar.Brand>
+          <Navbar.Brand href="#home">movieDatabase</Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="home">Home</Nav.Link>
             <Nav.Link href="movie">Movie</Nav.Link>
@@ -55,6 +55,7 @@ class App extends Component {
         </Navbar>
         <div className='search-result-canvas'>{this.state.rows}</div>
           <Switch>
+            <Route exact path="/" ><Home/></Route>
             <Route exact path="/home" ><Home/></Route>
             <Route exact path="/movie" ><MovieSearch/></Route>
             <Route exact path="/television" ><TelevisionSearch/></Route>

@@ -29,7 +29,7 @@ class Movie extends Component {
                         </div>
                         </td>
                         <h3 className={Style.movieTitle} align="top" onClick={this.viewMovie.bind(this)} >{this.props.show.title}</h3>
-                        <p>{this.props.show.vote_average} | {this.props.show.release_date}</p>
+                        <p className={Style.date}>{this.props.show.release_date}</p>
                         <p style={{textAlign: 'justify'}}>{this.props.show.overview}</p>
                     </tr>
                     </tbody>

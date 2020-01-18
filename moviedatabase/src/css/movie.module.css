@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans&display=swap');
+
 td {
     vertical-align: top;
 }
@@ -6,6 +8,7 @@ td {
     margin-top: 0;
     transition: opacity 0.5s ease;
     padding-top: 20px;
+    color: #2e2d2d;
 }
 
 .movieTitle:hover {
@@ -26,6 +29,17 @@ p {
     text-align: justify;
     text-justify: inter-character;
     margin: 10px;
+    font-family: 'Noto';
+    color: #636060;
+}
+
+.date {
+    text-align: justify;
+    text-justify: inter-character;
+    margin: 10px;
+    font-family: 'Noto';
+    font-weight: bold;
+    color: rgb(68, 66, 66);
 }
 
 table {

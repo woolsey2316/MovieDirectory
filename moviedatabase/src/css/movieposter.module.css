@@ -14,7 +14,8 @@
 
 .image:hover {
     transform: scale(1.03);
-    opacity: 0.95;
+    opacity: 0.90;
+    cursor: pointer;
 }
 
 .movieTitle {
