@@ -1,35 +1,43 @@
-import React, {useState, Component} from 'react';
+import React from 'react';
 import Rating from './Rating';
 import './App.css'
 import Style from './css/movieposter.module.css'
 
-class MoviePoster extends Component {
-    constructor(props) {
-        super(props)
-        this.display = false
-    }
-    viewMovie() {
-        console.log("Trying to view movie")
-        const url = "https://www.themoviedb.org/movie/" + this.props.show.id
-        window.location.href = url
-    }
+var MoviePoster = (props) => {
 
-    render() {
-        if (!this.props.show) {
-            return <div/>;
-        }
-        return (
-            <div className={Style.container}>
-                <Rating show={this.props.show}></Rating>
-                <img className={Style.image} alt="poster" height="350" width="230" src ={this.props.show.poster_src} style={{backgroundRepeat:"no-repeat"}}></img>
-                <p className={Style.releaseDate}>{this.props.show.release_date}</p>
-                <h3 className={Style.movieTitle} align="top" onClick={this.viewMovie.bind(this)} >{this.props.show.title}</h3>
-            
-            </div>
-        )
-                    
-            
+    if (!props.show) {
+        return <div/>;
     }
+    return (
+        <div className={Style.container}>
+            <Rating show={props.show}></Rating>
+            <img 
+                className={Style.image} 
+                alt="poster" 
+                height="350" 
+                width="230" 
+                src={props.show.poster_src} 
+                style={{backgroundRepeat:"no-repeat"}}
+            >
+            </img>
+            <p className={Style.releaseDate}>
+                {props.show.release_date}
+            </p>
+            <h3 
+                className={Style.movieTitle} 
+                align="top" 
+                onClick={viewMovie(props.show.id)}
+            >{props.show.title}
+            </h3>
+        
+        </div>
+    )
+}
+
+function viewMovie(showId) {
+    console.log('Trying to view movie')
+    const url = 'https://www.themoviedb.org/movie/' + showId
+    window.location.href = url
 }
 
 export default MoviePoster;

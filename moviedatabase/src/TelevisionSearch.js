@@ -13,17 +13,17 @@ class TelevisionSearch extends Component {
     }
 
     performSearch(searchType, searchTerm) {
-        console.log("Perform search using moviedb")
+        console.log('Perform search using moviedb')
         const urlString = `https://api.themoviedb.org/3/search/${searchType}?api_key=1b5adf76a72a13bad99b8fc0c68cb085&query=${searchTerm}`
         $.ajax({
             url: urlString,
             success: (searchResults) => {
-                console.log("Fetched data successfully")
+                console.log('Fetched data successfully')
                 const results = searchResults.results;
                 var televisionRows = [];
 
                 results.forEach((show) => {
-                    show.poster_src = "https://image.tmdb.org/t/p/w185" + show.poster_path
+                    show.poster_src = 'https://image.tmdb.org/t/p/w185' + show.poster_path
                     const televisionRow = <Television src={Movie} key={show.id} show={show}/>
                     televisionRows.push(televisionRow)
                 })
@@ -48,17 +48,29 @@ class TelevisionSearch extends Component {
     render() {
         console.log(this.state.rows);
         
-        return <div>
-                <div id="search-header" className='header' position={this.state.scrollingLock ? "fixed" : "relative"}>
-                    <img className='logo' src="./ticket.svg" alt="ticket" href="https://www.flaticon.com/authors/freepik"></img>
-                        <input 
-                        className='search-bar' 
-                        placeholder="Search for Movies..." 
-                        onChange={this.searchChangeHandler.bind(this)}></input>
-                    </div>
-                <div className='search-result-canvas'>{this.state.rows}</div>
+        return (
+            <div>
+                <div 
+                  id="search-header" 
+                  className="header"
+                  position={this.state.scrollingLock ? 'fixed' : 'relative'}>
+                    <img 
+                      className="logo" 
+                      src="./ticket.svg" 
+                      alt="ticket" 
+                      href="https://www.flaticon.com/authors/freepik"
+                    />
+                    <input 
+                      className="search-bar"
+                      placeholder="Search for Movies..." 
+                      onChange={this.searchChangeHandler.bind(this)}
+                    />
+                </div>
+                <div className="search-result-canvas">
+                    {this.state.rows}
+                </div>
             </div>
-        
+        )  
     }
 }
 
