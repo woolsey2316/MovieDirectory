@@ -14,14 +14,14 @@ class MovieCollage extends Component {
             this.state.collage.push( 
                 <div className={Style.nonExpandingContainerMinor}>
                     <div className={Style.flexGridHalves}
-                    height="300px"
-                    alt="poster" 
-                    style={{
-                        backgroundImage: `url(${show.poster_src})`,
-                        backgroundSize: 'cover',
-                    }}
+                      height="300px"
+                      alt="poster" 
+                      style={{
+                        backgroundImage:`url(${show.poster_src})`,
+                        backgroundRepeat: 'no-repeat'
+                      }}
                     onClick={this.viewMovie.bind(this)}>
-                    <h3 className={Style.title} onClick={this.viewMovie(show.id)}>{show.title}</h3>
+                    <h3 className={Style.title} onClick={this.viewMovie.bind(this)}>{show.title}</h3>
                     </div>
                 </div>
             )
@@ -31,22 +31,24 @@ class MovieCollage extends Component {
         this.state.collage.push( 
             <div className={Style.nonExpandingContainerMajor}>
                 <div className={Style.flexGridWholeRow}
-                    height="90px"
-                    alt="poster" 
-                    style={{
-                            backgroundImage: `url(${show.poster_src})`,
-                            backgroundSize: 'cover',
-                        }}
-                    onClick={this.viewMovie(show.id)}>
-                <h3 className={Style.title} onClick={this.viewMovie(show.id).bind(this)}>{show.title}</h3>
+                  height="90px"
+                  alt="poster" 
+                  style={{
+                    backgroundImage:`url(${show.poster_src})`,
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                  onClick={this.viewMovie.bind(this)}>
+                        <h3 className={Style.title} onClick={this.viewMovie.bind(this)}>
+                            {show.title}
+                        </h3>
                 </div>
             </div>
         )
     }
 
-    viewMovie(showId) {
+    viewMovie() {
         console.log('Trying to view movie')
-        const url = 'https://www.themoviedb.org/movie/' + showId
+        const url = 'https://www.themoviedb.org/movie/' + this.props.show.id
         window.location.href = url
     }
 

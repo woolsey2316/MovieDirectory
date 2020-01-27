@@ -41,19 +41,8 @@ class Home extends Component {
         return <TelevisionCollage key={resultList[0].id} showList={resultList}/>
     }
 
-    processTop3Results_Movie(results) {
-        var resultList = [];
-
-        for (let i = 0; i < 3; i++) {
-            results[i].poster_src = 'https://image.tmdb.org/t/p/w500' + results[i].backdrop_path
-            resultList.push(results[i])
-        }
-
-        return <MovieCollage key={resultList[0].id} movieList={resultList}/>
-    }
-
     loadMainTile() {
-        console.log('loading tv tile collage')
+        // Load the tv show collage
         let urlString = 'https://api.themoviedb.org/3/discover/tv?api_key=1b5adf76a72a13bad99b8fc0c68cb085'+
         '&language=en-US&sort_by=popularity.desc&include_adult=false'+
         '&include_video=false&page=1&primary_release_year=2020'
@@ -61,15 +50,17 @@ class Home extends Component {
             url: urlString,
             success: (searchResults) => {
                 console.log('Fetched data successfully')
-                const results = searchResults.results;
-                this.setState({tvCollage: this.processTop3Results(results)});
+                let resultList = this.processTop3Results(searchResults);
+                this.setState({
+                    tvCollage: <TelevisionCollage key={resultList[0].id} showList={resultList}/>
+                });
             },
             error: (xhr, status, err) => {
                 console.error('Failed to fetch data')
             }
         })
 
-        console.log('loading movie tile collage')
+        // Load the movie tile collage
         urlString = 'https://api.themoviedb.org/3/discover/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085'+
         '&language=en-US&sort_by=popularity.desc&include_adult=false'+
         '&include_video=false&page=1&primary_release_year=2020&vote_average.gte=7.5&vote_count.gte=10'
@@ -77,32 +68,41 @@ class Home extends Component {
             url: urlString,
             success: (searchResults) => {
                 console.log('Fetched data successfully')
-                const results = searchResults.results;
-                this.setState({movieCollage: this.processTop3Results_Movie(results)});
+                let resultList = this.processTop3Results(searchResults);
+                this.setState({
+                    movieCollage: <MovieCollage key={resultList[0].id} movieList={resultList}/>
+                });
             },
             error: (xhr, status, err) => {
                 console.error('Failed to fetch data')
             }
         })
     }
-
+    /* 
+    * Find movies belonging to all categories defined in the home page
+    */
+    
     performSearch() {
         console.log('Perform search using moviedb')
         let urlString = 'https://api.themoviedb.org/3/discover/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085'+
         '&language=en-US&sort_by=popularity.desc&include_adult=false'+
         '&include_video=false&page=1&primary_release_year=2020'
+        // Most recent movies category 
         $.ajax({
             url: urlString,
             success: (searchResults) => {
                 console.log('Fetched data successfully')
-                const results = searchResults.results;
-                this.setState({recentMovies: this.processAPI_Response(results)});
+                let resultList = this.processAPI_Response(searchResults.results)
+                
+                this.setState({
+                    recentMovies: <MovieCollage key={resultList[0].id} movieList={resultList}/>
+                });
             },
             error: (xhr, status, err) => {
                 console.error('Failed to fetch data')
             }
         })
-
+        // Most popular Movie category
         console.log('Perform search using moviedb')
         urlString = 'https://api.themoviedb.org/3/discover/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085'+
         '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false'+
@@ -111,22 +111,28 @@ class Home extends Component {
             url: urlString,
             success: (searchResults) => {
                 console.log('Fetched data successfully')
-                const results = searchResults.results;
-                this.setState({popularMovies: this.processAPI_Response(results)});
+                let resultList = this.processAPI_Response(searchResults.results)
+                
+                this.setState({
+                    popularMovies: <MovieCollage key={resultList[0].id} movieList={resultList}/>
+                });
             },
             error: (xhr, status, err) => {
                 console.error('Failed to fetch data')
             }
         })
-
+        // Best drama category
         console.log('Perform search using moviedb')
         urlString = 'https://api.themoviedb.org/3/discover/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085&with_genres=18&sort_by=vote_average.desc&vote_count.gte=10'
         $.ajax({
             url: urlString,
             success: (searchResults) => {
                 console.log('Fetched best drama data successfully')
-                const results = searchResults.results;
-                this.setState({bestDramas: this.processAPI_Response(results)});
+                let resultList = this.processAPI_Response(searchResults.results)
+                
+                this.setState({
+                    bestDramas: <MovieCollage key={resultList[0].id} movieList={resultList}/>
+                });
             },
             error: (xhr, status, err) => {
                 console.error('Failed to fetch data')

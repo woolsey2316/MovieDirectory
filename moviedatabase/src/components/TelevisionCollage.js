@@ -13,9 +13,9 @@ class TelevisionCollage extends Component {
                 <div className={Style.flexGridWholeRow}
                 style={{
                         backgroundImage:`url(${show.poster_src})`,
-                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
                     }}>
-                <h3 className={Style.title} onClick={this.viewTelevision(show.id)}>
+                <h3 className={Style.title} onClick={this.viewTelevision.bind(this)}>
                     {show.name}
                 </h3>
                 </div>
@@ -31,9 +31,9 @@ class TelevisionCollage extends Component {
                     <div className={Style.flexGridHalves}
                     style={{
                         backgroundImage:`url(${show.poster_src})`,
-                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
                     }}>
-                    <h3 className={Style.title} onClick={this.viewTelevision(show.id)}>
+                    <h3 className={Style.title} onClick={this.viewTelevision.bind(this)}>
                         {show.name}
                     </h3>
                     </div>
@@ -41,9 +41,9 @@ class TelevisionCollage extends Component {
             )
         }
     }
-    viewTelevision(showId) {
+    viewTelevision() {
         console.log('Trying to view tv show')
-        const url = 'https://www.themoviedb.org/tv/' + showId
+        const url = 'https://www.themoviedb.org/tv/' + this.props.show.id
         window.location.href = url
     }
     render() {

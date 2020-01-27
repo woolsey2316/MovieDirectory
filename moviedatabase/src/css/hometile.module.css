@@ -24,17 +24,18 @@
 }
 
 .flexGridHalves:hover, .flexGridHalves:focus {
-    transform: scale(1.1);
+    background-size: 105% 105%;
 }
 
 .flexGridWholeRow:hover, .flexGridWholeRow:focus {
-    transform: scale(1.1);
+    background-size: 105% 105%;
 }
 
 .flexGridHalves {
     height: 150px;
     width: 100%;
     display: table;
+    background-size: 100% 100%;
     transition: all 1s;
 }
 
@@ -42,6 +43,7 @@
     width: 100%;
     height: 350px;
     display: table;
+    background-size: 100% 100%;
     transition: all 1s;
 }
 
@@ -55,6 +57,8 @@
     display: table-cell;
     text-shadow: 1px 1px 3px black;
     padding-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .break {

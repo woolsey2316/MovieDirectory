@@ -7,7 +7,7 @@ class MovieSearch extends Component {
     constructor(props) {
       super(props)
       this.state = {scrollingLock: false, rows: []};
-      this.performSearch('movie',"ant man");
+      this.performSearch('movie','ant man');
     }
     performSearch(searchTerm) {
         console.log("Perform search using moviedb" + searchTerm)
@@ -52,9 +52,9 @@ class MovieSearch extends Component {
                   href="https://www.flaticon.com/authors/freepik"
                 />
                 <input 
-                className="search-bar" 
-                placeholder="Search for Movies..." 
-                onChange={this.searchChangeHandler.bind(this)}
+                  className="search-bar" 
+                  placeholder="Search for Movies..." 
+                  onChange={this.searchChangeHandler.bind(this)}
                 />
             </div>
             <div className="search-result-canvas">

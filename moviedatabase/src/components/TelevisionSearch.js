@@ -9,7 +9,7 @@ class TelevisionSearch extends Component {
     constructor(props) {
       super(props)
       this.state = {scrollingLock: false, rows: []};
-      this.performSearch('tv',"suits");
+      this.performSearch('tv','suits');
     }
 
     performSearch(searchType, searchTerm) {
@@ -42,7 +42,7 @@ class TelevisionSearch extends Component {
         console.log(event.target.value)
         const boundObject = this
         const searchTerm = event.target.value
-        boundObject.performSearch(searchTerm)
+        boundObject.performSearch('tv',searchTerm)
     }
 
     render() {
@@ -50,18 +50,15 @@ class TelevisionSearch extends Component {
         
         return (
             <div>
-                <div 
+                <div className="header"
                   id="search-header" 
-                  className="header"
                   position={this.state.scrollingLock ? 'fixed' : 'relative'}>
-                    <img 
-                      className="logo" 
+                    <img className="logo" 
                       src="./ticket.svg" 
                       alt="ticket" 
                       href="https://www.flaticon.com/authors/freepik"
                     />
-                    <input 
-                      className="search-bar"
+                    <input className="search-bar"
                       placeholder="Search for Movies..." 
                       onChange={this.searchChangeHandler.bind(this)}
                     />

@@ -45,7 +45,7 @@ class App extends Component {
         <Router>
           <div className="App">
           <Navbar bg="primary" variant="dark">
-            <Navbar.Brand href="#home">movieDatabase</Navbar.Brand>
+            <Navbar.Brand href="#home">MovieDB</Navbar.Brand>
             <Nav className="mr-auto">
               <Nav.Link href="home">Home</Nav.Link>
               <Nav.Link href="movie">Movie</Nav.Link>
