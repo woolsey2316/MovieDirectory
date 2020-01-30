@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import Style from './App.css';
 import Movie from './Movie.js';
 import $ from 'jquery';
+import SearchBar from './SearchBar.js';
 
 class MovieSearch extends Component {
     constructor(props) {
       super(props)
-      this.state = {scrollingLock: false, rows: []};
       this.performSearch('movie','ant man');
+      this.state={rows:[]};
+      this.searchChangeHandler=this.searchChangeHandler.bind(this);
     }
     performSearch(searchTerm) {
         console.log("Perform search using moviedb" + searchTerm)
@@ -37,27 +38,12 @@ class MovieSearch extends Component {
         console.log(event.target.value)
         const boundObject = this
         const searchTerm = event.target.value
-        boundObject.performSearch(searchTerm)
+        boundObject.performSearch('movie',searchTerm)
     }
     render() {
         return <div>
-            <div 
-              id="search-header" 
-              className="header" 
-              position={this.state.scrollingLock ? 'fixed' : 'relative'}>
-                <img 
-                  className="logo" 
-                  src="./ticket.svg" 
-                  alt="ticket" 
-                  href="https://www.flaticon.com/authors/freepik"
-                />
-                <input 
-                  className="search-bar" 
-                  placeholder="Search for Movies..." 
-                  onChange={this.searchChangeHandler.bind(this)}
-                />
-            </div>
-            <div className="search-result-canvas">
+            <SearchBar type="movie" onChange={this.searchChangeHandler} />
+            <div className="searchResultCanvas">
                 {this.state.rows}
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Rating from './Rating';
-import './App.css'
-import Style from './css/movieposter.module.css'
+import '../App.css'
+import Style from '../css/movieposter.module.css'
 
 class MoviePoster extends Component {
     viewMovie() {

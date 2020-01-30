@@ -55,10 +55,14 @@
     color: #fff;
     vertical-align: bottom;
     display: table-cell;
-    text-shadow: 1px 1px 3px black;
+    text-shadow: -1px -1px 3px black,1px 1px 3px black;
     padding-bottom: 10px;
     font-size: 20px;
     text-align: center;
+}
+
+.title:hover {
+    cursor: pointer;
 }
 
 .break {

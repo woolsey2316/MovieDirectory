@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Movie from './Movie';
-import './App.css'
-import Style from './css/movie.module.css'
+import '../App.css'
 
 class Actor extends Component {
     viewactor() {

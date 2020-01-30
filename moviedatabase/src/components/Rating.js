@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './css/rating.module.css'
+import style from '../css/rating.module.css'
 
 var Rating = (props) => {
     return (

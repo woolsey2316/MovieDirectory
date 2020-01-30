@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {Navbar,Nav} from 'react-bootstrap';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import MovieSearch from './MovieSearch.js';
-import ActorSearch from './ActorSearch.js';
-import TelevisionSearch from './TelevisionSearch.js';
-import Home from './Home.js';
-import Style from './App.css';
-import Actor from './Actor.js';
-import $ from 'jquery';
+import MovieSearch from './components/MovieSearch.js';
+import ActorSearch from './components/ActorSearch.js';
+import TelevisionSearch from './components/TelevisionSearch.js';
+import Home from './components/Home.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {

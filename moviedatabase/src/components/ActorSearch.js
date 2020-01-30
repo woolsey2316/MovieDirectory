@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import Style from './App.css';
-import Movie from './Movie.js';
 import $ from 'jquery';
 import Actor from './Actor';
+import SearchBar from './SearchBar.js';
 
 class ActorSearch extends Component {
 
@@ -51,23 +50,7 @@ class ActorSearch extends Component {
     render() {
         return (
             <div>
-                <div 
-                  id="search-header" 
-                  className="header" 
-                  position={this.state.scrollingLock ? 'fixed' : 'relative'}
-                  >
-                    <img 
-                      className="logo" 
-                      src="./ticket.svg" 
-                      alt="ticket" 
-                      href="https://www.flaticon.com/authors/freepik"
-                    />
-                    <input 
-                      className="search-bar" 
-                      placeholder="Search for Movies..." 
-                      onChange={this.searchChangeHandler.bind(this)}
-                    />
-                </div>
+                <SearchBar/>
                 <div className="search-result-canvas">{this.state.rows}</div>
             </div>
         )

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import MoviePoster from './MoviePoster.js';
-import Style from './css/home.module.css';
+import Style from '../css/home.module.css';
 import TelevisionCollage from './TelevisionCollage.js';
 import MovieCollage from './MovieCollage.js';
 import $ from 'jquery';
@@ -19,26 +19,34 @@ class Home extends Component {
     processAPI_Response(results) {
         var resultList = [];
 
-        results.forEach((show) => {
-            show.poster_src = 'https://image.tmdb.org/t/p/w185' + show.poster_path
-            const movie = <MoviePoster key={show.id} show={show}/>
+        for (let i = 0; i < 5; i++) {
+            results[i].poster_src = 'https://image.tmdb.org/t/p/w185' + results[i].poster_path
+            const movie = <MoviePoster key={results[i].id} show={results[i]}/>
             resultList.push(movie)
-        })
-
-        console.log(resultList);
+        }
 
         return resultList;
     }
 
-    processTop3Results(results) {
+    processTop3Results(type, results) {
         var resultList = [];
-
-        for (let i = 0; i < 3; i++) {
-            results[i].poster_src = 'https://image.tmdb.org/t/p/w500' + results[i].backdrop_path
-            resultList.push(results[i])
+        switch (type) {
+            case 'tv':
+                for (let i = 0; i < 3; i++) {
+                    results[i].poster_src = 'https://image.tmdb.org/t/p/w500' + results[i].backdrop_path
+                    resultList.push(results[i])
+                }
+                break;
+            case 'movie':
+                for (let i = 0; i < 3; i++) {
+                    results[i].poster_src = 'https://image.tmdb.org/t/p/w500' + results[i].backdrop_path
+                    resultList.push(results[i])
+                }
+                break;
+            default:
         }
-
-        return <TelevisionCollage key={resultList[0].id} showList={resultList}/>
+        
+        return resultList;
     }
 
     loadMainTile() {
@@ -48,9 +56,9 @@ class Home extends Component {
         '&include_video=false&page=1&primary_release_year=2020'
         $.ajax({
             url: urlString,
-            success: (searchResults) => {
+            success: (response) => {
                 console.log('Fetched data successfully')
-                let resultList = this.processTop3Results(searchResults);
+                let resultList = this.processTop3Results('tv',response.results);
                 this.setState({
                     tvCollage: <TelevisionCollage key={resultList[0].id} showList={resultList}/>
                 });
@@ -66,9 +74,9 @@ class Home extends Component {
         '&include_video=false&page=1&primary_release_year=2020&vote_average.gte=7.5&vote_count.gte=10'
         $.ajax({
             url: urlString,
-            success: (searchResults) => {
+            success: (response) => {
                 console.log('Fetched data successfully')
-                let resultList = this.processTop3Results(searchResults);
+                let resultList = this.processTop3Results('movie',response.results);
                 this.setState({
                     movieCollage: <MovieCollage key={resultList[0].id} movieList={resultList}/>
                 });
@@ -90,12 +98,11 @@ class Home extends Component {
         // Most recent movies category 
         $.ajax({
             url: urlString,
-            success: (searchResults) => {
+            success: (response) => {
                 console.log('Fetched data successfully')
-                let resultList = this.processAPI_Response(searchResults.results)
                 
                 this.setState({
-                    recentMovies: <MovieCollage key={resultList[0].id} movieList={resultList}/>
+                    recentMovies: this.processAPI_Response(response.results)
                 });
             },
             error: (xhr, status, err) => {
@@ -109,12 +116,10 @@ class Home extends Component {
         '&page=1&vote_average.gte=7.5&vote_count.gte=10'
         $.ajax({
             url: urlString,
-            success: (searchResults) => {
+            success: (response) => {
                 console.log('Fetched data successfully')
-                let resultList = this.processAPI_Response(searchResults.results)
-                
                 this.setState({
-                    popularMovies: <MovieCollage key={resultList[0].id} movieList={resultList}/>
+                    popularMovies: this.processAPI_Response(response.results)
                 });
             },
             error: (xhr, status, err) => {
@@ -126,12 +131,10 @@ class Home extends Component {
         urlString = 'https://api.themoviedb.org/3/discover/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085&with_genres=18&sort_by=vote_average.desc&vote_count.gte=10'
         $.ajax({
             url: urlString,
-            success: (searchResults) => {
+            success: (response) => {
                 console.log('Fetched best drama data successfully')
-                let resultList = this.processAPI_Response(searchResults.results)
-                
                 this.setState({
-                    bestDramas: <MovieCollage key={resultList[0].id} movieList={resultList}/>
+                    bestDramas: this.processAPI_Response(response.results)
                 });
             },
             error: (xhr, status, err) => {

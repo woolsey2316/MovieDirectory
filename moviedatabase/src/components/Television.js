@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
-import './App.css'
-import Style from './css/movie.module.css'
+import '../App.css'
+import Style from '../css/movie.module.css'
 
 class Television extends Component {
 
@@ -27,7 +27,7 @@ class Television extends Component {
                           height="350" 
                           width="230" 
                           src={this.props.show.poster_src}
-                          onClick={this.viewTelevision.bind(this)}s
+                          onClick={this.viewTelevision.bind(this)}
                         />
                     </div>
                     </td>

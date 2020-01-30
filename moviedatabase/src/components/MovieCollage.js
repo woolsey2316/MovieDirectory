@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Style from './css/hometile.module.css';
+import Style from '../css/hometile.module.css';
+import Tile from './Tile'
 
 class MovieCollage extends Component {
     constructor(props) {
@@ -12,37 +13,13 @@ class MovieCollage extends Component {
         for (let i = 0; i < 2; i++) {
             let show = this.state.movieList[i];
             this.state.collage.push( 
-                <div className={Style.nonExpandingContainerMinor}>
-                    <div className={Style.flexGridHalves}
-                      height="300px"
-                      alt="poster" 
-                      style={{
-                        backgroundImage:`url(${show.poster_src})`,
-                        backgroundRepeat: 'no-repeat'
-                      }}
-                    onClick={this.viewMovie.bind(this)}>
-                    <h3 className={Style.title} onClick={this.viewMovie.bind(this)}>{show.title}</h3>
-                    </div>
-                </div>
+                <Tile show={show} type="secondary" showType="movie"/>
             )
         }
 
         let show = this.state.movieList[2]
         this.state.collage.push( 
-            <div className={Style.nonExpandingContainerMajor}>
-                <div className={Style.flexGridWholeRow}
-                  height="90px"
-                  alt="poster" 
-                  style={{
-                    backgroundImage:`url(${show.poster_src})`,
-                    backgroundRepeat: 'no-repeat'
-                  }}
-                  onClick={this.viewMovie.bind(this)}>
-                        <h3 className={Style.title} onClick={this.viewMovie.bind(this)}>
-                            {show.title}
-                        </h3>
-                </div>
-            </div>
+            <Tile show={show} type="main" showType="movie"/>
         )
     }
 
@@ -55,7 +32,10 @@ class MovieCollage extends Component {
     render() {
         return (
             <div className={Style.movieContainer}>
-                <h3 style={{marginTop: '10px'}}>In Theatres</h3>
+            <h3 style={{marginTop:'10px',
+                textAlign: 'left',
+                fontSize: '1.2rem'
+            }}>In Theatres</h3>
                 <div className={Style.break}/>
                 {this.state.collage}
             </div>

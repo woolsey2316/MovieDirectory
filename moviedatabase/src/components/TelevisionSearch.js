@@ -1,17 +1,23 @@
 import React, {Component} from 'react';
-import Style from './App.css';
 import Television from './Television.js';
 import Movie from './Movie.js';
 import $ from 'jquery';
+import SearchBar from './SearchBar.js';
 
 class TelevisionSearch extends Component {
 
     constructor(props) {
       super(props)
-      this.state = {scrollingLock: false, rows: []};
       this.performSearch('tv','suits');
+      this.state={rows:[]};
+      this.searchChangeHandler=this.searchChangeHandler.bind(this);
     }
-
+    searchChangeHandler(event) {
+        console.log(event.target.value)
+        const boundObject = this
+        const searchTerm = event.target.value
+        boundObject.performSearch('tv',searchTerm)
+    }
     performSearch(searchType, searchTerm) {
         console.log('Perform search using moviedb')
         const urlString = `https://api.themoviedb.org/3/search/${searchType}?api_key=1b5adf76a72a13bad99b8fc0c68cb085&query=${searchTerm}`
@@ -38,32 +44,11 @@ class TelevisionSearch extends Component {
         })
     }
 
-    searchChangeHandler(event) {
-        console.log(event.target.value)
-        const boundObject = this
-        const searchTerm = event.target.value
-        boundObject.performSearch('tv',searchTerm)
-    }
-
     render() {
-        console.log(this.state.rows);
-        
         return (
             <div>
-                <div className="header"
-                  id="search-header" 
-                  position={this.state.scrollingLock ? 'fixed' : 'relative'}>
-                    <img className="logo" 
-                      src="./ticket.svg" 
-                      alt="ticket" 
-                      href="https://www.flaticon.com/authors/freepik"
-                    />
-                    <input className="search-bar"
-                      placeholder="Search for Movies..." 
-                      onChange={this.searchChangeHandler.bind(this)}
-                    />
-                </div>
-                <div className="search-result-canvas">
+                <SearchBar type="tv" onChange={this.searchChangeHandler} />
+                <div className="searchResultCanvas">
                     {this.state.rows}
                 </div>
             </div>

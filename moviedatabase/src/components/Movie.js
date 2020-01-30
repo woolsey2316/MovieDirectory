@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Rating from './Rating';
-import './App.css'
-import Style from './css/movie.module.css'
+import '../App.css'
+import Style from '../css/movie.module.css'
 
 export default class Movie extends Component {
     constructor(props) {
@@ -45,7 +45,7 @@ export default class Movie extends Component {
                             </span>
                         </h3>
                         <p className={Style.date}>{this.props.show.release_date}</p>
-                        <p style={{textAlign: 'justify'}}>{this.props.show.overview}</p>
+                        <p style={{textAlign: "justify"}}>{this.props.show.overview}</p>
                     </tr>
                     </tbody>
                 </table>
