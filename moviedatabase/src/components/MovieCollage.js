@@ -34,7 +34,8 @@ class MovieCollage extends Component {
             <div className={Style.movieContainer}>
             <h3 style={{marginTop:'10px',
                 textAlign: 'left',
-                fontSize: '1.2rem'
+                fontSize: '1.2rem',
+                fontFamily: 'Lato'
             }}>In Theatres</h3>
                 <div className={Style.break}/>
                 {this.state.collage}

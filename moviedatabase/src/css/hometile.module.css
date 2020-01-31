@@ -63,6 +63,8 @@
 
 .title:hover {
     cursor: pointer;
+    color: rgb(201, 30, 30);
+    text-shadow: 1px 1px 1px black;
 }
 
 .break {

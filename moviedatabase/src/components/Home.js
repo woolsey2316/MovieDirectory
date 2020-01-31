@@ -71,7 +71,7 @@ class Home extends Component {
         // Load the movie tile collage
         urlString = 'https://api.themoviedb.org/3/discover/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085'+
         '&language=en-US&sort_by=popularity.desc&include_adult=false'+
-        '&include_video=false&page=1&primary_release_year=2020&vote_average.gte=7.5&vote_count.gte=10'
+        '&include_video=false&page=1&primary_release_year=2020&vote_average.gte=7.5&vote_count.gte=20'
         $.ajax({
             url: urlString,
             success: (response) => {
@@ -150,22 +150,37 @@ class Home extends Component {
 
     render() {
         return (
-            <div className={Style.homePageContainer}>
-                <div className={Style.collageContainer}>
-                    {this.state.tvCollage}
-                    {this.state.movieCollage}
+            <div>
+                <div 
+                  className={Style.landingPage}
+                  style={{
+                    backgroundImage: 'url("landingPageImage.jpg")',
+                    height: '800px',
+                    backgroundSize: 'cover',
+                    textAlign: 'center'
+                  }}
+                >
+                    <h3 className={Style.mainTitle}>Television & film db</h3>
+                    <div></div>
+                    <p className={Style.subText}> a search engine for tv shows and films</p>
                 </div>
-                <h3 className={Style.categoryTitle}>Released in 2020</h3>
-                <div className={Style.searchResultRow}>
-                    {this.state.recentMovies}
-                </div>
-                <h3 className={Style.categoryTitle}>Popular</h3>
-                <div className={Style.searchResultRow}>
-                    {this.state.popularMovies}
-                </div>
-                <h3 className={Style.categoryTitle}>Best Dramas</h3>
-                <div className={Style.searchResultRow}>
-                    {this.state.bestDramas}
+                <div className={Style.homePageContainer}>
+                    <div className={Style.collageContainer}>
+                        {this.state.tvCollage}
+                        {this.state.movieCollage}
+                    </div>
+                    <h3 className={Style.categoryTitle}>Released in 2020</h3>
+                    <div className={Style.searchResultRow}>
+                        {this.state.recentMovies}
+                    </div>
+                    <h3 className={Style.categoryTitle}>Popular</h3>
+                    <div className={Style.searchResultRow}>
+                        {this.state.popularMovies}
+                    </div>
+                    <h3 className={Style.categoryTitle}>Best Dramas</h3>
+                    <div className={Style.searchResultRow}>
+                        {this.state.bestDramas}
+                    </div>
                 </div>
             </div>
         )

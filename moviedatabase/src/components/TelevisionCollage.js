@@ -27,7 +27,8 @@ class TelevisionCollage extends Component {
             <div className={Style.tvContainer}>
             <h3 style={{marginTop:'10px',
                 textAlign: 'left',
-                fontSize: '1.2rem'
+                fontSize: '1.2rem',
+                fontFamily: 'Lato'
             }}>
                 On TV
             </h3>

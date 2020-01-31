@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans|Nunito|Lobster+Two:400i&display=swap');
 
 .homePageContainer {
     margin: 0px 10px;
@@ -19,4 +19,24 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 0px 10px;
+}
+.mainTitle {
+    font-family: 'Lobster Two';
+    color: rgb(201, 30, 30);
+    font-size: 90px;
+    text-shadow: 1px 1px 3px black;
+    margin-left: 29%;
+}
+.subText {
+    font-family: 'Noto sans';
+    font-size: 25px;
+    color: white;
+    margin-top: 14%;
+    margin-left: 60%;
+    color: rgb(201, 30, 30);
+
+}
+.landingPage {
+    text-align: center;
+    vertical-align: center;
 }
