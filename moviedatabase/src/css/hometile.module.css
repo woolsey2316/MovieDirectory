@@ -24,11 +24,11 @@
 }
 
 .flexGridHalves:hover, .flexGridHalves:focus {
-    background-size: 105% 105%;
+    background-size: 102% 102%;
 }
 
 .flexGridWholeRow:hover, .flexGridWholeRow:focus {
-    background-size: 105% 105%;
+    background-size: 102% 102%;
 }
 
 .flexGridHalves {
@@ -63,8 +63,7 @@
 
 .title:hover {
     cursor: pointer;
-    color: rgb(201, 30, 30);
-    text-shadow: 1px 1px 1px black;
+
 }
 
 .break {

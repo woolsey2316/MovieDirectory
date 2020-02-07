@@ -46,6 +46,7 @@ div.header {
   text-align: left;
   position: sticky;
   z-index: 10000;
+  display: flex;
 }
 
 .App {
@@ -54,6 +55,6 @@ div.header {
 
 .appLogo {
   animation: App-logo-spin infinite 20s linear;
-  height: 70px;
+  height: 90px;
   padding: 5px;
 }
