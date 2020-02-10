@@ -1,0 +1,19 @@
+.actorName {
+    display: inline-block;
+
+}
+
+.popularity {
+    display: inline-block;
+
+}
+
+.profileContainer {
+    text-align: center;
+}
+
+.profile {
+    margin-top: 20px;
+    width: 200px;
+    height: 300px;
+}

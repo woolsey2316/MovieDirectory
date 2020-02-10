@@ -29,7 +29,7 @@ export default class Movie extends Component {
                                 alt="poster" 
                                 height="350" 
                                 width="230" 
-                                src ={this.props.show.poster_src} 
+                                src ={'https://image.tmdb.org/t/p/w185/' + this.props.show.poster_path} 
                                 style={{ backgroundRepeat: "no-repeat"}}
                                 onClick={this.viewMovie.bind(this)}
                                 />

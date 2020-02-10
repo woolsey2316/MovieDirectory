@@ -8,14 +8,14 @@ class ActorSearch extends Component {
     constructor(props) {
       super(props)
       this.state = {scrollingLock: false, rows: []};
-      this.performSearch('person','Brad');
+      this.performSearch('Brad');
     }
 
     processAPI_Response(results) {
         var movieRows = [];
 
         results.forEach((res) => {
-            res.name = 'https://image.tmdb.org/t/p/w185' + res.popularity
+            res.profile_pic = 'https://image.tmdb.org/t/p/w185' + res.profile_path
             const movieRow = <Actor key={res.id} profile={res}/>
             movieRows.push(movieRow)
         })

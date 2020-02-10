@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import Movie from './Movie';
+import MoviePoster from './MoviePoster';
+import Television from './Television';
+import Style from '../css/actor.module.css'
 import '../App.css'
 
 class Actor extends Component {
@@ -10,16 +12,25 @@ class Actor extends Component {
     }
     render() {
         return (
-            <div className="search-result-canvas">
-                <img src={this.props.profile.name} alt="profile"></img>
-                <p>
-                    {this.props.profile.name}
-                </p>
-                <p>
-                    {this.props.profile.popularity}
-                </p>
+            <div className="searchResultCanvas">
+                <div className={Style.profileContainer}>
+                    <div className={Style.profile}
+                        style={{
+                            backgroundImage:`url(${this.props.profile.profile_pic})`,
+                            backgroundRepeat: 'no-repeat'
+                        }}>
+                    </div>
+                    <p className={Style.actorName}>
+                        {this.props.profile.name}
+                    </p>
+                    <div/>
+                    <p className={Style.popularity}>
+                        {this.props.profile.popularity + 'm'}
+                    </p>
+                </div>
                 {this.props.profile.known_for.map( show => (
-                    <Movie key={show.id} show={show}></Movie>
+                    <MoviePoster key={show.id} show={show}></MoviePoster>
+                    
                 ))}
             </div>
         )
