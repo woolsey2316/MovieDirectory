@@ -9,6 +9,7 @@ class ActorSearch extends Component {
       super(props)
       this.state = {scrollingLock: false, rows: []};
       this.performSearch('Brad');
+      this.searchChangeHandler=this.searchChangeHandler.bind(this);
     }
 
     processAPI_Response(results) {
@@ -42,15 +43,15 @@ class ActorSearch extends Component {
 
     searchChangeHandler(event) {
         console.log(event.target.value)
-        const boundObject = this
         const searchTerm = event.target.value
-        boundObject.performSearch(searchTerm)
+        this.performSearch(searchTerm)
+        
     }
 
     render() {
         return (
             <div>
-                <SearchBar/>
+                <SearchBar type="actor" onChange={this.searchChangeHandler} />
                 <div className="search-result-canvas">{this.state.rows}</div>
             </div>
         )

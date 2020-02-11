@@ -25,7 +25,7 @@ export class SearchBar extends Component {
             <input 
                 className="searchBar" 
                 placeholder="Search for Movies..." 
-                onChange={this.props.searchChangeHandler}
+                onChange={this.props.onChange}
             />
             </div>
         )
