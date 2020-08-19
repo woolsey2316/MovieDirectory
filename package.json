@@ -7,7 +7,9 @@
     "node": "9.5.0"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "bootstrap": "^4.4.1",
+    "dotenv": "^8.2.0",
     "jquery": "^3.4.1",
     "npm-buildpack": "^0.1.10",
     "react": "^16.11.0",
@@ -21,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --no-semi --single-quote --trailing-comma none --arrow-parens always --write \"**/*.{js,jsx,json,md}\""
   },
   "eslintConfig": {
     "extends": "react-app"

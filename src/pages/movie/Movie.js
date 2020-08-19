@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import Rating from './Rating'
-import Style from '../pages/movie/Movie.module.css'
+import Rating from '../../components/Rating'
+import Style from './Movie.module.css'
 
-class Television extends Component {
-  viewTelevision() {
-    console.log('Trying to view television')
-    const url = 'https://www.themoviedb.org/tv/' + this.props.show.id
+export default class Movie extends Component {
+  constructor(props) {
+    super(props)
+    this.display = false
+  }
+  viewMovie() {
+    console.log('redirecting to another page')
+    const url = 'https://www.themoviedb.org/movie/' + this.props.show.id
     window.location.href = url
   }
   render() {
@@ -13,7 +17,7 @@ class Television extends Component {
       return <div />
     }
     return (
-      <table width="40%" key={this.props.show.id}>
+      <table key={this.props.show.id}>
         <tbody>
           <tr>
             <td>
@@ -28,16 +32,19 @@ class Television extends Component {
                     'https://image.tmdb.org/t/p/w185/' +
                     this.props.show.poster_path
                   }
-                  onClick={this.viewTelevision.bind(this)}
+                  style={{ backgroundRepeat: 'no-repeat' }}
+                  onClick={this.viewMovie.bind(this)}
                 />
               </div>
             </td>
             <h3
-              onClick={this.viewTelevision.bind(this)}
+              align="top"
+              onClick={this.viewMovie.bind(this)}
               style={{ paddingTop: '20px', paddingLeft: '10px' }}
             >
-              <span className={Style.movieTitle}>{this.props.show.name}</span>
+              <span className={Style.movieTitle}>{this.props.show.title}</span>
             </h3>
+            <p className={Style.date}>{this.props.show.release_date}</p>
             <p style={{ textAlign: 'justify' }}>{this.props.show.overview}</p>
           </tr>
         </tbody>
@@ -45,5 +52,3 @@ class Television extends Component {
     )
   }
 }
-
-export default Television

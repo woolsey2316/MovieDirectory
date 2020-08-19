@@ -1,0 +1,1 @@
+export { IsValidJSONString } from './validJSON'

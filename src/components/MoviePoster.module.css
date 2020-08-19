@@ -9,12 +9,12 @@
 }
 
 .image {
-    transition: all 1s;
+    transition: all 0.3s;
 }
 
 .image:hover {
     transform: scale(1.03);
-    opacity: 0.90;
+    opacity: 0.95;
     cursor: pointer;
 }
 
