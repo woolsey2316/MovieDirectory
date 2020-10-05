@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 export default function MovieCard({ show }) {
   const classes = useStyles()
   console.log('show prop for MovieCard: ')
-  console.log({show})
+  console.log({ show })
   console.log('https://image.tmdb.org/t/p/w185/' + show.poster_path)
   return (
     <Card display="flex" className={classes.root}>

@@ -1,1 +1,2 @@
-export { api } from './movie.services'
+export { discoverApi } from './discover.services'
+export { genreApi } from './genre.services'

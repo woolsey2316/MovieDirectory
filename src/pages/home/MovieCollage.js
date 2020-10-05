@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Style from './HomeTile.module.css'
 import Tile from './Tile'
+import { Typography, Box } from '@material-ui/core'
 
 class MovieCollage extends Component {
   constructor(props) {
@@ -13,12 +14,14 @@ class MovieCollage extends Component {
     for (let i = 0; i < 2; i++) {
       let show = this.state.movieList[i]
       this.state.collage.push(
-        <Tile show={show} type="secondary" showType="movie" />
+        <Tile show={show} type="secondary" key={show.id} showType="movie" />
       )
     }
 
     let show = this.state.movieList[2]
-    this.state.collage.push(<Tile show={show} type="main" showType="movie" />)
+    this.state.collage.push(
+      <Tile show={show} key={show.id} type="main" showType="movie" />
+    )
   }
 
   viewMovie() {
@@ -29,20 +32,13 @@ class MovieCollage extends Component {
 
   render() {
     return (
-      <div className={Style.movieContainer}>
-        <h3
-          style={{
-            marginTop: '10px',
-            textAlign: 'left',
-            fontSize: '1.2rem',
-            fontFamily: 'Lato'
-          }}
-        >
+      <Box width="500px" display="flex" flexWrap="wrap">
+        <Typography variant="h2" margin="1em">
           In Theatres
-        </h3>
+        </Typography>
         <div className={Style.break} />
         {this.state.collage}
-      </div>
+      </Box>
     )
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MoviePoster from '../../components/MoviePoster'
 import Style from './Actor.module.css'
+import { Box } from '@material-ui/core'
 
 class Actor extends Component {
   viewactor() {
@@ -10,7 +11,7 @@ class Actor extends Component {
   }
   render() {
     return (
-      <div className="searchResultCanvas">
+      <Box bgcolor="#3c3c3c" className="searchResultCanvas">
         <div className={Style.profileContainer}>
           <div
             className={Style.profile}
@@ -28,7 +29,7 @@ class Actor extends Component {
         {this.props.profile.known_for.map((show) => (
           <MoviePoster key={show.id} show={show}></MoviePoster>
         ))}
-      </div>
+      </Box>
     )
   }
 }

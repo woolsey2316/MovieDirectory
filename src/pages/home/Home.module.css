@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans|Muli|Nunito|Lobster+Two:400i&display=swap');
 
-.homePageContainer {
-    margin: 0px 10px;
-
-}
 .collageContainer {
     display: flex;
     justify-content: center;
@@ -11,7 +7,7 @@
 .categoryTitle {
     margin: 20px 50px;
     text-align: left;
-    font-family: Lato;
+    font-family: 'Lato';
     font-size: 1.2rem
 }
 .searchResultRow {

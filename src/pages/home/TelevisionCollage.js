@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Style from './HomeTile.module.css'
 import Tile from './Tile'
+import { Typography, Box } from '@material-ui/core'
 
 class TelevisionCollage extends Component {
   constructor(props) {
@@ -9,7 +9,9 @@ class TelevisionCollage extends Component {
     this.state = { showList: this.props.showList, collage: [] }
     let show = this.state.showList[0]
     // The first television show is the main tile and occupies larger space
-    this.state.collage.push(<Tile show={show} type="main" showType="tv" />)
+    this.state.collage.push(
+      <Tile show={show} key={show.id} type="main" showType="tv" />
+    )
     /*
         The second and third television show backdrop is the minor tile and takes up less space
         */
@@ -17,25 +19,16 @@ class TelevisionCollage extends Component {
     for (let i = 1; i < 3; i++) {
       let show = this.state.showList[i]
       this.state.collage.push(
-        <Tile show={show} type="secondary" showType="tv" />
+        <Tile show={show} key={show.id} type="secondary" showType="tv" />
       )
     }
   }
   render() {
     return (
-      <div className={Style.tvContainer}>
-        <h3
-          style={{
-            marginTop: '10px',
-            textAlign: 'left',
-            fontSize: '1.2rem',
-            fontFamily: 'Lato'
-          }}
-        >
-          On TV
-        </h3>
+      <Box width="500px" display="flex" flexWrap="wrap">
+        <Typography variant="h2">On TV</Typography>
         {this.state.collage}
-      </div>
+      </Box>
     )
   }
 }

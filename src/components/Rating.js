@@ -1,15 +1,16 @@
 import React from 'react'
-import style from './rating.module.css'
-
-var Rating = (props) => {
+import style from './Rating.module.css'
+import heart from '../assets/images/heart_icon.svg'
+import person from '../assets/images/person_icon.svg'
+var Rating = ({ show }) => {
   return (
     <div id="this" className={style.ratingIcon}>
-      <img className={style.heart} alt="likes" src="heart_icon.svg" />
-      <p className={style.score}>{props.show.vote_average * 10 + '%'}</p>
+      <img className={style.heart} alt="likes" src={heart} />
+      <p className={style.score}>{show.vote_average * 10 + '%'}</p>
       <div className={style.break} />
-      <img className={style.person} alt="ppl" src="person_icon.svg" />
+      <img className={style.person} alt="person" src={person} />
       <p className={style.voteCount}>
-        {props.show.vote_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+        {show.vote_count && show.vote_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       </p>
     </div>
   )

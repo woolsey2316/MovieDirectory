@@ -11,13 +11,10 @@ class MovieSearch extends Component {
     this.searchChangeHandler = this.searchChangeHandler.bind(this)
   }
   performSearch(searchTerm) {
-    console.log('Perform search using moviedb' + searchTerm)
     const urlString = `https://api.themoviedb.org/3/search/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085&query=${searchTerm}`
     $.ajax({
       url: urlString,
       success: (searchResults) => {
-        console.log('Fetched data successfully')
-        console.log('Perform search using moviedb' + searchResults.results)
         const results = searchResults.results
         var movieRows = []
 

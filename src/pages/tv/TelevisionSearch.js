@@ -18,7 +18,6 @@ class TelevisionSearch extends Component {
     boundObject.performSearch('tv', searchTerm)
   }
   performSearch(searchType, searchTerm) {
-    console.log('Perform search using moviedb')
     const urlString = `https://api.themoviedb.org/3/search/${searchType}?api_key=1b5adf76a72a13bad99b8fc0c68cb085&query=${searchTerm}`
     $.ajax({
       url: urlString,

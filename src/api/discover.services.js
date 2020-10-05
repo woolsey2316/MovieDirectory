@@ -3,10 +3,10 @@ import { IsValidJSONString } from '../helpers'
   This section of the services layer relates to discover api. Searches for movies
   tv with certain parameters, popularity, genre and returns a search result list
 */
-export const api = {
-  searchMoviebyId,
-  searchTelevisionbyId,
-  searchActorbyId
+export const discoverApi = {
+  searchMovie,
+  searchTelevision,
+  searchActor
 }
 
 /*
@@ -27,40 +27,40 @@ async function getById(id) {
   fetches all information related to the current logged in movie
   address, roles, profile image etc
   */
-async function searchMoviebyId(id) {
+async function searchMovie(params) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   console.log(
-    `fetch request : ${process.env.REACT_APP_BASE_URL}movie?api_key=${process.env.REACT_APP_API_KEY}${id}`
+    `fetch request : ${process.env.REACT_APP_BASE_URL}discover/movie?api_key=${process.env.REACT_APP_API_KEY}${params}`
   )
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie?api_key=${process.env.REACT_APP_API_KEY}${params}`,
+    `${process.env.REACT_APP_BASE_URL}discover/movie?api_key=${process.env.REACT_APP_API_KEY}${params}`,
     requestOptions
   )
   return handleResponse(response)
 }
 
-async function searchTelevisionbyId(id) {
+async function searchTelevision(params) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv?api_key=${process.env.REACT_APP_API_KEY}${id}`,
+    `${process.env.REACT_APP_BASE_URL}discover/tv?api_key=${process.env.REACT_APP_API_KEY}${params}`,
     requestOptions
   )
   return handleResponse(response)
 }
 
-async function searchActorbyId(id) {
+async function searchActor(params) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}actor?api_key=${process.env.REACT_APP_API_KEY}${id}`,
+    `${process.env.REACT_APP_BASE_URL}discover/actor?api_key=${process.env.REACT_APP_API_KEY}${params}`,
     requestOptions
   )
   return handleResponse(response)

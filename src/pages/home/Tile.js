@@ -8,8 +8,7 @@ class Tile extends Component {
   }
 
   viewShow = (event) => {
-    console.log('Trying to view tv show')
-    const url = 'https://www.themoviedb.org/tv/' + this.props.show.id
+    const url = `https://www.themoviedb.org/${this.props.showType}/${this.props.show.id}`
     window.location.href = url
   }
   render() {

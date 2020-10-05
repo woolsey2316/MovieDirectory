@@ -1,28 +1,26 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import Rating from '../../components/Rating'
 import Style from './Movie.module.css'
+import { MovieContext } from '../../context'
 
-export default class Movie extends Component {
-  constructor(props) {
-    super(props)
-    this.display = false
+export default function Movie({show}) {
+  const { setLocalStorage, setMovieContext } = useContext(MovieContext)
+  function viewMovie() {
+    setMovieContext(show)
+    setLocalStorage(show)
+    window.location.href = `/movies/${show.id}`
   }
-  viewMovie() {
-    console.log('redirecting to another page')
-    const url = 'https://www.themoviedb.org/movie/' + this.props.show.id
-    window.location.href = url
+  if (!show) {
+    return <div />
   }
-  render() {
-    if (!this.props.show) {
-      return <div />
-    }
-    return (
-      <table key={this.props.show.id}>
-        <tbody>
-          <tr>
-            <td>
-              <div className={Style.container}>
-                <Rating show={this.props.show}></Rating>
+  return (
+    <table key={show.id}>
+      <tbody>
+        <tr>
+          <td>
+            <div className={Style.container}>
+              <Rating show={show}></Rating>
+              
                 <img
                   className={Style.image}
                   alt="poster"
@@ -30,25 +28,26 @@ export default class Movie extends Component {
                   width="230"
                   src={
                     'https://image.tmdb.org/t/p/w185/' +
-                    this.props.show.poster_path
+                    show.poster_path
                   }
                   style={{ backgroundRepeat: 'no-repeat' }}
-                  onClick={this.viewMovie.bind(this)}
+                  onClick={viewMovie}
+                  
                 />
-              </div>
-            </td>
-            <h3
-              align="top"
-              onClick={this.viewMovie.bind(this)}
-              style={{ paddingTop: '20px', paddingLeft: '10px' }}
-            >
-              <span className={Style.movieTitle}>{this.props.show.title}</span>
-            </h3>
-            <p className={Style.date}>{this.props.show.release_date}</p>
-            <p style={{ textAlign: 'justify' }}>{this.props.show.overview}</p>
-          </tr>
-        </tbody>
-      </table>
-    )
-  }
+              
+            </div>
+          </td>
+          <h3
+            align="top"
+            onClick={viewMovie}
+            style={{ paddingTop: '20px', paddingLeft: '10px' }}
+          >
+            <span className={Style.movieTitle}>{show.title}</span>
+          </h3>
+          <p className={Style.date}>{show.release_date}</p>
+          <p style={{ textAlign: 'justify' }}>{show.overview}</p>
+        </tr>
+      </tbody>
+    </table>
+  )
 }

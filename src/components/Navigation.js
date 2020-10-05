@@ -1,7 +1,6 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Style from './navbar.module.css'
 
 var Navigation = () => {
   return (

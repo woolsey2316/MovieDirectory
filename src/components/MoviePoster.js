@@ -1,6 +1,22 @@
 import React, { Component } from 'react'
-import Rating from './Rating'
 import Style from './MoviePoster.module.css'
+import { displayDate } from '../helpers'
+import { Box, Typography, withStyles } from '@material-ui/core'
+import { Rating } from '@material-ui/lab'
+
+import img from '../assets/images/default_poster.jpg'
+
+const StyledRating = withStyles({
+  iconEmpty: {
+    color: '#e5e3e4'
+  },
+  iconFilled: {
+    color: '#b03226'
+  },
+  root: {
+    marginTop: '0.4em'
+  }
+})(Rating)
 
 class MoviePoster extends Component {
   viewMovie() {
@@ -8,31 +24,42 @@ class MoviePoster extends Component {
     const url = 'https://www.themoviedb.org/movie/' + this.props.show.id
     window.location.href = url
   }
+
   render() {
     if (!this.props.show) {
       return <div />
     }
     return (
-      <div className={Style.container}>
-        <Rating show={this.props.show}></Rating>
+      <Box display="flex" flexDirection="column" marginRight="20px">
         <img
           className={Style.image}
           alt="poster"
           height="350"
           width="230"
-          src={'https://image.tmdb.org/t/p/w185/' + this.props.show.poster_path}
-          style={{ backgroundRepeat: 'no-repeat' }}
+          src={
+            this.props.show.poster_path
+              ? 'https://image.tmdb.org/t/p/w185/' + this.props.show.poster_path
+              : img
+          }
+          style={{
+            backgroundRepeat: 'no-repeat',
+            boxShadow: '3px 5px 10px #182327'
+          }}
           onClick={this.viewMovie.bind(this)}
         />
-        <p className={Style.releaseDate}>{this.props.show.release_date}</p>
-        <h3
-          align="top"
-          style={{ textAlign: 'center' }}
-          onClick={this.viewMovie.bind(this)}
-        >
-          <span className={Style.movieTitle}>{this.props.show.title}</span>
-        </h3>
-      </div>
+        <StyledRating
+          name="half-rating"
+          defaultValue={this.props.show.vote_average / 2}
+          precision={0.5}
+          readOnly
+        />
+        <Typography variant="h5" onClick={this.viewMovie.bind(this)}>
+          {this.props.show.title}
+        </Typography>
+        <Typography variant="body1" color="secondary">
+          {displayDate(this.props.show.release_date)}
+        </Typography>
+      </Box>
     )
   }
 }

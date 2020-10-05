@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans|Muli|Nunito|Lobster+Two:400i&display=swap');
+
 .title {
   background-color: #000;
   display: block;
@@ -47,10 +49,6 @@ div.header {
   position: sticky;
   z-index: 10000;
   display: flex;
-}
-
-.App {
-  text-align: center;
 }
 
 .appLogo {
