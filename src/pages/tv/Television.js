@@ -1,14 +1,10 @@
 import React, { useContext } from 'react'
 import Rating from '../../components/Rating'
-import Style from './Movie.module.css'
-import { MovieContext } from '../../context'
+import Style from '../movie/Movie.module.css'
 
-export default function Movie({show}) {
-  const { setLocalStorage, setMovieContext } = useContext(MovieContext)
-  function viewMovie() {
-    setMovieContext(show)
-    setLocalStorage(show)
-    window.location.href = `/movies/${show.id}`
+export default function Television({show}) {
+  function viewTelevision() {
+    window.location.href = `/televisions/${show.id}`
   }
   if (!show) {
     return <div />
@@ -27,19 +23,19 @@ export default function Movie({show}) {
             show.poster_path
           }
           style={{ backgroundRepeat: 'no-repeat' }}
-          onClick={viewMovie}
+          onClick={viewTelevision}
           
         />
       </div>
       <div className={Style.description}>
         <h3
           align="top"
-          onClick={viewMovie}
+          onClick={viewTelevision}
           style={{ paddingTop: '20px', paddingLeft: '10px' }}
         >
-          <span className={Style.movieTitle}>{show.title}</span>
+          <span className={Style.movieTitle}>{show.name}</span>
         </h3>
-        <p className={Style.date}>{show.release_date}</p>
+        <p className={Style.date}>{show.first_air_date}</p>
         <p style={{ textAlign: 'justify' }}>{show.overview}</p>
       </div>
     </div>

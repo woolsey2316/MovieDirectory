@@ -3,47 +3,47 @@ import { IsValidJSONString } from '../helpers'
   This section of the services layer relates to movie api. Searches for movies
   tv with certain parameters, popularity, genre and returns a search result list
 */
-export const movieApi = {
-  searchMoviebyId,
-  searchTelevisionbyId,
-  searchActorbyId
+export const searchApi = {
+  searchMovie,
+  searchTelevision,
+  searchActor
 }
 
 /* 
   fetches all information related to the current logged in movie
   address, roles, profile image etc
   */
-async function searchMoviebyId(id) {
+async function searchMovie(searchTerm) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie?api_key=${process.env.REACT_APP_API_KEY}${id}`,
+    `${process.env.REACT_APP_BASE_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
     requestOptions
   )
   return handleResponse(response)
 }
 
-async function searchTelevisionbyId(id) {
+async function searchTelevision(searchTerm) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv?api_key=${process.env.REACT_APP_API_KEY}${id}`,
+    `${process.env.REACT_APP_BASE_URL}search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
     requestOptions
   )
   return handleResponse(response)
 }
 
-async function searchActorbyId(id) {
+async function searchActor(searchTerm) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}actor?api_key=${process.env.REACT_APP_API_KEY}${id}`,
+    `${process.env.REACT_APP_BASE_URL}search/actor?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
     requestOptions
   )
   return handleResponse(response)

@@ -2,7 +2,8 @@ import React from 'react'
 import style from './Rating.module.css'
 import heart from '../assets/images/heart_icon.svg'
 import person from '../assets/images/person_icon.svg'
-var Rating = ({ show }) => {
+
+const Rating = ({ show }) => {
   return (
     <div id="this" className={style.ratingIcon}>
       <img className={style.heart} alt="likes" src={heart} />

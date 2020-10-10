@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans&display=swap');
 
-td {
-    vertical-align: top;
+.outer {
+    width: 40%;
+    display: flex;
+}
+
+.description {
+    padding-left: 1em;
 }
 
 h3 {
     text-align: left;
     max-width: 230px;
+    font-weight: 200;
     line-height: 1;
 }
 
@@ -50,10 +56,6 @@ p {
     font-family: 'Noto';
     font-weight: bold;
     color: rgb(68, 66, 66);
-}
-
-table {
-    width: 40%;
 }
 
 div.container {

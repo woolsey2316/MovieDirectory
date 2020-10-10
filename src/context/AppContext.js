@@ -13,8 +13,6 @@ const AppState = (props) => {
         response.genres.forEach((elem) => {
           map.set(elem.id, elem.name)
         })
-        console.log('genres:')
-        console.log({map})
         setGenre(map)
       },
       (error) => {

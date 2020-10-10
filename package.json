@@ -11,14 +11,19 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "bootstrap": "^4.4.1",
     "dotenv": "^8.2.0",
+    "fast-average-color": "^6.1.0",
     "jquery": "^3.4.1",
     "npm-buildpack": "^0.1.10",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.11.0",
     "react-native": "^0.61.4",
+    "react-redux": "^7.2.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -24,12 +24,6 @@ class MovieCollage extends Component {
     )
   }
 
-  viewMovie() {
-    console.log('Trying to view movie')
-    const url = 'https://www.themoviedb.org/movie/' + this.props.show.id
-    window.location.href = url
-  }
-
   render() {
     return (
       <Box width="500px" display="flex" flexWrap="wrap">

@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
-import MovieSearch from './pages/movie/MovieSearch'
+import MovieSearchContainer from './pages/movie/MovieSearchContainer'
 import ActorSearch from './pages/actor/ActorSearch'
-import TelevisionSearch from './pages/tv/TelevisionSearch'
+import TelevisionSearchContainer from './pages/tv/TelevisionSearchContainer'
 import { MovieDescription } from './pages/MovieDescription'
 import Home from './pages/home/Home'
 import Navigation from './components/Navigation.js'
@@ -32,8 +32,8 @@ const App = () => {
         margin: '1em 0em'
       },
       h2: {
-        fontSize: '1.5rem',
-        fontWeight: 200,
+        fontSize: '2rem',
+        fontWeight: 500,
         margin: '1em 0 0.3em 0',
         color: '#e8e8e9'
       },
@@ -42,25 +42,21 @@ const App = () => {
         marginTop: '1em'
       },
       h4: {
-        fontSize: '1.1rem'
+        fontSize: '1.3rem',
+        fontWeigth: 500,
+        lineHeight: 2,
+        color: '#e8e8e9'
       },
       h5: {
         fontSize: '1rem',
         marginTop: '0.8em',
-        fontWeight: 600,
+        fontWeight: 500,
         maxWidth: '230px',
         color: '#e8e8e9'
       },
-      text: {
-        fontSize: '0.6rem'
-      },
-      p: {
-        fontSize: 14,
-        lineHeight: 2
-      },
       body1: {
         fontSize: 16,
-        lineHeight: 2
+        lineHeight: 1.2
       },
       body2: {
         fontWeight: 200,
@@ -76,7 +72,7 @@ const App = () => {
     },
     palette: {
       primary: {
-        main: '#dd101e'
+        main: '#e8e8e9'
       },
       secondary: {
         main: '#999898'
@@ -99,10 +95,10 @@ const App = () => {
                   <Home />
                 </Route>
                 <Route exact path="/movie">
-                  <MovieSearch />
+                  <MovieSearchContainer />
                 </Route>
                 <Route exact path="/television">
-                  <TelevisionSearch />
+                  <TelevisionSearchContainer />
                 </Route>
                 <Route exact path="/actor">
                   <ActorSearch />

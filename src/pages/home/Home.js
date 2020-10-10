@@ -178,7 +178,7 @@ class Home extends Component {
             a search engine for tv shows and films
           </p>
         </div>
-        <Box bgcolor="#3c3c3c" padding="0px 2em">
+        <Box bgcolor="rgb(37 36 36)" padding="0px 2em">
           <div className={Style.collageContainer}>
             {this.state.tvCollage}
             {this.state.movieCollage}
