@@ -11,7 +11,8 @@ const Rating = ({ show }) => {
       <div className={style.break} />
       <img className={style.person} alt="person" src={person} />
       <p className={style.voteCount}>
-        {show.vote_count && show.vote_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+        {show.vote_count &&
+          show.vote_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       </p>
     </div>
   )

@@ -1,16 +1,16 @@
 import { movieConstants } from '../constants'
 
-export function televisions(state = {}, action) {
+export function actors(state = {}, action) {
   switch (action.type) {
-    case movieConstants.TELEVISION_REQUEST:
+    case movieConstants.ACTOR_REQUEST:
       return { ...state, isFetching: true }
-    case movieConstants.TELEVISION_SUCCESS:
+    case movieConstants.ACTOR_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        televisionResults: action.televisionResults.results
+        actorResults: action.actorResults.results
       }
-    case movieConstants.TELEVISION_FAILURE:
+    case movieConstants.ACTOR_FAILURE:
       return { ...state, isFetching: false }
     default:
       return state

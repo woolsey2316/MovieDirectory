@@ -11,7 +11,7 @@ import { redirect } from '../helpers'
 export const searchActions = {
   getMovie,
   getActor,
-  getTelevision,
+  getTelevision
 }
 
 function getMovie(search) {

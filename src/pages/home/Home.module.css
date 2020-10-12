@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans|Muli|Nunito|Lobster+Two:400i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans|Muli|Nunito|Lobster+Two:400|ifamily=Roboto+Slab&display=swap');
 
 .collageContainer {
     display: flex;
@@ -17,19 +17,18 @@
     margin: 0px 10px;
 }
 .mainTitle {
-    font-family: 'Lobster Two';
-    color: rgb(37, 113, 148);
+    font-family: 'Roboto Slab';
+    color: white;
     font-size: 90px;
     text-shadow: 1px 1px 3px white;
-    margin-left: 29%;
+    margin-left: 22%;
 }
 .subText {
     font-family: 'Muli';
     font-size: 25px;
     color: white;
-    margin-top: 14%;
     margin-left: 60%;
-    color: #494F50;
+    margin-top: 4%;
 
 }
 .landingPage {

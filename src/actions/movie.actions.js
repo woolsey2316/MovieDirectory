@@ -11,7 +11,7 @@ import { redirect } from '../helpers'
 export const movieActions = {
   getMovie,
   getActor,
-  getTelevision,
+  getTelevision
 }
 
 function getMovie(id) {

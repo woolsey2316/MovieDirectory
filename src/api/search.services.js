@@ -43,7 +43,7 @@ async function searchActor(searchTerm) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}search/actor?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
+    `${process.env.REACT_APP_BASE_URL}search/person?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
     requestOptions
   )
   return handleResponse(response)
@@ -61,7 +61,7 @@ function handleResponse(response) {
     if (!response.ok) {
       console.log(`response: ${JSON.stringify(response)}`)
       // trying to get as much information about the error as can get
-      const error = response.statusText 
+      const error = response.statusText
       return Promise.reject(error)
     }
     return data

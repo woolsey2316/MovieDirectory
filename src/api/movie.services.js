@@ -61,7 +61,7 @@ function handleResponse(response) {
     if (!response.ok) {
       console.log(`response: ${JSON.stringify(response)}`)
       // trying to get as much information about the error as can get
-      const error = response.statusText 
+      const error = response.statusText
       return Promise.reject(error)
     }
     return data

@@ -6,7 +6,7 @@ import { Box } from '@material-ui/core'
 class Actor extends Component {
   viewactor() {
     console.log('Trying to view actor')
-    const url = 'https://www.theactordb.org/actor/' + this.props.profile.show.id
+    const url = 'https://www.themoviedb.org/actor/' + this.props.profile.show.id
     window.location.href = url
   }
   render() {

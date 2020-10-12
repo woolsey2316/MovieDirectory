@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Rating from '../../components/Rating'
 import Style from '../movie/Movie.module.css'
 
-export default function Television({show}) {
+export default function Television({ show }) {
   function viewTelevision() {
     window.location.href = `/televisions/${show.id}`
   }
@@ -18,13 +18,9 @@ export default function Television({show}) {
           alt="poster"
           height="350"
           width="230"
-          src={
-            'https://image.tmdb.org/t/p/w185/' +
-            show.poster_path
-          }
+          src={'https://image.tmdb.org/t/p/w185/' + show.poster_path}
           style={{ backgroundRepeat: 'no-repeat' }}
           onClick={viewTelevision}
-          
         />
       </div>
       <div className={Style.description}>

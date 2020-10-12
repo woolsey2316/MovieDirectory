@@ -7,7 +7,7 @@ class TelevisionSearch extends Component {
     super(props)
     this.state = { televisions: [] }
     this.searchChangeHandler = this.searchChangeHandler.bind(this)
-    console.log({props})
+    console.log({ props })
   }
 
   searchChangeHandler(event) {
@@ -20,12 +20,12 @@ class TelevisionSearch extends Component {
       <div>
         <SearchBar type="tv" onChange={this.searchChangeHandler} />
         <div className="searchResultCanvas">
-        {
-          this.props.televisions.televisionResults && this.props.televisions.televisionResults.map((show) => {
-            show.poster_src = 'https://image.tmdb.org/t/p/w185' + show.poster_path
-            return <Television key={show.id} show={show} />
-          })
-        }
+          {this.props.televisions.televisionResults &&
+            this.props.televisions.televisionResults.map((show) => {
+              show.poster_src =
+                'https://image.tmdb.org/t/p/w185' + show.poster_path
+              return <Television key={show.id} show={show} />
+            })}
         </div>
       </div>
     )

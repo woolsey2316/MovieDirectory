@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 var Navigation = () => {
   return (
-    <Navbar bg="light justify-content-end" variant="light">
+    <Navbar bg="transparent" variant="dark">
       <Navbar.Brand href="/home">Tv&MovieDb</Navbar.Brand>
       <Nav className="mr-auto justify-content-end">
         <Nav.Link active={window.location.pathname === '/home'} href="/home">

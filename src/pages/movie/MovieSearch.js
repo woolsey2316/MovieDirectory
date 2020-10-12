@@ -7,7 +7,7 @@ class MovieSearch extends Component {
     super(props)
     this.state = { movies: [] }
     this.searchChangeHandler = this.searchChangeHandler.bind(this)
-    console.log({props})
+    console.log({ props })
   }
 
   searchChangeHandler(event) {
@@ -20,12 +20,12 @@ class MovieSearch extends Component {
       <div>
         <SearchBar type="movie" onChange={this.searchChangeHandler} />
         <div className="searchResultCanvas">
-        {
-          this.props.movies.movieResults && this.props.movies.movieResults.map((show) => {
-            show.poster_src = 'https://image.tmdb.org/t/p/w185' + show.poster_path
-            return <Movie key={show.id} show={show} />
-          })
-        }
+          {this.props.movies.movieResults &&
+            this.props.movies.movieResults.map((show) => {
+              show.poster_src =
+                'https://image.tmdb.org/t/p/w185' + show.poster_path
+              return <Movie key={show.id} show={show} />
+            })}
         </div>
       </div>
     )

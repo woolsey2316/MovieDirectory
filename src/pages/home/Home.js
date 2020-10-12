@@ -3,6 +3,7 @@ import MoviePoster from '../../components/MoviePoster.js'
 import Style from './Home.module.css'
 import TelevisionCollage from './TelevisionCollage.js'
 import MovieCollage from './MovieCollage.js'
+import LandingPage from './LandingPage'
 import { Box, Typography } from '@material-ui/core'
 import { discoverApi } from '../../api'
 
@@ -164,21 +165,8 @@ class Home extends Component {
   render() {
     return (
       <Box>
-        <div
-          className={Style.landingPage}
-          style={{
-            backgroundImage: 'url("landingPageImage.jpg")',
-            height: '800px',
-            backgroundSize: 'cover',
-            textAlign: 'center'
-          }}
-        >
-          <h3 className={Style.mainTitle}>Television & film db</h3>
-          <p className={Style.subText}>
-            a search engine for tv shows and films
-          </p>
-        </div>
-        <Box bgcolor="rgb(37 36 36)" padding="0px 2em">
+        <LandingPage/>
+        <Box bgcolor="#060f19" padding="0px 2em">
           <div className={Style.collageContainer}>
             {this.state.tvCollage}
             {this.state.movieCollage}

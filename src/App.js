@@ -2,11 +2,10 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 import MovieSearchContainer from './pages/movie/MovieSearchContainer'
-import ActorSearch from './pages/actor/ActorSearch'
+import ActorSearchContainer from './pages/actor/ActorSearchContainer'
 import TelevisionSearchContainer from './pages/tv/TelevisionSearchContainer'
 import { MovieDescription } from './pages/MovieDescription'
 import Home from './pages/home/Home'
-import Navigation from './components/Navigation.js'
 import { AppState, MovieContextProvider } from './context'
 import './App.css'
 
@@ -85,7 +84,6 @@ const App = () => {
       <AppState>
         <Router>
           <div className="App">
-            <Navigation />
             <MovieContextProvider>
               <Switch>
                 <Route exact path="/">
@@ -101,7 +99,7 @@ const App = () => {
                   <TelevisionSearchContainer />
                 </Route>
                 <Route exact path="/actor">
-                  <ActorSearch />
+                  <ActorSearchContainer />
                 </Route>
                 <Route path="/movies/:movieId">
                   <MovieDescription />

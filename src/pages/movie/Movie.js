@@ -3,7 +3,7 @@ import Rating from '../../components/Rating'
 import Style from './Movie.module.css'
 import { MovieContext } from '../../context'
 
-export default function Movie({show}) {
+export default function Movie({ show }) {
   const { setLocalStorage, setMovieContext } = useContext(MovieContext)
   function viewMovie() {
     setMovieContext(show)
@@ -22,13 +22,9 @@ export default function Movie({show}) {
           alt="poster"
           height="350"
           width="230"
-          src={
-            'https://image.tmdb.org/t/p/w185/' +
-            show.poster_path
-          }
+          src={'https://image.tmdb.org/t/p/w185/' + show.poster_path}
           style={{ backgroundRepeat: 'no-repeat' }}
           onClick={viewMovie}
-          
         />
       </div>
       <div className={Style.description}>
