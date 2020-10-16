@@ -7,6 +7,8 @@ import TelevisionSearchContainer from './pages/tv/TelevisionSearchContainer'
 import { MovieDescription } from './pages/MovieDescription'
 import Home from './pages/home/Home'
 import { AppState, MovieContextProvider } from './context'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './index.css'
 import './App.css'
 
 const App = () => {
@@ -56,6 +58,12 @@ const App = () => {
       body1: {
         fontSize: 16,
         lineHeight: 1.2
+      },
+      subtitle1: {
+        fontSize: 16,
+        lineHeight: 1.2,
+        fontFamily: `'Roboto', sans-serif`,
+        fontWeight: 100
       },
       body2: {
         fontWeight: 200,

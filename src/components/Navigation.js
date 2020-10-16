@@ -1,10 +1,13 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
-var Navigation = () => {
+var Navigation = ({ theme }) => {
   return (
-    <Navbar bg="transparent" variant="dark">
+    <Navbar
+      className="fixed-top"
+      bg={theme === 'transparent' ? 'transparent' : ''}
+      variant={theme === 'transparent' ? 'dark' : 'light'}
+    >
       <Navbar.Brand href="/home">Tv&MovieDb</Navbar.Brand>
       <Nav className="mr-auto justify-content-end">
         <Nav.Link active={window.location.pathname === '/home'} href="/home">

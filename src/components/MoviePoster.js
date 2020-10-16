@@ -43,7 +43,6 @@ class MoviePoster extends Component {
           }
           style={{
             backgroundRepeat: 'no-repeat',
-            boxShadow: '3px 5px 10px #182327'
           }}
           onClick={this.viewMovie.bind(this)}
         />

@@ -2,6 +2,8 @@ import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 
+import { Typography } from '@material-ui/core'
+
 const useStyles = makeStyles({
   sectionHeader: {
     fontSize: '24px',
@@ -14,7 +16,16 @@ const useStyles = makeStyles({
     display: 'block',
     borderLeft: '2px solid #13be13',
     paddingLeft: '15px',
-    borderBottom: '1px solid #182028',
+    borderBottom: '1px solid #182028'
+  },
+  outer: {
+    margin: '3em 0em'
+  },
+  description: {
+    fontSize: '16px',
+    padding: '0px 0 15px 0',
+    fontWeight: '300',
+    color: '#fff'
   },
   '@media (min-width: 22em)': {},
   '@media (min-width: 23em)': {},
@@ -26,15 +37,15 @@ const useStyles = makeStyles({
   '@media (min-width: 160em)': {}
 })
 
-
-function SectionHeading() {
+function SectionHeading({ title, description }) {
   const styles = useStyles()
   return (
-    <div class="container">
+    <div className={styles.outer}>
       <div className={styles.sectionArea}>
-        <h2>Top Rating</h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesettins</p>
+        <h2>{title}</h2>
+        <Typography variant="subtitle1" className={styles.description}>{description}</Typography>
       </div>
     </div>
   )
-} export { SectionHeading }
+}
+export { SectionHeading }

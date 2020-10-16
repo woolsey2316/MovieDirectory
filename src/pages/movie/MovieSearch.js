@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Movie from './Movie.js'
 import SearchBar from '../../components/SearchBar.js'
+import Navigation from '../../components/Navigation.js'
 
 class MovieSearch extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class MovieSearch extends Component {
   render() {
     return (
       <div>
+        <Navigation />
         <SearchBar type="movie" onChange={this.searchChangeHandler} />
         <div className="searchResultCanvas">
           {this.props.movies.movieResults &&

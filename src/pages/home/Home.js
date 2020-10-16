@@ -4,8 +4,10 @@ import Style from './Home.module.css'
 import TelevisionCollage from './TelevisionCollage.js'
 import MovieCollage from './MovieCollage.js'
 import LandingPage from './LandingPage'
-import { Box, Typography } from '@material-ui/core'
+import { Box } from '@material-ui/core'
+import Footer from '../../components/Footer'
 import { discoverApi } from '../../api'
+import { SectionHeading } from './SectionHeading'
 
 class Home extends Component {
   constructor(props) {
@@ -15,7 +17,8 @@ class Home extends Component {
       popularMovies: [],
       bestDramas: [],
       tvCollage: [],
-      movieCollage: []
+      movieCollage: [],
+      movieCarousel: []
     }
   }
 
@@ -56,6 +59,16 @@ class Home extends Component {
     return resultList
   }
 
+  findPopularMovies(results) {
+    var resultList = []
+    for (let i = 3; i < 6; i++) {
+      results[i].poster_src =
+        'https://image.tmdb.org/t/p/original' + results[i].backdrop_path
+      resultList.push(results[i])
+    }
+    return resultList
+  }
+
   loadMainTile() {
     // Load the tv show collage
     discoverApi
@@ -92,6 +105,9 @@ class Home extends Component {
             movieCollage: (
               <MovieCollage key={resultList[0].id} movieList={resultList} />
             )
+          })
+          this.setState({
+            movieCarousel: this.findPopularMovies(response.results)
           })
         },
         (error) => {
@@ -165,25 +181,20 @@ class Home extends Component {
   render() {
     return (
       <Box>
-        <LandingPage/>
-        <Box bgcolor="#060f19" padding="0px 2em">
+        <LandingPage movies={this.state.movieCarousel} />
+        <Box bgcolor="#060f19" padding="2em">
           <div className={Style.collageContainer}>
             {this.state.tvCollage}
             {this.state.movieCollage}
           </div>
-          <Typography variant="h1" className={Style.categoryTitle}>
-            Released in 2020
-          </Typography>
+          <SectionHeading title="Released in 2020" description="View the latest movies" />
           <Box display="flex">{this.state.recentMovies}</Box>
-          <Typography variant="h1" className={Style.categoryTitle}>
-            Popular
-          </Typography>
+          <SectionHeading title="Popular" description="With everyone locked inside, now is an ideal time to catch up on the best movies"/>
           <Box display="flex">{this.state.popularMovies}</Box>
-          <Typography variant="h1" className={Style.categoryTitle}>
-            Best Dramas
-          </Typography>
+          <SectionHeading title="Best Dramas" description="We all need a little drama in our lives" />
           <Box display="flex">{this.state.bestDramas}</Box>
         </Box>
+        <Footer />
       </Box>
     )
   }
