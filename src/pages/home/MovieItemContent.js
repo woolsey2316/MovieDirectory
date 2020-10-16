@@ -75,12 +75,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   movieCountTime: {
-    background: '#13be13',
+    background: '#b03226',
     padding: '6px 16px',
     display: 'block',
     borderTopRightRadius: '50px',
     borderBottomRightRadius: '50px',
-    backgroundColor: '#f36522',
+    backgroundColor: '#b03226',
     color: '#fff',
     marginLeft: '-99px'
   },
@@ -212,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   icon: {
-    color: "#f36522",
+    color: "#b03226",
     marginRight: '4px',
     marginBottom: '3px'
   },

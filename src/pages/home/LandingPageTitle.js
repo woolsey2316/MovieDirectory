@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   oreng: {
     marginLeft: '5px',
-    color: "#f36522",
+    color: "#b03226",
   },
   delay6: {
     color: 'white',
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     wordSpacing: '-2px',
     textTransform: 'uppercase',
     margin: '9px',
-    backgroundColor: '#f36522'
+    backgroundColor: '#b03226'
   }
 }))
 

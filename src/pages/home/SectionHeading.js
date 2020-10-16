@@ -10,11 +10,10 @@ const useStyles = makeStyles({
     fontWeight: 'bold'
   },
   sectionArea: {
-    borderLeft: '2px solid #f36522',
     color: '#fff',
     overflow: 'hidden',
     display: 'block',
-    borderLeft: '2px solid #13be13',
+    borderLeft: '2px solid #b03226',
     paddingLeft: '15px',
     borderBottom: '1px solid #182028'
   },

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     oTransition: 'all 0.4s ease-in-out',
     transition: 'all 0.4s ease-in-out',
     "&:hover": {
-      color: '#f36522',
+      color: '#b03226',
       webkitTransition: 'all 0.4s ease-in-out',
       mozTransition: 'all 0.4s ease-in-out',
       msTransition: 'all 0.4s ease-in-out',
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     oTransition: 'all 0.4s ease-in-out',
     transition: 'all 0.4s ease-in-out',
     "&:hover": {
-      color: '#f36522',
+      color: '#b03226',
       webkitTransition: 'all 0.4s ease-in-out',
       mozTransition: 'all 0.4s ease-in-out',
       msTransition: 'all 0.4s ease-in-out',
@@ -65,7 +65,7 @@ export default function LandingPage() {
               height: '100vh',
               backgroundPosition: '-200px 0',
               backgroundImage:
-                'linear-gradient(to top, rgba(242, 101, 34, 0.51) -18%, rgba(10, 21, 33, 0.9) 75%), url(home.jpg)'
+                'linear-gradient(to top, rgba(242, 101, 34, 0.51) -18%, rgba(10, 21, 33, 0.9) 34%), url(home.jpg)'
             }}
           >
             <Container>

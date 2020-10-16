@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     oTransition: 'all 0.4s ease-in-out',
     transition: 'all 0.4s ease-in-out',
     "&:hover, &:focus": {
-      color: '#f36522',
+      color: '#b03226',
       marginLeft: '7px',
       textDecoration: 'none'
     }
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#5d6875'
   },
   orange: {
-    color: '#f36522'
+    color: '#b03226'
   },
   inputContainer: {
     position: 'relative',
