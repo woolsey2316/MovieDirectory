@@ -19,11 +19,9 @@ class MovieSearch extends Component {
   render() {
     return (
       <div>
-        <Navigation />
-        <SearchBar type="movie" onChange={this.searchChangeHandler} />
+        <Navigation searchBar={<SearchBar type="movie" onChange={this.searchChangeHandler} />}/>
         <div className="searchResultCanvas">
-          {this.props.movies.movieResults &&
-            this.props.movies.movieResults.map((show) => {
+          {this.props.movies.movieResults?.map((show) => {
               show.poster_src =
                 'https://image.tmdb.org/t/p/w185' + show.poster_path
               return <Movie key={show.id} show={show} />

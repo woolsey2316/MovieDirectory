@@ -53,7 +53,7 @@ export default function LandingPage() {
   const style = useStyles()
   return (
     <>
-      <Navigation theme="transparent" />
+      
       <Carousel 
         pause="hover" 
         prevIcon={<NavigationOutlinedIcon classes={{root: style.leftArrow}}/>} 
@@ -68,6 +68,7 @@ export default function LandingPage() {
                 'linear-gradient(to top, rgba(242, 101, 34, 0.51) -18%, rgba(10, 21, 33, 0.9) 34%), url(home.jpg)'
             }}
           >
+            <Navigation position="fixed-top" theme="transparent" />
             <Container>
               <Row className="flex-row align-items-center">
                 <Col sm={4}><MovieItemContent/></Col>
@@ -84,6 +85,7 @@ export default function LandingPage() {
               backgroundImage: 'url(author.jpg)'
             }}
           >
+            <Navigation position="fixed-top" theme="transparent" />
             <Container>
               <Row className="flex-row align-items-center">
                 <Col sm={4}><MovieItemContent/></Col>

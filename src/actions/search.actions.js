@@ -3,7 +3,7 @@
   Many actions are asyncronous since many movie actions need to make http requests
   and wait for the response before completing.
 */
-import { movieConstants } from '../constants'
+import { searchConstants } from '../constants'
 import { searchApi } from '../api'
 
 import { redirect } from '../helpers'
@@ -29,13 +29,13 @@ function getMovie(search) {
   }
 
   function request(search) {
-    return { type: movieConstants.MOVIE_REQUEST, search }
+    return { type: searchConstants.MOVIE_REQUEST, search }
   }
   function success(movieResults) {
-    return { type: movieConstants.MOVIE_SUCCESS, movieResults }
+    return { type: searchConstants.MOVIE_SUCCESS, movieResults }
   }
   function failure(error) {
-    return { type: movieConstants.MOVIE_FAILURE, error }
+    return { type: searchConstants.MOVIE_FAILURE, error }
   }
 }
 
@@ -52,13 +52,13 @@ function getActor(search) {
     )
   }
   function request(search) {
-    return { type: movieConstants.ACTOR_REQUEST, search }
+    return { type: searchConstants.ACTOR_REQUEST, search }
   }
   function success(actorResults) {
-    return { type: movieConstants.ACTOR_SUCCESS, actorResults }
+    return { type: searchConstants.ACTOR_SUCCESS, actorResults }
   }
   function failure(error) {
-    return { type: movieConstants.ACTOR_FAILURE, error }
+    return { type: searchConstants.ACTOR_FAILURE, error }
   }
 }
 
@@ -77,12 +77,12 @@ function getTelevision(search) {
   }
 
   function request(search) {
-    return { type: movieConstants.TELEVISION_REQUEST, search }
+    return { type: searchConstants.TELEVISION_REQUEST, search }
   }
   function success(televisionResults) {
-    return { type: movieConstants.TELEVISION_SUCCESS, televisionResults }
+    return { type: searchConstants.TELEVISION_SUCCESS, televisionResults }
   }
   function failure(error) {
-    return { type: movieConstants.TELEVISION_FAILURE, error }
+    return { type: searchConstants.TELEVISION_FAILURE, error }
   }
 }

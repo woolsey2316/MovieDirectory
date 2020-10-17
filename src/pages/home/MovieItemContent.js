@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     width: '360px',
     height: '471px',
-    top: '20vh',
+    top: '10vh',
     zIndex: 1,
     "&:hover $movieCountTime": {
       marginLeft: '0px',

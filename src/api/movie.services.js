@@ -4,46 +4,46 @@ import { IsValidJSONString } from '../helpers'
   tv with certain parameters, popularity, genre and returns a search result list
 */
 export const movieApi = {
-  searchMoviebyId,
-  searchTelevisionbyId,
-  searchActorbyId
+  getReviews,
+  getSimilarMovies,
+  getRecommendedMovies
 }
 
 /* 
   fetches all information related to the current logged in movie
   address, roles, profile image etc
   */
-async function searchMoviebyId(id) {
+async function getReviews(movieId) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie?api_key=${process.env.REACT_APP_API_KEY}${id}`,
+    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
 }
 
-async function searchTelevisionbyId(id) {
+async function getSimilarMovies(movieId) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv?api_key=${process.env.REACT_APP_API_KEY}${id}`,
+    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/similar?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
 }
 
-async function searchActorbyId(id) {
+async function getRecommendedMovies(movieId) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}actor?api_key=${process.env.REACT_APP_API_KEY}${id}`,
+    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/reviews?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)

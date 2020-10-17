@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Television from './Television'
 import SearchBar from '../../components/SearchBar.js'
+import Navigation from '../../components/Navigation.js'
 
 class TelevisionSearch extends Component {
   constructor(props) {
@@ -18,10 +19,10 @@ class TelevisionSearch extends Component {
   render() {
     return (
       <div>
-        <SearchBar type="tv" onChange={this.searchChangeHandler} />
+        <Navigation />
+        <SearchBar type="tv" onChange={this.searchChangeHandler} search={this.props.searchTelevision}/>
         <div className="searchResultCanvas">
-          {this.props.televisions.televisionResults &&
-            this.props.televisions.televisionResults.map((show) => {
+          {this.props.televisions.televisionResults?.map((show) => {
               show.poster_src =
                 'https://image.tmdb.org/t/p/w185' + show.poster_path
               return <Television key={show.id} show={show} />

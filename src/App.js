@@ -55,6 +55,13 @@ const App = () => {
         maxWidth: '230px',
         color: '#e8e8e9'
       },
+      h6: {
+        fontSize: '0.9rem',
+        marginTop: '0.8em',
+        fontWeight: 500,
+        maxWidth: '230px',
+        color: '#e8e8e9'
+      },
       body1: {
         fontSize: 16,
         lineHeight: 1.2

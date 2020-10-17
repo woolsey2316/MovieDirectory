@@ -33,7 +33,7 @@ const MovieContextProvider = (props) => {
   )
 
   const setLocalStorage = useCallback((movie) => {
-    if (movie && movie.id) {
+    if (movie?.id) {
       localStorage.setItem('movie', JSON.stringify(movie))
     }
   }, [])
@@ -45,7 +45,7 @@ const MovieContextProvider = (props) => {
       //window.location.href = `/movies/${movie.id}`
     }
 
-    if (movie && movie.id) {
+    if (movie?.id) {
       loadMoviePage()
     }
   }, [movie])

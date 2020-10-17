@@ -1,11 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
 import { MovieContext } from '../../context'
 import Rating from '../../components/Rating'
+import MayAlsoLikeSection from './MayAlsoLikeSection'
 
 import { useDispatch, useSelector } from 'react-redux'
+import { movieActions } from '../../actions'
 
 import { GenreList } from './GenreList'
+import CastList from './CastList'
 
 import FastAverageColor from 'fast-average-color'
 
@@ -18,7 +21,7 @@ import {
 const theme = createMuiTheme({
   typography: {
     h2: {
-      fontSize: '2.1rem',
+      fontSize: '2.6rem',
       fontWeight: 700,
       lineHeight: 1.1,
       margin: '0.4em 0em'
@@ -26,7 +29,7 @@ const theme = createMuiTheme({
     h6: {
       fontSize: '1.2rem',
       fontWeight: 700,
-      margin: '1em 0em',
+      margin: '0.8em 0em 0.35em 0em',
       lineHeight: 1.3
     },
     body1: {
@@ -49,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   canvas: {
     verticalAlign: 'middle',
     padding: '2em 4em',
-    height: '90vh'
+    height: '95vh'
   },
   card: {
     background: 'transparent',
@@ -68,6 +71,19 @@ const useStyles = makeStyles((theme) => ({
 
 const fac = new FastAverageColor()
 
+const castList = [
+  {name: 'ryan', age: '33'},
+  {name: 'will', age: '67'},
+  {name: 'Dave', age: '25'},
+  {name: 'Craig', age: '75'},
+  {name: 'jess', age: '33'},
+  {name: 'ryan', age: '33'},
+  {name: 'will', age: '67'},
+  {name: 'Dave', age: '25'},
+  {name: 'Craig', age: '75'},
+  {name: 'jess', age: '33'},
+]
+
 const MovieDescription = () => {
   const styles = useStyles()
 
@@ -75,8 +91,32 @@ const MovieDescription = () => {
 
   const [tint, setTint] = useState()
 
+  const dispatch = useDispatch()
+  
+  const reviews = useSelector((state) => state.reviews)
+  const recommended = useSelector((state) => state.recommended)
+  const similar = useSelector((state) => state.similar)
+  
+  function fetchReviews() {
+    dispatch(movieActions.getReviews(movie.id))
+  }
+
+  function fetchSimilar() {
+    dispatch(movieActions.getSimilarMovies(movie.id))
+  }
+
+  function fetchRecommended() {
+    dispatch(movieActions.getRecommendedMovies(movie.id))
+  }
+
+  useEffect(() => {
+    fetchReviews()
+    fetchSimilar()
+    fetchRecommended()
+  }, [])
+
   fac
-    .getColorAsync(`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`)
+    .getColorAsync(`https://image.tmdb.org/t/p/w342/${movie.poster_path}`)
     .then(function (color) {
       console.log('Average color', color)
       setTint(color.hex)
@@ -93,8 +133,8 @@ const MovieDescription = () => {
         classes={{ root: styles.canvas }}
         style={{
           backgroundSize: 'cover',
-          background: `linear-gradient(to right, ${tint + 'ff'}, ${
-            tint + 'bb'
+          backgroundImage: `linear-gradient(0deg, ${tint + 'cc'}, ${
+            tint + 'aa'
           }),
           url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`
         }}
@@ -127,7 +167,8 @@ const MovieDescription = () => {
           </Box>
         </Card>
       </Paper>
-      <Paper></Paper>
+      <CastList castList={castList}/>
+      <MayAlsoLikeSection/>
     </ThemeProvider>
   )
 }

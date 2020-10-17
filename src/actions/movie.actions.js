@@ -6,21 +6,19 @@
 import { movieConstants } from '../constants'
 import { movieApi } from '../api'
 
-import { redirect } from '../helpers'
-
 export const movieActions = {
-  getMovie,
-  getActor,
-  getTelevision
+  getReviews,
+  getSimilarMovies,
+  getRecommendedMovies
 }
 
-function getMovie(id) {
+function getReviews(id) {
   return (dispatch) => {
     dispatch(request(id))
 
-    movieApi.searchMoviebyId(id).then(
-      (movie) => {
-        dispatch(success(movie))
+    movieApi.getReviews(id).then(
+      (reviews) => {
+        dispatch(success(reviews.results))
       },
       (error) => {
         dispatch(failure(error.toString()))
@@ -29,60 +27,60 @@ function getMovie(id) {
   }
 
   function request(id) {
-    return { type: movieConstants.MOVIE_REQUEST, id }
+    return { type: movieConstants.MOVIE_REVIEW_REQUEST, id }
   }
-  function success(movie) {
-    return { type: movieConstants.MOVIE_SUCCESS, movie }
+  function success(reviews) {
+    return { type: movieConstants.MOVIE_REVIEW_SUCCESS, reviews }
   }
   function failure(error) {
-    return { type: movieConstants.MOVIE_FAILURE, error }
+    return { type: movieConstants.MOVIE_REVIEW_FAILURE, error }
   }
 }
 
-function getActor(id) {
+function getSimilarMovies(id) {
   return (dispatch) => {
     dispatch(request(id))
-    movieApi.searchActorbyId(id).then(
-      (movieInfo) => {
-        dispatch(success(movieInfo))
-      },
-      (error) => {
-        dispatch(failure(error.toString()))
-      }
-    )
-  }
-  function request(id) {
-    return { type: movieConstants.ACTOR_REQUEST, id }
-  }
-  function success(movies) {
-    return { type: movieConstants.ACTOR_SUCCESS, movies }
-  }
-  function failure(error) {
-    return { type: movieConstants.ACTOR_FAILURE, error }
-  }
-}
-
-function getTelevision(id) {
-  return (dispatch) => {
-    dispatch(request(id))
-
-    movieApi.searchTelevisionbyId(id).then(
+    movieApi.getSimilarMovies(id).then(
       (movieList) => {
-        dispatch(success(movieList))
+        dispatch(success(movieList.results))
       },
       (error) => {
         dispatch(failure(error.toString()))
       }
     )
   }
-
   function request(id) {
-    return { type: movieConstants.TELEVISION_REQUEST, id }
+    return { type: movieConstants.SIMILAR_MOVIE_REQUEST, id }
   }
   function success(movieList) {
-    return { type: movieConstants.TELEVISION_SUCCESS, movieList }
+    return { type: movieConstants.SIMILAR_MOVIE_SUCCESS, movieList }
   }
   function failure(error) {
-    return { type: movieConstants.TELEVISION_FAILURE, error }
+    return { type: movieConstants.SIMILAR_MOVIE_FAILURE, error }
+  }
+}
+
+function getRecommendedMovies(id) {
+  return (dispatch) => {
+    dispatch(request(id))
+
+    movieApi.getRecommendedMovies(id).then(
+      (movieList) => {
+        dispatch(success(movieList.results))
+      },
+      (error) => {
+        dispatch(failure(error.toString()))
+      }
+    )
+  }
+
+  function request(id) {
+    return { type: movieConstants.RECOMMENDED_MOVIES_REQUEST, id }
+  }
+  function success(movieList) {
+    return { type: movieConstants.RECOMMENDED_MOVIES_SUCCESS, movieList }
+  }
+  function failure(error) {
+    return { type: movieConstants.RECOMMENDED_MOVIES_FAILURE, error }
   }
 }
