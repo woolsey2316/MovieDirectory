@@ -5,6 +5,7 @@ import MovieSearchContainer from './pages/movie/MovieSearchContainer'
 import ActorSearchContainer from './pages/actor/ActorSearchContainer'
 import TelevisionSearchContainer from './pages/tv/TelevisionSearchContainer'
 import { MovieDescription } from './pages/MovieDescription'
+import { TelevisionDescription } from './pages/TelevisionDescription'
 import Home from './pages/home/Home'
 import { AppState, MovieContextProvider } from './context'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -12,7 +13,7 @@ import './index.css'
 import './App.css'
 
 const App = () => {
-  const values = {
+  const breakpoints = {
     xs: 0,
     sm: 600,
     md: 960,
@@ -23,7 +24,7 @@ const App = () => {
   const theme = createMuiTheme({
     breakpoints: {
       keys: ['xs', 'sm', 'md', 'lg', 'xl'],
-      up: (key) => `@media (min-width:${values[key]}px)`
+      up: (key) => `@media (min-width:${breakpoints[key]}px)`
     },
     typography: {
       fontFamily: 'Lato',
@@ -100,26 +101,31 @@ const App = () => {
         <Router>
           <div className="App">
             <MovieContextProvider>
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route exact path="/home">
-                  <Home />
-                </Route>
-                <Route exact path="/movie">
-                  <MovieSearchContainer />
-                </Route>
-                <Route exact path="/television">
-                  <TelevisionSearchContainer />
-                </Route>
-                <Route exact path="/actor">
-                  <ActorSearchContainer />
-                </Route>
-                <Route path="/movies/:movieId">
-                  <MovieDescription />
-                </Route>
-              </Switch>
+              <TelevisionContextProvider>
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route exact path="/home">
+                    <Home />
+                  </Route>
+                  <Route exact path="/movie">
+                    <MovieSearchContainer />
+                  </Route>
+                  <Route exact path="/television">
+                    <TelevisionSearchContainer />
+                  </Route>
+                  <Route exact path="/actor">
+                    <ActorSearchContainer />
+                  </Route>
+                  <Route path="/movie/:movieId">
+                    <MovieDescription />
+                  </Route>
+                  <Route path="/tv/:tvId">
+                    <TelevisionDescription />
+                  </Route>
+                </Switch>
+              </TelevisionContextProvider>
             </MovieContextProvider>
           </div>
         </Router>

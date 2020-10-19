@@ -10,7 +10,7 @@ export default function Movie({ show }) {
   function viewMovie() {
     setMovieContext(show)
     setLocalStorage(show)
-    window.location.href = `/movies/${show.id}`
+    window.location.href = `/movie/${show.id}`
   }
   if (!show) {
     return <div />

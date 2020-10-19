@@ -6,12 +6,12 @@ import { IsValidJSONString } from '../helpers'
 export const movieApi = {
   getReviews,
   getSimilarMovies,
-  getRecommendedMovies
+  getRecommendedMovies,
+  getCredits
 }
 
 /* 
-  fetches all information related to the current logged in movie
-  address, roles, profile image etc
+  fetches all reviews belonging to a movie 
   */
 async function getReviews(movieId) {
   const requestOptions = {
@@ -20,6 +20,21 @@ async function getReviews(movieId) {
   }
   const response = await fetch(
     `${process.env.REACT_APP_BASE_URL}movie/${movieId}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`,
+    requestOptions
+  )
+  return handleResponse(response)
+}
+
+/* 
+  fetches all cast and crew belonging to a movie 
+  */
+ async function getCredits(movieId) {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }
+  const response = await fetch(
+    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/credits?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)

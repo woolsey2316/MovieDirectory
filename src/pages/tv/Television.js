@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Rating from '../../components/Rating'
 import Style from '../movie/Movie.module.css'
 
 export default function Television({ show }) {
   function viewTelevision() {
-    window.location.href = `/televisions/${show.id}`
+    window.location.href = `/tv/${show.id}`
   }
   if (!show) {
     return <div />

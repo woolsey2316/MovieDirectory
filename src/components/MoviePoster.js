@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import Style from './MoviePoster.module.css'
 import { displayDate } from '../helpers'
 import { Box, Typography, withStyles } from '@material-ui/core'
 import { Rating } from '@material-ui/lab'
+import { MovieContext } from '../context'
 
 import img from '../assets/images/default_poster.jpg'
 
@@ -18,49 +19,48 @@ const StyledRating = withStyles({
   }
 })(Rating)
 
-class MoviePoster extends Component {
-  viewMovie() {
-    console.log('Trying to view movie')
-    const url = 'https://www.themoviedb.org/movie/' + this.props.show.id
-    window.location.href = url
+export default function MoviePoster(props) {
+  const { setLocalStorage, setMovieContext } = useContext(MovieContext)
+  
+  function viewMovie() {
+    setMovieContext(props.show)
+    setLocalStorage(props.show)
+    window.location.href = `/movies/${props.show.id}`
   }
 
-  render() {
-    if (!this.props.show) {
-      return <div />
-    }
-    return (
-      <Box display="flex" flexDirection="column" marginRight="20px">
-        <img
-          className={Style.image}
-          alt="poster"
-          height="350"
-          width="230"
-          src={
-            this.props.show.poster_path
-              ? 'https://image.tmdb.org/t/p/w185/' + this.props.show.poster_path
-              : img
-          }
-          style={{
-            backgroundRepeat: 'no-repeat',
-          }}
-          onClick={this.viewMovie.bind(this)}
-        />
-        <StyledRating
-          name="half-rating"
-          defaultValue={this.props.show.vote_average / 2}
-          precision={0.5}
-          readOnly
-        />
-        <Typography variant="h5" onClick={this.viewMovie.bind(this)}>
-          {this.props.show.title}
-        </Typography>
-        <Typography variant="body1" color="secondary">
-          {displayDate(this.props.show.release_date)}
-        </Typography>
-      </Box>
-    )
+  if (!props.show) {
+    return <div />
   }
+  return (
+    <Box display="flex" flexDirection="column" marginRight="20px">
+      <img
+        className={Style.image}
+        alt="poster"
+        height="350"
+        width="230"
+        src={
+          props.show.poster_path
+            ? 'https://image.tmdb.org/t/p/w185/' + props.show.poster_path
+            : img
+        }
+        style={{
+          backgroundRepeat: 'no-repeat',
+        }}
+        onClick={viewMovie.bind(this)}
+      />
+      <StyledRating
+        name="half-rating"
+        defaultValue={props.show.vote_average / 2}
+        precision={0.5}
+        readOnly
+      />
+      <Typography variant="h5" onClick={viewMovie.bind(this)}>
+        {props.show.title}
+      </Typography>
+      <Typography variant="body1" color="secondary">
+        {displayDate(props.show.release_date)}
+      </Typography>
+    </Box>
+  )
+  
 }
-
-export default MoviePoster

@@ -1,11 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
-import { MovieContext } from '../../context'
-import Rating from '../../components/Rating'
+import { TelevisionContext } from '../../context'
 import MayAlsoLikeSection from './MayAlsoLikeSection'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { movieActions } from '../../actions'
+import { televisionActions } from '../../actions'
 
 import { GenreList } from './GenreList'
 import CastList from './CastList'
@@ -71,10 +70,10 @@ const useStyles = makeStyles((theme) => ({
 
 const fac = new FastAverageColor()
 
-const MovieDescription = () => {
+const TelevisionDescription = () => {
   const styles = useStyles()
 
-  const { movie } = useContext(MovieContext)
+  const { television } = useContext(TelevisionContext)
 
   const [tint, setTint] = useState()
 
@@ -86,19 +85,19 @@ const MovieDescription = () => {
   const similar = useSelector((state) => state.similar)
   
   function fetchCredits() {
-    dispatch(movieActions.getCredits(movie.id))
+    dispatch(televisionActions.getCredits(television.id))
   }
 
   function fetchReviews() {
-    dispatch(movieActions.getReviews(movie.id))
+    dispatch(televisionActions.getReviews(television.id))
   }
 
   function fetchSimilar() {
-    dispatch(movieActions.getSimilarMovies(movie.id))
+    dispatch(televisionActions.getSimilarTelevisions(television.id))
   }
 
   function fetchRecommended() {
-    dispatch(movieActions.getRecommendedMovies(movie.id))
+    dispatch(televisionActions.getRecommendedTelevisions(television.id))
   }
 
   useEffect(() => {
@@ -109,7 +108,7 @@ const MovieDescription = () => {
   }, [])
 
   fac
-    .getColorAsync(`https://image.tmdb.org/t/p/w342/${movie.poster_path}`)
+    .getColorAsync(`https://image.tmdb.org/t/p/w342/${television.poster_path}`)
     .then(function (color) {
       setTint(color.hex)
     })
@@ -128,25 +127,25 @@ const MovieDescription = () => {
           backgroundImage: `linear-gradient(0deg, ${tint + 'cc'}, ${
             tint + 'aa'
           }),
-          url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`
+          url(https://image.tmdb.org/t/p/original/${television.backdrop_path})`
         }}
       >
         <Card elevation={0} classes={{ root: styles.card }}>
           <CardMedia
             classes={{ root: styles.poster }}
-            image={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+            image={`https://image.tmdb.org/t/p/w342${television.poster_path}`}
           ></CardMedia>
           <Box classes={{ root: styles.description }}>
             <Typography variant="h2" color="primary">
-              {movie.title}
+              {television.title}
             </Typography>
             <Box display="flex">
-              <GenreList genreId={movie.genre_ids} />
+              <GenreList genreId={television.genre_ids} />
               <Typography color="primary" style={{ margin: '0 0.3em' }}>
                 &middot;
               </Typography>
               <Typography variant="body1" color="primary">
-                {movie.release_date}
+                {television.release_date}
               </Typography>
             </Box>
             <Typography></Typography>
@@ -154,7 +153,7 @@ const MovieDescription = () => {
               Overview
             </Typography>
             <Typography variant="body1" color="primary">
-              {movie.overview}
+              {television.overview}
             </Typography>
           </Box>
         </Card>
@@ -164,4 +163,4 @@ const MovieDescription = () => {
     </ThemeProvider>
   )
 }
-export { MovieDescription }
+export { TelevisionDescription }

@@ -8,6 +8,7 @@ import { movieApi } from '../api'
 
 export const movieActions = {
   getReviews,
+  getCredits,
   getSimilarMovies,
   getRecommendedMovies
 }
@@ -34,6 +35,30 @@ function getReviews(id) {
   }
   function failure(error) {
     return { type: movieConstants.MOVIE_REVIEW_FAILURE, error }
+  }
+}
+
+function getCredits(id) {
+  return (dispatch) => {
+    dispatch(request(id))
+    movieApi.getCredits(id).then(
+      (credits) => {
+        dispatch(success(credits.cast))
+      },
+      (error) => {
+        dispatch(failure(error.toString()))
+      }
+    )
+  }
+
+  function request(id) {
+    return { type: movieConstants.MOVIE_CREDITS_REQUEST, id }
+  }
+  function success(cast) {
+    return { type: movieConstants.MOVIE_CREDITS_SUCCESS, cast }
+  }
+  function failure(error) {
+    return { type: movieConstants.MOVIE_CREDITS_FAILURE, error }
   }
 }
 

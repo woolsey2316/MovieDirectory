@@ -1,46 +1,42 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import Style from './HomeTile.module.css'
+import { MovieContext } from '../../context'
 
-class Tile extends Component {
-  constructor(props) {
-    super(props)
-    this.viewShow = this.viewShow.bind(this)
+export default function Tile(props) {
+  const { setLocalStorage, setMovieContext } = useContext(MovieContext)
+  
+  function viewShow() {
+    setMovieContext(props.show)
+    setLocalStorage(props.show)
+    window.location.href = `/${props.showType}/${props.show.id}`
   }
-
-  viewShow = (event) => {
-    const url = `https://www.themoviedb.org/${this.props.showType}/${this.props.show.id}`
-    window.location.href = url
-  }
-  render() {
-    return (
+  
+  return (
+    <div
+      className={
+        props.type === 'main'
+          ? Style.nonExpandingContainerMajor
+          : Style.nonExpandingContainerMinor
+      }
+      onClick={viewShow}
+    >
       <div
         className={
-          this.props.type === 'main'
-            ? Style.nonExpandingContainerMajor
-            : Style.nonExpandingContainerMinor
+          props.type === 'main'
+            ? Style.flexGridWholeRow
+            : Style.flexGridHalves
         }
-        onClick={this.viewShow}
+        style={{
+          backgroundImage: `url(${props.show.poster_src})`,
+          backgroundRepeat: 'no-repeat'
+        }}
       >
-        <div
-          className={
-            this.props.type === 'main'
-              ? Style.flexGridWholeRow
-              : Style.flexGridHalves
-          }
-          style={{
-            backgroundImage: `url(${this.props.show.poster_src})`,
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
-          <h3 className={Style.title} onClick={this.viewShow}>
-            {this.props.showType === 'movie'
-              ? this.props.show.title
-              : this.props.show.name}
-          </h3>
-        </div>
+        <h3 className={Style.title} onClick={viewShow}>
+          {props.showType === 'movie'
+            ? props.show.title
+            : props.show.name}
+        </h3>
       </div>
-    )
-  }
+    </div>
+  )
 }
-
-export default Tile

@@ -1,15 +1,15 @@
 import { movieConstants } from '../constants'
 
-export function similar(state = {}, action) {
+export function cast(state = {}, action) {
   switch (action.type) {
-    case movieConstants.SIMILAR_MOVIE_REQUEST:
+    case movieConstants.MOVIE_CREDITS_REQUEST:
       return { ...state, isFetching: true }
-    case movieConstants.SIMILAR_MOVIE_SUCCESS:
+    case movieConstants.MOVIE_CREDITS_SUCCESS:
       return {
         isFetching: false,
-        similar: action.movieList
+        cast: action.cast
       }
-    case movieConstants.SIMILAR_MOVIE_FAILURE:
+    case movieConstants.MOVIE_CREDITS_FAILURE:
       return { ...state, isFetching: false }
     default:
       return state
