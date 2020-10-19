@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Typography } from '@material-ui/core'
+import { Box, Typography } from '@material-ui/core'
 
 const SubText = styled(Typography)`
   color: #737373;
@@ -29,12 +29,12 @@ const Profile = styled.img`
 `
 export default function CastMember({person}) {
   return (
-    <>
+    <Box display="flex" flexDirection="column" alignItems="center">
       <Profile src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}></Profile>
       <TextBox>
         <Heading>{person.name}</Heading>
         <SubText>{person.character}</SubText>
       </TextBox>
-    </>
+    </Box>
   )
 }

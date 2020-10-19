@@ -3,7 +3,7 @@ import Style from './MoviePoster.module.css'
 import { displayDate } from '../helpers'
 import { Box, Typography, withStyles } from '@material-ui/core'
 import { Rating } from '@material-ui/lab'
-import { MovieContext, TelevisionContext } from '../context'
+import { TelevisionContext } from '../context'
 
 import img from '../assets/images/default_poster.jpg'
 
@@ -19,13 +19,13 @@ const StyledRating = withStyles({
   }
 })(Rating)
 
-export default function MoviePoster(props) {
-  const { setLocalStorage, setMovieContext } = useContext(MovieContext)
+export default function TelevisionPoster(props) {
+  const { setLocalStorage, setTelevisionContext } = useContext(TelevisionContext)
   
-  function viewMovie() {
-    setMovieContext(props.show)
+  function viewTelevision() {
+    setTelevisionContext(props.show)
     setLocalStorage(props.show)
-    window.location.href = `/movies/${props.show.id}`
+    window.location.href = `/tv/${props.show.id}`
   }
 
   if (!props.show) {
@@ -46,7 +46,7 @@ export default function MoviePoster(props) {
         style={{
           backgroundRepeat: 'no-repeat',
         }}
-        onClick={viewMovie.bind(this)}
+        onClick={viewTelevision.bind(this)}
       />
       <StyledRating
         name="half-rating"
@@ -54,11 +54,11 @@ export default function MoviePoster(props) {
         precision={0.5}
         readOnly
       />
-      <Typography variant="h5" onClick={viewMovie.bind(this)}>
-        {props.show.title}
+      <Typography variant="h5" onClick={viewTelevision.bind(this)}>
+        {props.show.name}
       </Typography>
       <Typography variant="body1" color="secondary">
-        {displayDate(props.show.release_date)}
+        {displayDate(props.show.first_air_date)}
       </Typography>
     </Box>
   )

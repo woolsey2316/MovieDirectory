@@ -137,15 +137,15 @@ const TelevisionDescription = () => {
           ></CardMedia>
           <Box classes={{ root: styles.description }}>
             <Typography variant="h2" color="primary">
-              {television.title}
+              {television.name}
             </Typography>
             <Box display="flex">
-              <GenreList genreId={television.genre_ids} />
+              <GenreList genreId={television.genres || television.genre_ids}/>
               <Typography color="primary" style={{ margin: '0 0.3em' }}>
                 &middot;
               </Typography>
               <Typography variant="body1" color="primary">
-                {television.release_date}
+                {television.first_air_date}
               </Typography>
             </Box>
             <Typography></Typography>

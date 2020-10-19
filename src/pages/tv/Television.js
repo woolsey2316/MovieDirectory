@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Rating from '../../components/Rating'
 import Style from '../movie/Movie.module.css'
+import { TelevisionContext } from '../../context'
 
 export default function Television({ show }) {
+  const { setLocalStorage, setTelevisionContext } = useContext(TelevisionContext)
   function viewTelevision() {
+    setTelevisionContext(show)
+    setLocalStorage(show)
     window.location.href = `/tv/${show.id}`
   }
   if (!show) {

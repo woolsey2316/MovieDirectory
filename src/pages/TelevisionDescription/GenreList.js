@@ -4,11 +4,13 @@ import { Typography } from '@material-ui/core'
 
 function GenreList({ genreId }) {
   const { genre } = useContext(AppContext)
+  console.log("genreId")
+  console.log(genreId)
   return (
     <>
       {genreId
-        .filter((elem, index) => index < genreId.length - 1)
-        .map((elem, index) => (
+        ?.filter((elem, index) => index < genreId.length - 1)
+        ?.map((elem, index) => (
           <>
             <Typography color="primary" key={elem} style={{ margin: '0 0.4em' }}>
               {genre.get.get(elem)}

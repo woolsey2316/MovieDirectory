@@ -2,9 +2,9 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import MoviePoster from '../../components/MoviePoster'
+import TelevisionPoster from '../../components/TelevisionPoster'
 
-export default function SimilarCollection({mayAlsoLike}) {
+export default function SimilarTvShowContainer({mayAlsoLike}) {
   return (
     <>
       <style type="text/css">
@@ -19,7 +19,7 @@ export default function SimilarCollection({mayAlsoLike}) {
         <Row>
         {
           mayAlsoLike?.filter((e, i) => i < mayAlsoLike.length ).map((show, index) => 
-            <Col><MoviePoster key={index} show={show}/></Col>
+            <Col><TelevisionPoster key={index} show={show}/></Col>
           )
         }
         </Row>
