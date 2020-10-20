@@ -19,8 +19,7 @@ class TelevisionSearch extends Component {
   render() {
     return (
       <div>
-        <Navigation />
-        <SearchBar type="tv" onChange={this.searchChangeHandler} search={this.props.searchTelevision}/>
+        <Navigation bg="dark" variant="dark" searchBar={<SearchBar type="Tv Shows" onChange={this.searchChangeHandler} />}/>
         <div className="searchResultCanvas">
           {this.props.televisions.televisionResults?.map((show) => {
               show.poster_src =

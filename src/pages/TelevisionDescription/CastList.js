@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
 import styled from 'styled-components'
-import CastListCollection from './CastListCollection'
+import CastListCollection from '../../components/CastListCollection'
 
 const CastListSection = styled(Box)`
   background-color: #f2f2f2;

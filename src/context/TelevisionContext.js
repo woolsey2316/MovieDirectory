@@ -18,7 +18,10 @@ const TelevisionContextProvider = (props) => {
     name: '',
     video: '',
     vote_average: '',
-    vote_count: ''
+    vote_count: '',
+    number_of_seasons: '',
+    episode_run_time: ''
+
   }
 
   const [television, setTelevision] = useState(

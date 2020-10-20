@@ -1,7 +1,8 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
 import styled from 'styled-components'
-import CastListCollection from './CastListCollection'
+import CastListCollection from '../../components/CastListCollection'
+import SectionTitle from '../../components/SectionTitle'
 
 const CastListSection = styled(Box)`
   background-color: #f2f2f2;
@@ -32,8 +33,7 @@ export default function CastList({castList}) {
   return (
     <>
       <CastListSection>
-        <StyledBorder/>
-        <CastListTitle>Cast List</CastListTitle>
+        <SectionTitle title="Cast List"/>
         <CastListCollection castList={castList}/>
       </CastListSection>
     </>

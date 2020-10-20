@@ -10,7 +10,8 @@ export const televisionActions = {
   getReviews,
   getCredits,
   getSimilarTelevisions,
-  getRecommendedTelevisions
+  getRecommendedTelevisions,
+  getImages
 }
 
 function getReviews(id) {
@@ -107,5 +108,30 @@ function getRecommendedTelevisions(id) {
   }
   function failure(error) {
     return { type: televisionConstants.RECOMMENDED_TELEVISIONS_FAILURE, error }
+  }
+}
+
+function getImages(id) {
+  return (dispatch) => {
+    dispatch(request(id))
+
+    televisionApi.getImages(id).then(
+      (gallery) => {
+        dispatch(success(gallery.posters))
+      },
+      (error) => {
+        dispatch(failure(error.toString()))
+      }
+    )
+  }
+
+  function request(id) {
+    return { type: televisionConstants.TELEVISION_GALLERY_REQUEST, id }
+  }
+  function success(gallery) {
+    return { type: televisionConstants.TELEVISION_GALLERY_SUCCESS, gallery }
+  }
+  function failure(error) {
+    return { type: televisionConstants.TELEVISION_GALLERY_FAILURE, error }
   }
 }

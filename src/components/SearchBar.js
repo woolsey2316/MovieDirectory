@@ -15,9 +15,9 @@ const StyledSearchBar = styled.input`
   font-size: 0.937rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
-  border-color: #d0d0d2;
+  border: 2px solid rgba(255,255,255,.5);
   background-color: transparent;
+  color: #fff;
 `
 
 const StyledSearchBarContainer = styled(Box)`
@@ -31,6 +31,9 @@ const StyledSearchBarContainer = styled(Box)`
   align-items: center;
   min-width: 35%;
   margin-right: 5%;
+  margin-left: auto;
+  color: rgba(255,255,255,.5);
+  
 `
 
 export class SearchBar extends Component {
@@ -44,15 +47,24 @@ export class SearchBar extends Component {
   
   render() {
     return (
-      <StyledSearchBarContainer
-        id="searchHeader"
-        position={this.state.scrollingLock ? 'fixed' : 'relative'}
-      >
-        <StyledSearchBar
-          placeholder="Search for Shows..."
-          onChange={this.props.onChange}
-        />
-      </StyledSearchBarContainer>
+      <>
+        <style type="text/css">
+          {`
+          ::placeholder  {
+            color: rgba(255,255,255,.5)
+          }
+          `}
+        </style>
+        <StyledSearchBarContainer
+          id="searchHeader"
+          position={this.state.scrollingLock ? 'fixed' : 'relative'}
+        >
+          <StyledSearchBar
+            placeholder={`Search for ${this.props.type}...`}
+            onChange={this.props.onChange}
+          />
+        </StyledSearchBarContainer>
+      </>
     )
   }
 }

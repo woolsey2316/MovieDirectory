@@ -10,7 +10,8 @@ export const movieActions = {
   getReviews,
   getCredits,
   getSimilarMovies,
-  getRecommendedMovies
+  getRecommendedMovies,
+  getImages
 }
 
 function getReviews(id) {
@@ -107,5 +108,30 @@ function getRecommendedMovies(id) {
   }
   function failure(error) {
     return { type: movieConstants.RECOMMENDED_MOVIES_FAILURE, error }
+  }
+}
+
+function getImages(id) {
+  return (dispatch) => {
+    dispatch(request(id))
+
+    movieApi.getImages(id).then(
+      (gallery) => {
+        dispatch(success(gallery.posters))
+      },
+      (error) => {
+        dispatch(failure(error.toString()))
+      }
+    )
+  }
+
+  function request(id) {
+    return { type: movieConstants.MOVIE_GALLERY_REQUEST, id }
+  }
+  function success(gallery) {
+    return { type: movieConstants.MOVIE_GALLERY_SUCCESS, gallery }
+  }
+  function failure(error) {
+    return { type: movieConstants.MOVIE_GALLERY_FAILURE, error }
   }
 }

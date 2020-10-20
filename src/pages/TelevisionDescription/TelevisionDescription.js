@@ -2,11 +2,12 @@ import React, { useEffect, useContext, useState } from 'react'
 import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
 import { TelevisionContext } from '../../context'
 import MayAlsoLikeSection from './MayAlsoLikeSection'
+import GallerySection from '../../containers/GallerySection'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { televisionActions } from '../../actions'
 
-import { GenreList } from './GenreList'
+import { GenreList } from '../../components/GenreList'
 import CastList from './CastList'
 
 import FastAverageColor from 'fast-average-color'
@@ -83,6 +84,7 @@ const TelevisionDescription = () => {
   const cast = useSelector((state) => state.cast)
   const recommended = useSelector((state) => state.recommended)
   const similar = useSelector((state) => state.similar)
+  const gallery = useSelector((state) => state.gallery)
   
   function fetchCredits() {
     dispatch(televisionActions.getCredits(television.id))
@@ -100,11 +102,17 @@ const TelevisionDescription = () => {
     dispatch(televisionActions.getRecommendedTelevisions(television.id))
   }
 
+  function fetchGallery() {
+    dispatch(televisionActions.getImages(television.id))
+  }
+
   useEffect(() => {
     fetchReviews()
     fetchSimilar()
     fetchRecommended()
     fetchCredits()
+    fetchGallery()
+    // eslint-disable-next-line
   }, [])
 
   fac
@@ -140,6 +148,18 @@ const TelevisionDescription = () => {
               {television.name}
             </Typography>
             <Box display="flex">
+              <Typography variant="body1" color="primary">
+                {`${television.original_language} Seasons`}
+              </Typography>
+              <Typography color="primary" style={{ margin: '0 0.3em' }}>
+                &middot;
+              </Typography>
+              <Typography variant="body1" color="primary">
+                {television.number_of_seasons}
+              </Typography>
+              <Typography color="primary" style={{ margin: '0 0.3em' }}>
+                &middot;
+              </Typography>
               <GenreList genreId={television.genres || television.genre_ids}/>
               <Typography color="primary" style={{ margin: '0 0.3em' }}>
                 &middot;
@@ -160,6 +180,7 @@ const TelevisionDescription = () => {
       </Paper>
       <CastList castList={cast.cast}/>
       <MayAlsoLikeSection mayAlsoLike={similar.similar} />
+      <GallerySection/>
     </ThemeProvider>
   )
 }

@@ -1,13 +1,15 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
 import { MovieContext } from '../../context'
-import Rating from '../../components/Rating'
+import { GenreList } from '../../components/GenreList'
+
 import MayAlsoLikeSection from './MayAlsoLikeSection'
+import GallerySection from '../../containers/GallerySection'
+import Footer from '../../components/Footer'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { movieActions } from '../../actions'
 
-import { GenreList } from './GenreList'
 import CastList from './CastList'
 
 import FastAverageColor from 'fast-average-color'
@@ -84,6 +86,7 @@ const MovieDescription = () => {
   const cast = useSelector((state) => state.cast)
   const recommended = useSelector((state) => state.recommended)
   const similar = useSelector((state) => state.similar)
+  const gallery = useSelector((state) => state.gallery)
   
   function fetchCredits() {
     dispatch(movieActions.getCredits(movie.id))
@@ -101,11 +104,17 @@ const MovieDescription = () => {
     dispatch(movieActions.getRecommendedMovies(movie.id))
   }
 
+  function fetchGallery() {
+    dispatch(movieActions.getImages(movie.id))
+  }
+
   useEffect(() => {
     fetchReviews()
     fetchSimilar()
     fetchRecommended()
     fetchCredits()
+    fetchGallery()
+    // eslint-disable-next-line
   }, [])
 
   fac
@@ -161,6 +170,8 @@ const MovieDescription = () => {
       </Paper>
       <CastList castList={cast.cast}/>
       <MayAlsoLikeSection mayAlsoLike={similar.similar} />
+      <GallerySection/>
+      <Footer/>
     </ThemeProvider>
   )
 }

@@ -182,13 +182,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     display : 'inline-block',
-    padding: '8px 19px',
     borderRadius: '100px',
     color: '#fff',
-    fontWeight: 'bold',
     border: '1px solid transparent',
     textTransform: 'capitalize',
-    display: 'inline-block',
     padding: '6px 12px',
     marginBottom: '0',
     fontSize: '14px',
@@ -205,7 +202,6 @@ const useStyles = makeStyles((theme) => ({
     msUserSelect: 'none',
     userSelect: 'none',
     backgroundImage: 'none',
-    border: '1px solid transparent',
     "&:hover": {
       color: 'white',
       textDecoration: 'none'
@@ -233,7 +229,7 @@ export default function MovieItemContent() {
           </div>
           <div className={styles.pullRight}>
             <div className={styles.movieRating}>
-              <a className={styles.a} href=""><StarIcon classes={{root: styles.icon}}/>2/20</a>
+              <p className={styles.a} ><StarIcon classes={{root: styles.icon}}/>2/20</p>
             </div>
           </div>
         </div>
@@ -242,25 +238,25 @@ export default function MovieItemContent() {
         </div>
         <div className={styles.movieItemContentButtom}>
           <div className={styles.movieItemTitle}>
-            <a className={styles.a} href="">Hurry Animate Blue Strack New Movie (2018)</a>
+            <p className={styles.a} >Hurry Animate Blue Strack New Movie (2018)</p>
           </div>
           <div className={styles.itemCat}>
             <ul className={styles.ul}>
-              <li><span className={styles.a}>Category : </span><a className={styles.a} href="">English Animation Movies</a></li>
+              <li><span className={styles.a}>Category : </span><p className={styles.a} >English Animation Movies</p></li>
             </ul>
             <div className={styles.itemCatHover}>
               <ul className={styles.ul}>
-                <li><span className={styles.a}>Release : </span><a className={styles.a} href="">October 26, 2017</a></li>
-                <li><span className={styles.a}>Genre : </span><a className={styles.a} href="">Action, Drama</a></li>
+                <li><span className={styles.a}>Release : </span><p className={styles.a} >October 26, 2017</p></li>
+                <li><span className={styles.a}>Genre : </span><p className={styles.a} >Action, Drama</p></li>
               </ul>
             </div>
           </div>
           <div className={styles.movieItemBeta}>
             <div className={styles.movieDetails}>
-              <a href="" className={`${styles.button} ${styles.leftButton} ${styles.blackBg}`}>details</a>
+              <p className={`${styles.button} ${styles.leftButton} ${styles.blackBg}`}>details</p>
             </div>
             <div className={styles.viewMovie}>
-              <a className={`${styles.button} ${styles.rightButton} ${styles.blackBg}`} href="">15k view</a>
+              <p className={`${styles.button} ${styles.rightButton} ${styles.blackBg}`} >15k view</p>
             </div>
           </div>
       </div>

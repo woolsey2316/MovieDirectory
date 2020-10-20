@@ -1,42 +1,10 @@
 import React from 'react'
 import {
   makeStyles,
-  createMuiTheme,
-  StylesProvider
 } from '@material-ui/core/styles'
-import { Box, FormHelperText } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 
 import SendIcon from '@material-ui/icons/Send'
-
-const theme = createMuiTheme({
-  typography: {
-    h2: {
-      fontSize: '2.1rem',
-      fontWeight: 700,
-      lineHeight: 1.1,
-      margin: '0.4em 0em'
-    },
-    h6: {
-      fontSize: '1.2rem',
-      fontWeight: 700,
-      margin: '1em 0em',
-      lineHeight: 1.3
-    },
-    body1: {
-      fontSize: '1rem',
-      fontWeight: 200,
-      lineHeight: 1.2
-    }
-  },
-  palette: {
-    primary: {
-      main: '#ffffff'
-    },
-    secondary: {
-      main: '#999898'
-    }
-  }
-})
 
 const useStyles = makeStyles((theme) => ({
   outer: {
@@ -140,19 +108,19 @@ export default function Footer() {
           <div>
             <ul className={styles.ul}>
               <li>
-                <a className={styles.a} href="">Movies</a>{' '}
+                <a className={styles.a} href="/movie">Movies</a>
               </li>
               <li>
-                <a className={styles.a} href="">Videos</a>
+                <a className={styles.a} href="/television">TvShows</a>
               </li>
               <li>
-                <a className={styles.a} href="">Actor</a>
+                <a className={styles.a} href="/actor">Actor</a>
               </li>
               <li>
-                <a className={styles.a} href="">Upcoming Movies</a>
+                <a className={styles.a} href="/home">Upcoming Movies</a>
               </li>
               <li>
-                <a className={styles.a} href="">Contact Us</a>
+                <a className={styles.a} href="/home">Contact Us</a>
               </li>
             </ul>
           </div>
@@ -167,19 +135,19 @@ export default function Footer() {
           <div class="ft-content">
             <ul className={styles.ul}>
               <li>
-                <a className={styles.a} href="">About Us</a>{' '}
+                <a className={styles.a} href="/home">About Us</a>{' '}
               </li>
               <li>
-                <a className={styles.a} href="">Forums</a>
+                <a className={styles.a} href="/home">Forums</a>
               </li>
               <li>
-                <a className={styles.a} href="">Hot Collection</a>
+                <a className={styles.a} href="/home">Hot Collection</a>
               </li>
               <li>
-                <a className={styles.a} href="">Upcoming Movies</a>
+                <a className={styles.a} href="/home">Upcoming Movies</a>
               </li>
               <li>
-                <a className={styles.a} href="">All Movies</a>
+                <a className={styles.a} href="/movie">All Movies</a>
               </li>
             </ul>
           </div>
@@ -187,6 +155,13 @@ export default function Footer() {
       </div>
       <div>
         <div>
+          <style type="text/css">
+            {`
+            ::placeholder  {
+              color: rgba(255,255,255,.5)
+            }
+            `}
+          </style>
           <div class="newsletter">
             <h2>
               <span className={styles.title}>newsletter</span>

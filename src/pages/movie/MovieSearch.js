@@ -19,7 +19,7 @@ class MovieSearch extends Component {
   render() {
     return (
       <div>
-        <Navigation searchBar={<SearchBar type="movie" onChange={this.searchChangeHandler} />}/>
+        <Navigation bg="dark" variant="dark" searchBar={<SearchBar type="movies" onChange={this.searchChangeHandler} />}/>
         <div className="searchResultCanvas">
           {this.props.movies.movieResults?.map((show) => {
               show.poster_src =

@@ -19,7 +19,7 @@ export default function SimilarTvShowContainer({mayAlsoLike}) {
         <Row>
         {
           mayAlsoLike?.filter((e, i) => i < mayAlsoLike.length ).map((show, index) => 
-            <Col><TelevisionPoster key={index} show={show}/></Col>
+            <Col key={index}><TelevisionPoster key={index} show={show}/></Col>
           )
         }
         </Row>

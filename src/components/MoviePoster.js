@@ -3,7 +3,7 @@ import Style from './MoviePoster.module.css'
 import { displayDate } from '../helpers'
 import { Box, Typography, withStyles } from '@material-ui/core'
 import { Rating } from '@material-ui/lab'
-import { MovieContext, TelevisionContext } from '../context'
+import { MovieContext } from '../context'
 
 import img from '../assets/images/default_poster.jpg'
 

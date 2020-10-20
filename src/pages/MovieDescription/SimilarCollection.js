@@ -19,7 +19,7 @@ export default function SimilarCollection({mayAlsoLike}) {
         <Row>
         {
           mayAlsoLike?.filter((e, i) => i < mayAlsoLike.length ).map((show, index) => 
-            <Col><MoviePoster key={index} show={show}/></Col>
+            <Col key={index}><MoviePoster show={show}/></Col>
           )
         }
         </Row>

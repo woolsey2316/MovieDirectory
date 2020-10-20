@@ -7,7 +7,7 @@ import LandingPage from './LandingPage'
 import { Box } from '@material-ui/core'
 import Footer from '../../components/Footer'
 import { discoverApi } from '../../api'
-import { SectionHeading } from './SectionHeading'
+import { SectionHeading } from '../../components/SectionHeading'
 
 class Home extends Component {
   constructor(props) {

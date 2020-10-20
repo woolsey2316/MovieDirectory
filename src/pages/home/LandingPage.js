@@ -68,7 +68,7 @@ export default function LandingPage() {
                 'linear-gradient(to top, rgba(242, 101, 34, 0.51) -18%, rgba(10, 21, 33, 0.9) 34%), url(home.jpg)'
             }}
           >
-            <Navigation position="fixed-top" theme="transparent" />
+            <Navigation bg="transparent" variant="dark" position="fixed-top" theme="transparent" />
             <Container>
               <Row className="flex-row align-items-center">
                 <Col sm={4}><MovieItemContent/></Col>

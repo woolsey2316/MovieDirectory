@@ -7,7 +7,8 @@ export const movieApi = {
   getReviews,
   getSimilarMovies,
   getRecommendedMovies,
-  getCredits
+  getCredits,
+  getImages
 }
 
 /* 
@@ -59,6 +60,18 @@ async function getRecommendedMovies(movieId) {
   }
   const response = await fetch(
     `${process.env.REACT_APP_BASE_URL}movie/${movieId}/reviews?api_key=${process.env.REACT_APP_API_KEY}`,
+    requestOptions
+  )
+  return handleResponse(response)
+}
+
+async function getImages(movieId) {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }
+  const response = await fetch(
+    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/images?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)

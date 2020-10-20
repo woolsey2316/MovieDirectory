@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Actor from './Actor.js'
 import SearchBar from '../../components/SearchBar.js'
+import Navigation from '../../components/Navigation'
 
 class ActorSearch extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class ActorSearch extends Component {
   render() {
     return (
       <div>
-        <SearchBar type="actor" onChange={this.searchChangeHandler} />
+        <Navigation bg="dark" variant="dark" searchBar={<SearchBar type="actors" onChange={this.searchChangeHandler} />}/>
         <div className="searchResultCanvas">
           {this.props.actors.actorResults &&
             this.props.actors.actorResults.map((res) => {

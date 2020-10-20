@@ -6,8 +6,6 @@
 import { searchConstants } from '../constants'
 import { searchApi } from '../api'
 
-import { redirect } from '../helpers'
-
 export const searchActions = {
   getMovie,
   getActor,

@@ -6,6 +6,7 @@ import { recommended } from './recommended.reducer'
 import { reviews } from './reviews.reducer'
 import { similar } from './similar.reducer'
 import { cast } from './cast.reducer'
+import { gallery } from './gallery.reducer'
 
 const rootReducer = combineReducers({
   movies,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   recommended,
   reviews,
   similar,
-  cast
+  cast,
+  gallery
 })
 
 export default rootReducer

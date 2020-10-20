@@ -7,7 +7,8 @@ export const televisionApi = {
   getReviews,
   getSimilarTelevisions,
   getRecommendedTelevisions,
-  getCredits
+  getCredits,
+  getImages
 }
 
 /* 
@@ -59,6 +60,18 @@ async function getRecommendedTelevisions(televisionId) {
   }
   const response = await fetch(
     `${process.env.REACT_APP_BASE_URL}tv/${televisionId}/reviews?api_key=${process.env.REACT_APP_API_KEY}`,
+    requestOptions
+  )
+  return handleResponse(response)
+}
+
+async function getImages(televisionId) {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }
+  const response = await fetch(
+    `${process.env.REACT_APP_BASE_URL}tv/${televisionId}/images?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
