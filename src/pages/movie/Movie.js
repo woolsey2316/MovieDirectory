@@ -5,6 +5,8 @@ import { MovieContext } from '../../context'
 
 import img from '../../assets/images/default_poster.jpg'
 
+import { Typography } from '@material-ui/core'
+
 export default function Movie({ show }) {
   const { setLocalStorage, setMovieContext } = useContext(MovieContext)
   function viewMovie() {
@@ -34,15 +36,20 @@ export default function Movie({ show }) {
         />
       </div>
       <div className={Style.description}>
-        <h3
+        <Typography
+          variant="h2"
           align="top"
           onClick={viewMovie}
           style={{ paddingTop: '20px', paddingLeft: '10px' }}
         >
           <span className={Style.movieTitle}>{show.title}</span>
-        </h3>
-        <p className={Style.date}>{show.release_date}</p>
-        <p style={{ textAlign: 'justify' }}>{show.overview}</p>
+        </Typography>
+        <Typography variant="body1" className={Style.date}>
+          {show.release_date}
+        </Typography>
+        <Typography variant="body1" style={{ textAlign: 'justify' }}>
+          {show.overview}
+        </Typography>
       </div>
     </div>
   )

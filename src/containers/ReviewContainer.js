@@ -8,11 +8,11 @@ const Container = styled.li`
   display: block;
 `
 
-export default function ReviewContainer({review}) {
+export default function ReviewContainer({ review }) {
   return (
     <Container>
-      <ReviewAuthor review={review}/>
-      <ReviewText text={review.text}/>
+      <ReviewAuthor review={review} />
+      <ReviewText text={review.text} />
     </Container>
   )
 }

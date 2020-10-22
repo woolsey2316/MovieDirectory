@@ -8,7 +8,8 @@ export const televisionApi = {
   getSimilarTelevisions,
   getRecommendedTelevisions,
   getCredits,
-  getImages
+  getImages,
+  getDetails
 }
 
 /* 
@@ -29,7 +30,7 @@ async function getReviews(televisionId) {
 /* 
   fetches all cast and crew belonging to a television 
   */
- async function getCredits(televisionId) {
+async function getCredits(televisionId) {
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
@@ -72,6 +73,18 @@ async function getImages(televisionId) {
   }
   const response = await fetch(
     `${process.env.REACT_APP_BASE_URL}tv/${televisionId}/images?api_key=${process.env.REACT_APP_API_KEY}`,
+    requestOptions
+  )
+  return handleResponse(response)
+}
+
+async function getDetails(id) {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }
+  const response = await fetch(
+    `${process.env.REACT_APP_BASE_URL}tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)

@@ -21,18 +21,18 @@ const StyledRating = withStyles({
 
 export default function MoviePoster(props) {
   const { setLocalStorage, setMovieContext } = useContext(MovieContext)
-  
+
   function viewMovie() {
     setMovieContext(props.show)
     setLocalStorage(props.show)
-    window.location.href = `/movies/${props.show.id}`
+    window.location.href = `/movie/${props.show.id}`
   }
 
   if (!props.show) {
     return <div />
   }
   return (
-    <Box display="flex" flexDirection="column" marginRight="20px">
+    <Box display="flex" flexDirection="column" marginBottom="20px" marginRight="20px">
       <img
         className={Style.image}
         alt="poster"
@@ -44,7 +44,7 @@ export default function MoviePoster(props) {
             : img
         }
         style={{
-          backgroundRepeat: 'no-repeat',
+          backgroundRepeat: 'no-repeat'
         }}
         onClick={viewMovie.bind(this)}
       />
@@ -54,13 +54,20 @@ export default function MoviePoster(props) {
         precision={0.5}
         readOnly
       />
-      <Typography variant="h5" onClick={viewMovie.bind(this)}>
+      <Typography
+        style={{ color: '#e8e8e9', margin: '0.3em 0', maxWidth: '230px' }}
+        variant="h5"
+        onClick={viewMovie.bind(this)}
+      >
         {props.show.title}
       </Typography>
-      <Typography variant="body1" color="secondary">
-        {displayDate(props.show.release_date)}
+      <Typography
+        style={{ margin: '0.3em 0' }}
+        variant="body1"
+        color="secondary"
+      >
+        {props.show.release_date ? displayDate(props.show.release_date) : '-'}
       </Typography>
     </Box>
   )
-  
 }

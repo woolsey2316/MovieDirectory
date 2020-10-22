@@ -27,10 +27,12 @@ const Profile = styled.img`
   height: auto;
   max-width: 100%;
 `
-export default function CastMember({person}) {
+export default function CastMember({ person }) {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-      <Profile src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}></Profile>
+      <Profile
+        src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}
+      ></Profile>
       <TextBox>
         <Heading>{person.name}</Heading>
         <SubText>{person.character}</SubText>

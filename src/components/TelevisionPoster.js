@@ -20,8 +20,10 @@ const StyledRating = withStyles({
 })(Rating)
 
 export default function TelevisionPoster(props) {
-  const { setLocalStorage, setTelevisionContext } = useContext(TelevisionContext)
-  
+  const { setLocalStorage, setTelevisionContext } = useContext(
+    TelevisionContext
+  )
+
   function viewTelevision() {
     setTelevisionContext(props.show)
     setLocalStorage(props.show)
@@ -32,7 +34,7 @@ export default function TelevisionPoster(props) {
     return <div />
   }
   return (
-    <Box display="flex" flexDirection="column" marginRight="20px">
+    <Box display="flex" flexDirection="column" marginBottom="20px" marginRight="20px">
       <img
         className={Style.image}
         alt="poster"
@@ -44,7 +46,7 @@ export default function TelevisionPoster(props) {
             : img
         }
         style={{
-          backgroundRepeat: 'no-repeat',
+          backgroundRepeat: 'no-repeat'
         }}
         onClick={viewTelevision.bind(this)}
       />
@@ -54,13 +56,16 @@ export default function TelevisionPoster(props) {
         precision={0.5}
         readOnly
       />
-      <Typography variant="h5" onClick={viewTelevision.bind(this)}>
+      <Typography
+        style={{ color: '#e8e8e9', margin: '0.3em 0', maxWidth: '230px' }}
+        variant="h5"
+        onClick={viewTelevision.bind(this)}
+      >
         {props.show.name}
       </Typography>
-      <Typography variant="body1" color="secondary">
+      <Typography paragraph style={{ margin: '0.3em 0' }} variant="body1" color="secondary">
         {displayDate(props.show.first_air_date)}
       </Typography>
     </Box>
   )
-  
 }

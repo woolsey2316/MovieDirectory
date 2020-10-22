@@ -6,9 +6,15 @@ import ActorSearchContainer from './pages/actor/ActorSearchContainer'
 import TelevisionSearchContainer from './pages/tv/TelevisionSearchContainer'
 import { MovieDescription } from './pages/MovieDescription'
 import { TelevisionDescription } from './pages/TelevisionDescription'
+import { ActorDescription } from './pages/ActorDescription'
 import Home from './pages/home/Home'
-import { AppState, MovieContextProvider, TelevisionContextProvider } from './context'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import {
+  AppState,
+  MovieContextProvider,
+  TelevisionContextProvider,
+  ViewportProvider
+} from './context'
+import 'antd/dist/antd.css'
 import './index.css'
 import './App.css'
 
@@ -36,7 +42,7 @@ const App = () => {
       h2: {
         fontSize: '2rem',
         fontWeight: 500,
-        margin: '1em 0 0.3em 0',
+        margin: '0.3em 0',
         color: '#e8e8e9'
       },
       h3: {
@@ -50,10 +56,9 @@ const App = () => {
         color: '#e8e8e9'
       },
       h5: {
-        fontSize: '1rem',
+        fontSize: '1.2rem',
         marginTop: '0.8em',
         fontWeight: 500,
-        maxWidth: '230px',
         color: '#e8e8e9'
       },
       h6: {
@@ -65,13 +70,14 @@ const App = () => {
       },
       body1: {
         fontSize: 16,
-        lineHeight: 1.2
+        lineHeight: 1.2,
+        fontWeight: 500,
+        margin: '0.8em 0.5em'
       },
       subtitle1: {
         fontSize: 16,
         lineHeight: 1.2,
-        fontFamily: `'Roboto', sans-serif`,
-        fontWeight: 100
+        margin: '0.3em 0'
       },
       body2: {
         fontWeight: 200,
@@ -100,6 +106,7 @@ const App = () => {
       <AppState>
         <Router>
           <div className="App">
+          <ViewportProvider>
             <MovieContextProvider>
               <TelevisionContextProvider>
                 <Switch>
@@ -124,13 +131,17 @@ const App = () => {
                   <Route path="/tv/:tvId">
                     <TelevisionDescription />
                   </Route>
+                  <Route path="/actor/:actorId">
+                    <ActorDescription />
+                  </Route>
                 </Switch>
               </TelevisionContextProvider>
             </MovieContextProvider>
-          </div>
-        </Router>
-      </AppState>
-    </ThemeProvider>
+          </ViewportProvider>
+        </div>
+      </Router>
+    </AppState>
+  </ThemeProvider>
   )
 }
 

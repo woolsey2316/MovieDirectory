@@ -1,32 +1,38 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Menu } from 'antd'
+import { Box } from '@material-ui/core'
 
-var Navigation = ({ variant, bg, searchBar }) => {
+const Navigation = ({ theme, transparent, searchBar }) => {
+  function handleClick(e) {
+    window.location.href = e.key
+  }
   return (
-    <Navbar
-      bg={bg}
-      variant={variant}
+    <Box
+      display="flex"
+      alignItems="center"
+      bgcolor={transparent ? 'transparent' : '#001529'}
     >
       {searchBar}
-      <Navbar.Brand href="/home">Tv&MovieDb</Navbar.Brand>
-      <Nav className="justify-content-end">
-        <Nav.Link active={window.location.pathname === '/home'} href="/home">
-          Home
-        </Nav.Link>
-        <Nav.Link active={window.location.pathname === '/movie'} href="/movie">
-          Movie
-        </Nav.Link>
-        <Nav.Link
-          active={window.location.pathname === '/television'}
-          href="/television"
-        >
-          Television
-        </Nav.Link>
-        <Nav.Link active={window.location.pathname === '/actor'} href="/actor">
+      <Menu
+        mode="horizontal"
+        onClick={handleClick}
+        theme={theme}
+        style={{ background: transparent && 'transparent', width: '100%' }}
+      >
+        <Menu.Item style={{ float: 'right' }} key="actor">
           Actor
-        </Nav.Link>
-      </Nav>
-    </Navbar>
+        </Menu.Item>
+        <Menu.Item style={{ float: 'right' }} key="television">
+          Television
+        </Menu.Item>
+        <Menu.Item style={{ float: 'right' }} key="movie">
+          Movie
+        </Menu.Item>
+        <Menu.Item style={{ float: 'right' }} key="home">
+          Home
+        </Menu.Item>
+      </Menu>
+    </Box>
   )
 }
 

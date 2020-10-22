@@ -4,7 +4,9 @@ import Style from '../movie/Movie.module.css'
 import { TelevisionContext } from '../../context'
 
 export default function Television({ show }) {
-  const { setLocalStorage, setTelevisionContext } = useContext(TelevisionContext)
+  const { setLocalStorage, setTelevisionContext } = useContext(
+    TelevisionContext
+  )
   function viewTelevision() {
     setTelevisionContext(show)
     setLocalStorage(show)

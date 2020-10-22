@@ -1,52 +1,48 @@
 import React from 'react'
-import {
-  makeStyles
-} from '@material-ui/core/styles'
-import StarIcon from '@material-ui/icons/Star';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import { makeStyles } from '@material-ui/core/styles'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 
 const useStyles = makeStyles((theme) => ({
   movieItemContent: {
     overflow: 'hidden',
     position: 'absolute',
-    background: 'linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)),url(2.jpg)',
+    background:
+      'linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)),url(2.jpg)',
     backgroundRepeat: 'no-repeat',
     width: '360px',
     height: '471px',
     top: '10vh',
     zIndex: 1,
-    "&:hover $movieCountTime": {
+    '&:hover $movieCountTime': {
       marginLeft: '0px',
       webkitTransition: 'all 0.4s ease-in-out',
       mozTransition: 'all 0.4s ease-in-out',
       msTransition: 'all 0.4s ease-in-out',
       oTransition: 'all 0.4s ease-in-out',
-      transition: 'all 0.4s ease-in-out',
-      
+      transition: 'all 0.4s ease-in-out'
     },
-    "&:hover $movieItemContentCenter": {
+    '&:hover $movieItemContentCenter': {
       marginTop: '-10%',
       webkitTransition: 'all 0.4s ease-in-out',
       mozTransition: 'all 0.4s ease-in-out',
       msTransition: 'all 0.4s ease-in-out',
       oTransition: 'all 0.4s ease-in-out',
-      transition: 'all 0.4s ease-in-out',
-      
+      transition: 'all 0.4s ease-in-out'
     },
-    "&:hover $itemCatHover": {
+    '&:hover $itemCatHover': {
       marginBottom: '0',
       opacity: 1,
       webkitTransition: 'all 0.4s ease-in-out',
       mozTransition: 'all 0.4s ease-in-out',
       msTransition: 'all 0.4s ease-in-out',
       oTransition: 'all 0.4s ease-in-out',
-      transition: 'all 0.4s ease-in-out',
+      transition: 'all 0.4s ease-in-out'
     },
-    "&:hover": {
+    '&:hover': {
       marginLeft: '0',
-      background: 'linear-gradient(to top right, rgba(16, 15, 25, 0.8) 19%, rgba(176, 50, 38, 0.21) 90%),url(2.jpg)',
-      backgroundRepeat: 'no-repeat',
-      
+      background:
+        'linear-gradient(to top right, rgba(16, 15, 25, 0.8) 19%, rgba(176, 50, 38, 0.21) 90%),url(2.jpg)',
+      backgroundRepeat: 'no-repeat'
     }
   },
   hoverLeft: {
@@ -55,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     mozTransition: 'all 0.4s ease-in-out',
     msTransition: 'all 0.4s ease-in-out',
     oTransition: 'all 0.4s ease-in-out',
-    transition: 'all 0.4s ease-in-out',
+    transition: 'all 0.4s ease-in-out'
   },
   hoverRight: {
     marginRight: '-99px',
@@ -63,12 +59,11 @@ const useStyles = makeStyles((theme) => ({
     mozTransition: 'all 0.4s ease-in-out',
     msTransition: 'all 0.4s ease-in-out',
     oTransition: 'all 0.4s ease-in-out',
-    transition: 'all 0.4s ease-in-out',
+    transition: 'all 0.4s ease-in-out'
   },
   movieItemContentTop: {
     overflow: 'hidden',
-    paddingTop: '25px',
-    
+    paddingTop: '25px'
   },
   pullLeft: {
     float: 'left',
@@ -90,12 +85,33 @@ const useStyles = makeStyles((theme) => ({
   movieRating: {
     marginRight: '13px',
     display: 'block',
-    color: '#fff',
+    color: '#fff'
   },
   a: {
     textDecoration: 'none',
+    textAlign: 'left',
     outline: 'none',
     border: 'none',
+    color: 'white',
+    fontFamily: 'roboto',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    webkitTransition: 'all 0.4s ease-in-out',
+    mozTransition: 'all 0.4s ease-in-out',
+    msTransition: 'all 0.4s ease-in-out',
+    oTransition: 'all 0.4s ease-in-out',
+    transition: 'all 0.4s ease-in-out',
+    '&:hover': {
+      color: 'white',
+      textDecoration: 'none'
+    }
+  },
+  title: {
+    textDecoration: 'none',
+    textAlign: 'left',
+    outline: 'none',
+    border: 'none',
+    marginBottom: '0',
     color: 'white',
     fontWeight: 'bold',
     webkitTransition: 'all 0.4s ease-in-out',
@@ -103,9 +119,9 @@ const useStyles = makeStyles((theme) => ({
     msTransition: 'all 0.4s ease-in-out',
     oTransition: 'all 0.4s ease-in-out',
     transition: 'all 0.4s ease-in-out',
-    "&:hover": {
+    '&:hover': {
       color: 'white',
-      textDecoration: 'none',
+      textDecoration: 'none'
     }
   },
   movieItemContentCenter: {
@@ -121,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     mozTransition: 'all 0.4s ease-in-out',
     msTransition: 'all 0.4s ease-in-out',
     oTransition: 'all 0.4s ease-in-out',
-    transition: 'all 0.4s ease-in-out',
+    transition: 'all 0.4s ease-in-out'
   },
   ul: {
     listStyle: 'none',
@@ -138,7 +154,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: '0',
     width: '100%',
     height: 'auto',
-    paddingBottom: '20px',
+    paddingBottom: '20px'
   },
   movieItemTitle: {
     padding: '0 23px',
@@ -148,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-block',
     fontWeight: 'bold',
     lineHeight: '28px',
-    textTransform: 'capitalize',
+    textTransform: 'capitalize'
   },
   itemCat: {},
   itemCatHover: {
@@ -159,15 +175,15 @@ const useStyles = makeStyles((theme) => ({
     mozTransition: 'all 0.4s ease-in-out',
     msTransition: 'all 0.4s ease-in-out',
     oTransition: 'all 0.4s ease-in-out',
-    transition: 'all 0.4s ease-in-out',
+    transition: 'all 0.4s ease-in-out'
   },
   movieItemBeta: {
     textAlign: 'left',
     marginTop: '16px',
-    paddingTop: '16px',
+    paddingTop: '16px'
   },
   movieDetails: {
-    display: 'inline-block',
+    display: 'inline-block'
   },
   blackBg: {
     backgroundColor: '#060f19'
@@ -181,13 +197,14 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: '0 !important'
   },
   button: {
-    display : 'inline-block',
+    display: 'inline-block',
     borderRadius: '100px',
     color: '#fff',
     border: '1px solid transparent',
     textTransform: 'capitalize',
     padding: '6px 12px',
-    marginBottom: '0',
+    margin: '0',
+    fontFamily: 'Lato',
     fontSize: '14px',
     fontWeight: '400',
     lineHeight: '1.42857143',
@@ -202,13 +219,13 @@ const useStyles = makeStyles((theme) => ({
     msUserSelect: 'none',
     userSelect: 'none',
     backgroundImage: 'none',
-    "&:hover": {
+    '&:hover': {
       color: 'white',
       textDecoration: 'none'
     }
   },
   icon: {
-    color: "#b03226",
+    color: '#b03226',
     marginRight: '4px',
     marginBottom: '3px'
   },
@@ -227,40 +244,53 @@ export default function MovieItemContent() {
           <div className={styles.pullLeft}>
             <span className={styles.movieCountTime}>02.50.20</span>
           </div>
-          <div className={styles.pullRight}>
-            <div className={styles.movieRating}>
-              <p className={styles.a} ><StarIcon classes={{root: styles.icon}}/>2/20</p>
-            </div>
-          </div>
         </div>
         <div className={styles.movieItemContentCenter}>
-          <PlayCircleOutlineIcon classes={{root: styles.playIcon}}/>
+          <PlayCircleOutlineIcon classes={{ root: styles.playIcon }} />
         </div>
         <div className={styles.movieItemContentButtom}>
           <div className={styles.movieItemTitle}>
-            <p className={styles.a} >Hurry Animate Blue Strack New Movie (2018)</p>
+            <p className={styles.title}>
+              Hurry Animate Blue Strack New Movie (2018)
+            </p>
           </div>
           <div className={styles.itemCat}>
             <ul className={styles.ul}>
-              <li><span className={styles.a}>Category : </span><p className={styles.a} >English Animation Movies</p></li>
+              <li>
+                <span className={styles.a}>
+                  Category : English Animation Movies
+                </span>
+              </li>
             </ul>
             <div className={styles.itemCatHover}>
               <ul className={styles.ul}>
-                <li><span className={styles.a}>Release : </span><p className={styles.a} >October 26, 2017</p></li>
-                <li><span className={styles.a}>Genre : </span><p className={styles.a} >Action, Drama</p></li>
+                <li>
+                  <span className={styles.a}>Release : October 26, 2017</span>
+                </li>
+                <li>
+                  <span className={styles.a}>Genre : Action, Drama</span>
+                </li>
               </ul>
             </div>
           </div>
           <div className={styles.movieItemBeta}>
             <div className={styles.movieDetails}>
-              <p className={`${styles.button} ${styles.leftButton} ${styles.blackBg}`}>details</p>
+              <p
+                className={`${styles.button} ${styles.leftButton} ${styles.blackBg}`}
+              >
+                details
+              </p>
             </div>
             <div className={styles.viewMovie}>
-              <p className={`${styles.button} ${styles.rightButton} ${styles.blackBg}`} >15k view</p>
+              <p
+                className={`${styles.button} ${styles.rightButton} ${styles.blackBg}`}
+              >
+                15k view
+              </p>
             </div>
           </div>
+        </div>
       </div>
     </div>
-  </div>
   )
 }

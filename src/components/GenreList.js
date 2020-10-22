@@ -1,18 +1,15 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../context'
+import React from 'react'
 import { Typography, Box } from '@material-ui/core'
 
 function GenreList({ genreId }) {
-  const { genre } = useContext(AppContext)
   return (
     <>
       {genreId
-        .filter((elem, index) => index < genreId.length - 1)
-        .map((elem, index) => (
-          genre.get.get(elem) &&
+        ?.filter((elem, index) => index < genreId.length - 1)
+        .map((genre, index) => (
           <Box display="flex" alignItems="center" key={index}>
             <Typography color="primary" style={{ margin: '0 0.4em' }}>
-              {genre.get.get(elem)}
+              {genre.name}
             </Typography>
             <Typography color="primary" style={{ margin: '0 0.4em' }}>
               /
@@ -20,7 +17,7 @@ function GenreList({ genreId }) {
           </Box>
         ))}
       <Typography color="primary" style={{ margin: '0 0.1em' }}>
-        {genre.get.get(genreId.slice(-1)[0])}
+        {genreId?.slice(-1)[0]?.name}
       </Typography>
     </>
   )

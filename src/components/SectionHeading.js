@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     fontSize: '16px',
     padding: '0px 0 15px 0',
     fontWeight: '300',
-    color: '#fff'
+    color: '#e8e8e9'
   },
   '@media (min-width: 22em)': {},
   '@media (min-width: 23em)': {},
@@ -41,8 +41,10 @@ function SectionHeading({ title, description }) {
   return (
     <div className={styles.outer}>
       <div className={styles.sectionArea}>
-        <h2>{title}</h2>
-        <Typography variant="subtitle1" className={styles.description}>{description}</Typography>
+        <Typography variant="h2">{title}</Typography>
+        <Typography variant="subtitle1" className={styles.description}>
+          {description}
+        </Typography>
       </div>
     </div>
   )

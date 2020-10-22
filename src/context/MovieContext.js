@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const MovieContext = React.createContext()
 

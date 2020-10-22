@@ -1,8 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
 import { TelevisionContext } from '../../context'
-import MayAlsoLikeSection from './MayAlsoLikeSection'
+
+import MayAlsoLikeSection from '../../components/MayAlsoLikeSection'
+import SimilarTvShowContainer from './SimilarTvShowContainer'
 import GallerySection from '../../containers/GallerySection'
+import Footer from '../../components/Footer'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { televisionActions } from '../../actions'
@@ -11,6 +14,8 @@ import { GenreList } from '../../components/GenreList'
 import CastList from './CastList'
 
 import FastAverageColor from 'fast-average-color'
+
+import { useLocation } from 'react-router-dom'
 
 import {
   makeStyles,
@@ -65,7 +70,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '1em'
   },
   description: {
-    padding: '2.5em'
+    padding: '2.5em',
+    textShadow: '1px 1px 5px rgba(0,0,0,0.4)'
   }
 }))
 
@@ -76,47 +82,66 @@ const TelevisionDescription = () => {
 
   const { television } = useContext(TelevisionContext)
 
+  const location = useLocation()
+
+  useEffect(
+    (movie) => {
+      if (location.pathname.includes('/tv/')) {
+        const tvId = location.pathname.split('/').slice(-1)
+        dispatch(televisionActions.getDetails(tvId))
+
+        fetchMoreDetails(tvId)
+      }
+    },
+    [location]
+  )
+
   const [tint, setTint] = useState()
 
   const dispatch = useDispatch()
-  
-  const reviews = useSelector((state) => state.reviews)
+
+  const tvShow = useSelector((state) => state.tvShow.tvShow)
+
   const cast = useSelector((state) => state.cast)
+  const reviews = useSelector((state) => state.reviews)
   const recommended = useSelector((state) => state.recommended)
-  const similar = useSelector((state) => state.similar)
-  const gallery = useSelector((state) => state.gallery)
-  
-  function fetchCredits() {
-    dispatch(televisionActions.getCredits(television.id))
+  const gallery = useSelector((state) => state.gallery.gallery)
+
+  function fetchCredits(id) {
+    dispatch(televisionActions.getCredits(id))
   }
 
-  function fetchReviews() {
-    dispatch(televisionActions.getReviews(television.id))
+  function fetchReviews(id) {
+    dispatch(televisionActions.getReviews(id))
   }
 
-  function fetchSimilar() {
-    dispatch(televisionActions.getSimilarTelevisions(television.id))
+  function fetchSimilar(id) {
+    dispatch(televisionActions.getSimilarTelevisions(id))
   }
 
-  function fetchRecommended() {
-    dispatch(televisionActions.getRecommendedTelevisions(television.id))
+  function fetchRecommended(id) {
+    dispatch(televisionActions.getRecommendedTelevisions(id))
   }
 
-  function fetchGallery() {
-    dispatch(televisionActions.getImages(television.id))
+  function fetchGallery(id) {
+    dispatch(televisionActions.getImages(id))
   }
 
-  useEffect(() => {
-    fetchReviews()
-    fetchSimilar()
-    fetchRecommended()
-    fetchCredits()
-    fetchGallery()
-    // eslint-disable-next-line
-  }, [])
+  function fetchMoreDetails(id) {
+    fetchReviews(id)
+    fetchSimilar(id)
+    fetchRecommended(id)
+    fetchCredits(id)
+    fetchGallery(id)
+  }
+
+  function handleClick(e, obj) {
+    const src = obj.photo.src
+    window.location.href = obj.photo.src
+  }
 
   fac
-    .getColorAsync(`https://image.tmdb.org/t/p/w342/${television.poster_path}`)
+    .getColorAsync(`https://image.tmdb.org/t/p/w342/${tvShow?.poster_path}`)
     .then(function (color) {
       setTint(color.hex)
     })
@@ -135,37 +160,31 @@ const TelevisionDescription = () => {
           backgroundImage: `linear-gradient(0deg, ${tint + 'cc'}, ${
             tint + 'aa'
           }),
-          url(https://image.tmdb.org/t/p/original/${television.backdrop_path})`
+          url(https://image.tmdb.org/t/p/original/${tvShow?.backdrop_path})`
         }}
       >
         <Card elevation={0} classes={{ root: styles.card }}>
           <CardMedia
             classes={{ root: styles.poster }}
-            image={`https://image.tmdb.org/t/p/w342${television.poster_path}`}
+            image={`https://image.tmdb.org/t/p/w342${tvShow?.poster_path}`}
           ></CardMedia>
           <Box classes={{ root: styles.description }}>
             <Typography variant="h2" color="primary">
-              {television.name}
+              {tvShow?.name}
             </Typography>
             <Box display="flex">
               <Typography variant="body1" color="primary">
-                {`${television.original_language} Seasons`}
+                {`${tvShow?.number_of_seasons} Seasons`}
               </Typography>
+              <Typography color="primary" style={{ margin: '0 0.3em' }}>
+                &middot;
+              </Typography>
+              <GenreList genreId={tvShow?.genres || tvShow?.genre_ids} />
               <Typography color="primary" style={{ margin: '0 0.3em' }}>
                 &middot;
               </Typography>
               <Typography variant="body1" color="primary">
-                {television.number_of_seasons}
-              </Typography>
-              <Typography color="primary" style={{ margin: '0 0.3em' }}>
-                &middot;
-              </Typography>
-              <GenreList genreId={television.genres || television.genre_ids}/>
-              <Typography color="primary" style={{ margin: '0 0.3em' }}>
-                &middot;
-              </Typography>
-              <Typography variant="body1" color="primary">
-                {television.first_air_date}
+                {tvShow?.first_air_date}
               </Typography>
             </Box>
             <Typography></Typography>
@@ -173,14 +192,25 @@ const TelevisionDescription = () => {
               Overview
             </Typography>
             <Typography variant="body1" color="primary">
-              {television.overview}
+              {tvShow?.overview}
             </Typography>
+            <Typography variant="h6" color="primary">
+              Cast
+            </Typography>
+            {cast?.cast?.filter((e,i) => i < 4).map((person, index) => 
+              <Typography style={{display: 'inline-block', marginRight: '20px'}} gutterBottom key={index} variant="body1" color="primary">
+                {person.name}
+              </Typography>
+            )}
           </Box>
         </Card>
       </Paper>
-      <CastList castList={cast.cast}/>
-      <MayAlsoLikeSection mayAlsoLike={similar.similar} />
-      <GallerySection/>
+      <CastList castList={cast.cast} />
+      <MayAlsoLikeSection>
+        <SimilarTvShowContainer />
+      </MayAlsoLikeSection>
+      <GallerySection onClick={handleClick} gallery={gallery} />
+      <Footer />
     </ThemeProvider>
   )
 }

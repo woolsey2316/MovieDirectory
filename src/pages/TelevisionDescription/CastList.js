@@ -28,13 +28,13 @@ const StyledBorder = styled.div`
   height: 1px;
   width: 48px;
 `
-export default function CastList({castList}) {
+export default function CastList({ castList }) {
   return (
     <>
       <CastListSection>
-        <StyledBorder/>
+        <StyledBorder />
         <CastListTitle>Cast List</CastListTitle>
-        <CastListCollection castList={castList}/>
+        <CastListCollection castList={castList} />
       </CastListSection>
     </>
   )

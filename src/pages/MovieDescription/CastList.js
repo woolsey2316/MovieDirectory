@@ -10,18 +10,6 @@ const CastListSection = styled(Box)`
   position: relative;
   padding: 34px 10%;
 `
-const CastListTitle = styled.h2`
-  font-size: 2.313rem;
-  letter-spacing: -0.3px;
-  color: #1a1d24;
-  line-height: 1.2em;
-  font-weight: 700;
-  font-style: normal;
-  line-height: 1.05em;
-  text-decoration: none;
-  text-transform: uppercase;
-  margin: 34px 0;
-`
 const StyledBorder = styled.div`
   background-color: #e0041d;
   content: '';
@@ -29,12 +17,12 @@ const StyledBorder = styled.div`
   height: 1px;
   width: 48px;
 `
-export default function CastList({castList}) {
+export default function CastList({ castList }) {
   return (
     <>
       <CastListSection>
-        <SectionTitle title="Cast List"/>
-        <CastListCollection castList={castList}/>
+        <SectionTitle title="Cast List" />
+        <CastListCollection castList={castList} />
       </CastListSection>
     </>
   )

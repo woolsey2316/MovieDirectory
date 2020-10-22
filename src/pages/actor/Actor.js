@@ -11,12 +11,15 @@ class Actor extends Component {
   }
   render() {
     return (
-      <Box bgcolor="#3c3c3c" className="searchResultCanvas">
+      <Box display="flex" alignItems="center">
         <div className={Style.profileContainer}>
           <div
             className={Style.profile}
             style={{
-              backgroundImage: `url(${this.props.profile.profile_pic})`,
+              backgroundImage: `url(${
+                'https://image.tmdb.org/t/p/w185' +
+                this.props.profile.profile_path
+              })`,
               backgroundRepeat: 'no-repeat'
             }}
           ></div>

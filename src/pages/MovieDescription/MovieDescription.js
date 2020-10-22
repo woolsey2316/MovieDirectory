@@ -3,8 +3,9 @@ import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
 import { MovieContext } from '../../context'
 import { GenreList } from '../../components/GenreList'
 
-import MayAlsoLikeSection from './MayAlsoLikeSection'
+import MayAlsoLikeSection from '../../components/MayAlsoLikeSection'
 import GallerySection from '../../containers/GallerySection'
+import SimilarCollection from './SimilarCollection'
 import Footer from '../../components/Footer'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,6 +14,8 @@ import { movieActions } from '../../actions'
 import CastList from './CastList'
 
 import FastAverageColor from 'fast-average-color'
+
+import { useLocation } from 'react-router-dom'
 
 import {
   makeStyles,
@@ -67,7 +70,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '1em'
   },
   description: {
-    padding: '2.5em'
+    padding: '2.5em',
+    textShadow: '1px 1px 5px rgba(0,0,0,0.4)'
   }
 }))
 
@@ -78,47 +82,62 @@ const MovieDescription = () => {
 
   const { movie } = useContext(MovieContext)
 
+  const location = useLocation()
+
+  useEffect(
+    (movie) => {
+      if (location.pathname.includes('/movie/')) {
+        const tvId = location.pathname.split('/').slice(-1)
+        dispatch(movieActions.getDetails(tvId))
+
+        fetchMoreDetails(tvId)
+      }
+    },
+    [location]
+  )
+
   const [tint, setTint] = useState()
 
   const dispatch = useDispatch()
-  
-  const reviews = useSelector((state) => state.reviews)
+
+  const movieItem = useSelector((state) => state.movie.movie)
+
   const cast = useSelector((state) => state.cast)
-  const recommended = useSelector((state) => state.recommended)
   const similar = useSelector((state) => state.similar)
-  const gallery = useSelector((state) => state.gallery)
-  
-  function fetchCredits() {
-    dispatch(movieActions.getCredits(movie.id))
+  const reviews = useSelector((state) => state.reviews)
+  const recommended = useSelector((state) => state.recommended)
+  const gallery = useSelector((state) => state.gallery.gallery)
+
+  function fetchCredits(id) {
+    dispatch(movieActions.getCredits(id))
   }
 
-  function fetchReviews() {
-    dispatch(movieActions.getReviews(movie.id))
+  function fetchReviews(id) {
+    dispatch(movieActions.getReviews(id))
   }
 
-  function fetchSimilar() {
-    dispatch(movieActions.getSimilarMovies(movie.id))
+  function fetchSimilar(id) {
+    dispatch(movieActions.getSimilarMovies(id))
   }
 
-  function fetchRecommended() {
-    dispatch(movieActions.getRecommendedMovies(movie.id))
+  function fetchRecommended(id) {
+    dispatch(movieActions.getRecommendedMovies(id))
   }
 
-  function fetchGallery() {
-    dispatch(movieActions.getImages(movie.id))
+  function fetchGallery(id) {
+    dispatch(movieActions.getImages(id))
   }
 
-  useEffect(() => {
-    fetchReviews()
-    fetchSimilar()
-    fetchRecommended()
-    fetchCredits()
-    fetchGallery()
-    // eslint-disable-next-line
-  }, [])
+  function fetchMoreDetails(id) {
+    fetchReviews(id)
+    fetchSimilar(id)
+    fetchRecommended(id)
+    fetchCredits(id)
+    fetchGallery(id)
+  }
 
   fac
-    .getColorAsync(`https://image.tmdb.org/t/p/w342/${movie.poster_path}`)
+    .getColorAsync(`https://image.tmdb.org/t/p/w342/${movieItem?.poster_path}`)
     .then(function (color) {
       setTint(color.hex)
     })
@@ -137,25 +156,25 @@ const MovieDescription = () => {
           backgroundImage: `linear-gradient(0deg, ${tint + 'cc'}, ${
             tint + 'aa'
           }),
-          url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`
+          url(https://image.tmdb.org/t/p/original/${movieItem?.backdrop_path})`
         }}
       >
         <Card elevation={0} classes={{ root: styles.card }}>
           <CardMedia
             classes={{ root: styles.poster }}
-            image={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+            image={`https://image.tmdb.org/t/p/w342${movieItem?.poster_path}`}
           ></CardMedia>
           <Box classes={{ root: styles.description }}>
             <Typography variant="h2" color="primary">
-              {movie.title}
+              {movieItem?.title}
             </Typography>
             <Box display="flex">
-              <GenreList genreId={movie.genre_ids} />
+              <GenreList genreId={movieItem?.genres} />
               <Typography color="primary" style={{ margin: '0 0.3em' }}>
                 &middot;
               </Typography>
               <Typography variant="body1" color="primary">
-                {movie.release_date}
+                {movieItem?.release_date}
               </Typography>
             </Box>
             <Typography></Typography>
@@ -163,15 +182,25 @@ const MovieDescription = () => {
               Overview
             </Typography>
             <Typography variant="body1" color="primary">
-              {movie.overview}
+              {movieItem?.overview}
             </Typography>
+            <Typography variant="h6" color="primary">
+              Cast
+            </Typography>
+            {cast?.cast?.filter((e,i) => i < 4).map((person, index) => 
+              <Typography style={{display: 'inline-block', marginRight: '20px'}} gutterBottom key={index} variant="body1" color="primary">
+                {person.name}
+              </Typography>
+            )}
           </Box>
         </Card>
       </Paper>
-      <CastList castList={cast.cast}/>
-      <MayAlsoLikeSection mayAlsoLike={similar.similar} />
-      <GallerySection/>
-      <Footer/>
+      <CastList castList={cast.cast} />
+      <MayAlsoLikeSection title="Similar Movies">
+        <SimilarCollection />
+      </MayAlsoLikeSection>
+      <GallerySection gallery={gallery} />
+      <Footer />
     </ThemeProvider>
   )
 }

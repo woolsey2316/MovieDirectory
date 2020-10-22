@@ -8,8 +8,8 @@ const CollectionContainer = styled.ul`
   list-style: none;
 }
 `
-export default function ReviewListContainer({reviews}) {
-  return (
-    reviews.map(review => <ReviewContainer review={review} key={index}/>)
-  )
+export default function ReviewListContainer({ reviews }) {
+  return reviews.map((review) => (
+    <ReviewContainer review={review} key={index} />
+  ))
 }

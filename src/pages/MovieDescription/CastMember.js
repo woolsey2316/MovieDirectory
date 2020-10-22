@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
 
+import img from '../../assets/images/profiledefault.png'
+
 const SubText = styled(Typography)`
   color: #737373;
   font-size: 14px;
@@ -27,10 +29,20 @@ const Profile = styled.img`
   height: auto;
   max-width: 100%;
 `
-export default function CastMember({person}) {
+export default function CastMember({ person }) {
+  function handleClick() {
+    window.location.href = `../actor/${person.id}`
+  }
   return (
     <>
-      <Profile src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}></Profile>
+      <Profile
+        onClick={handleClick}
+        src={
+          person.profile_path
+            ? `https://image.tmdb.org/t/p/w185${person.profile_path}`
+            : img
+        }
+      />
       <TextBox>
         <Heading>{person.name}</Heading>
         <SubText>{person.character}</SubText>

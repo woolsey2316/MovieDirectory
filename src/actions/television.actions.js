@@ -11,7 +11,8 @@ export const televisionActions = {
   getCredits,
   getSimilarTelevisions,
   getRecommendedTelevisions,
-  getImages
+  getImages,
+  getDetails
 }
 
 function getReviews(id) {
@@ -79,7 +80,10 @@ function getSimilarTelevisions(id) {
     return { type: televisionConstants.SIMILAR_TELEVISION_REQUEST, id }
   }
   function success(televisionList) {
-    return { type: televisionConstants.SIMILAR_TELEVISION_SUCCESS, televisionList }
+    return {
+      type: televisionConstants.SIMILAR_TELEVISION_SUCCESS,
+      televisionList
+    }
   }
   function failure(error) {
     return { type: televisionConstants.SIMILAR_TELEVISION_FAILURE, error }
@@ -104,7 +108,10 @@ function getRecommendedTelevisions(id) {
     return { type: televisionConstants.RECOMMENDED_TELEVISIONS_REQUEST, id }
   }
   function success(televisionList) {
-    return { type: televisionConstants.RECOMMENDED_TELEVISIONS_SUCCESS, televisionList }
+    return {
+      type: televisionConstants.RECOMMENDED_TELEVISIONS_SUCCESS,
+      televisionList
+    }
   }
   function failure(error) {
     return { type: televisionConstants.RECOMMENDED_TELEVISIONS_FAILURE, error }
@@ -133,5 +140,30 @@ function getImages(id) {
   }
   function failure(error) {
     return { type: televisionConstants.TELEVISION_GALLERY_FAILURE, error }
+  }
+}
+
+function getDetails(id) {
+  return (dispatch) => {
+    dispatch(request(id))
+
+    televisionApi.getDetails(id).then(
+      (tvShow) => {
+        dispatch(success(tvShow))
+      },
+      (error) => {
+        dispatch(failure(error.toString()))
+      }
+    )
+  }
+
+  function request(id) {
+    return { type: televisionConstants.TV_ID_REQUEST, id }
+  }
+  function success(tvShow) {
+    return { type: televisionConstants.TV_ID_SUCCESS, tvShow }
+  }
+  function failure(error) {
+    return { type: televisionConstants.TV_ID_FAILURE, error }
   }
 }

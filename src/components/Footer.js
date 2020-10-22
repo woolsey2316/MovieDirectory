@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-  makeStyles,
-} from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import { Box } from '@material-ui/core'
 
 import SendIcon from '@material-ui/icons/Send'
@@ -9,7 +7,7 @@ import SendIcon from '@material-ui/icons/Send'
 const useStyles = makeStyles((theme) => ({
   outer: {
     margin: '0 auto',
-    padding: '2em 15px',
+    padding: '2em 15px'
   },
   movieCategory: {
     width: '25%',
@@ -49,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     msTransition: 'all 0.4s ease-in-out',
     oTransition: 'all 0.4s ease-in-out',
     transition: 'all 0.4s ease-in-out',
-    "&:hover, &:focus": {
+    '&:hover, &:focus': {
       color: '#b03226',
       marginLeft: '7px',
       textDecoration: 'none'
@@ -85,12 +83,12 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: '1px solid #fff',
     padding: '5px 10px',
     height: '100%',
-    "&:hover, &:focus" : {
+    '&:hover, &:focus': {
       WebkitTransition: 'all 0.4s ease-in-out',
       mozTransition: 'all 0.4s ease-in-out',
       msTransition: 'all 0.4s ease-in-out',
       oTransition: 'all 0.4s ease-in-out',
-      transition: 'all 0.4s ease-in-out',
+      transition: 'all 0.4s ease-in-out'
     }
   }
 }))
@@ -98,7 +96,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Footer() {
   const styles = useStyles()
   return (
-    <Box classes={{ root: styles.outer }} display="flex" justifyContent="space-around" bgcolor="#182028">
+    <Box
+      classes={{ root: styles.outer }}
+      display="flex"
+      justifyContent="space-around"
+      bgcolor="#182028"
+    >
       <div classes={{ root: styles.movieCategory }}>
         <div>
           <h2>
@@ -108,19 +111,29 @@ export default function Footer() {
           <div>
             <ul className={styles.ul}>
               <li>
-                <a className={styles.a} href="/movie">Movies</a>
+                <a className={styles.a} href="/movie">
+                  Movies
+                </a>
               </li>
               <li>
-                <a className={styles.a} href="/television">TvShows</a>
+                <a className={styles.a} href="/television">
+                  TvShows
+                </a>
               </li>
               <li>
-                <a className={styles.a} href="/actor">Actor</a>
+                <a className={styles.a} href="/actor">
+                  Actor
+                </a>
               </li>
               <li>
-                <a className={styles.a} href="/home">Upcoming Movies</a>
+                <a className={styles.a} href="/home">
+                  Upcoming Movies
+                </a>
               </li>
               <li>
-                <a className={styles.a} href="/home">Contact Us</a>
+                <a className={styles.a} href="/home">
+                  Contact Us
+                </a>
               </li>
             </ul>
           </div>
@@ -132,22 +145,32 @@ export default function Footer() {
             <span className={styles.title}>Information</span>
             <div className={styles.underline}></div>
           </h2>
-          <div class="ft-content">
+          <div>
             <ul className={styles.ul}>
               <li>
-                <a className={styles.a} href="/home">About Us</a>{' '}
+                <a className={styles.a} href="/home">
+                  About Us
+                </a>{' '}
               </li>
               <li>
-                <a className={styles.a} href="/home">Forums</a>
+                <a className={styles.a} href="/home">
+                  Forums
+                </a>
               </li>
               <li>
-                <a className={styles.a} href="/home">Hot Collection</a>
+                <a className={styles.a} href="/home">
+                  Hot Collection
+                </a>
               </li>
               <li>
-                <a className={styles.a} href="/home">Upcoming Movies</a>
+                <a className={styles.a} href="/home">
+                  Upcoming Movies
+                </a>
               </li>
               <li>
-                <a className={styles.a} href="/movie">All Movies</a>
+                <a className={styles.a} href="/movie">
+                  All Movies
+                </a>
               </li>
             </ul>
           </div>
@@ -162,7 +185,7 @@ export default function Footer() {
             }
             `}
           </style>
-          <div class="newsletter">
+          <div>
             <h2>
               <span className={styles.title}>newsletter</span>
               <div className={styles.underline}></div>

@@ -15,7 +15,7 @@ const StyledSearchBar = styled.input`
   font-size: 0.937rem;
   font-weight: 400;
   line-height: 1.5;
-  border: 2px solid rgba(255,255,255,.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   background-color: transparent;
   color: #fff;
 `
@@ -32,8 +32,9 @@ const StyledSearchBarContainer = styled(Box)`
   min-width: 35%;
   margin-right: 5%;
   margin-left: auto;
-  color: rgba(255,255,255,.5);
-  
+  color: rgba(255, 255, 255, 0.5);
+  width: 70%;
+  padding: 10px;
 `
 
 export class SearchBar extends Component {
@@ -41,10 +42,10 @@ export class SearchBar extends Component {
     super(props)
     this.state = {
       scrollingLock: false,
-      rows: [],
+      rows: []
     }
   }
-  
+
   render() {
     return (
       <>

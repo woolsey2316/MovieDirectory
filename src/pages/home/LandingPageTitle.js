@@ -22,18 +22,18 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '-3px',
     wordSpacing: '-2px',
     textTransform: 'uppercase',
-    margin: '9px',
+    margin: '9px'
   },
   oreng: {
     marginLeft: '5px',
-    color: "#b03226",
+    color: '#b03226'
   },
   delay6: {
     color: 'white',
     fontSize: '18px',
     padding: '1px 70px',
     lineHeight: '27px',
-    marginBottom: '10px',
+    marginBottom: '10px'
   },
   btn: {
     fontSize: '60px',
@@ -49,13 +49,11 @@ export default function LandingPageTitle() {
   const styles = useStyles()
   return (
     <div className={styles.sliderContent}>
-      <h3 className={styles.delay3} >
-        Welcome to Our movie site
-      </h3>
-      <h2 className={styles.delay4} >
+      <h3 className={styles.delay3}>Welcome to Our movie site</h3>
+      <h2 className={styles.delay4}>
         Our special<span className={styles.oreng}> Movies</span>
       </h2>
-      <h3 className={styles.delay6} >
+      <h3 className={styles.delay6}>
         Millions of movies, TV shows and people to discover. Explore now.
       </h3>
     </div>

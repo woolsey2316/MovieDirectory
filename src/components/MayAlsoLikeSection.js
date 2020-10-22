@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
 import styled from 'styled-components'
-import SimilarTvShowContainer from './SimilarTvShowContainer'
 
 const MayAlsoLikeSection = styled(Box)`
   background-color: #060f19;
@@ -22,6 +21,7 @@ const MayAlsoLikeTitle = styled.h2`
   text-decoration: none;
   text-transform: uppercase;
   margin: 34px 0;
+  padding: 0 3%;
 `
 const StyledBorder = styled.div`
   background-color: #e0041d;
@@ -29,14 +29,15 @@ const StyledBorder = styled.div`
   display: block;
   height: 1px;
   width: 48px;
+  margin-left: 3%;
 `
-export default function MayAlsoLike({mayAlsoLike}) {
+export default function MayAlsoLike({ title, children }) {
   return (
     <>
       <MayAlsoLikeSection>
-        <StyledBorder/>
-        <MayAlsoLikeTitle>Similar TV Shows</MayAlsoLikeTitle>
-        <SimilarTvShowContainer mayAlsoLike={mayAlsoLike}/>
+        <StyledBorder />
+        <MayAlsoLikeTitle>{title}</MayAlsoLikeTitle>
+        {children}
       </MayAlsoLikeSection>
     </>
   )

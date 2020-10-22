@@ -12,27 +12,35 @@ const SectionContent = Styled.div`
   line-height: inherit;
   font-weight: inherit;
   font-style: inherit;
-  padding: 34px 5%;
+  padding: 34px 0;
   border: 0;
   outline: 0;
   background: white;
 `
 
-export default function GallerySection() {
-  const gallery = useSelector((state) => state.gallery.gallery)
+export default function GallerySection({ gallery }) {
+  const photos = gallery
+    ?.filter(
+      (elem, index) => elem.iso_639_1 === 'en' || elem.iso_639_1 === null
+    )
+    .map((image) => {
+      return {
+        src: 'https://image.tmdb.org/t/p/w342' + image.file_path,
+        width: 2,
+        height: Math.round(2 / image.aspect_ratio)
+      }
+    })
 
-  const photos = gallery?.filter((elem, index) => elem.iso_639_1 === "en")
-    .map(image => { return {
-      src: "https://image.tmdb.org/t/p/w342" + image.file_path,
-      width: 2,
-      height: Math.round(2 / image.aspect_ratio )
-    }})  
-    
-    console.log({photos})
-  return(
+  function handleClick(e, obj) {
+    const src = obj.photo.src
+    window.location.href =
+      'https://image.tmdb.org/t/p/original/' +
+      obj.photo.src.split('/').slice(-1)
+  }
+  return (
     <SectionContent>
-      <SectionTitle title="Gallery"/>
-      {photos && <Gallery photos={photos}></Gallery>}
+      <SectionTitle title="Gallery" />
+      {photos && <Gallery onClick={handleClick} photos={photos}></Gallery>}
     </SectionContent>
   )
 }

@@ -20,7 +20,7 @@ export function cast(state = {}, action) {
         cast: action.cast
       }
     case televisionConstants.TELEVISION_CREDITS_FAILURE:
-    return { ...state, isFetching: false }
+      return { ...state, isFetching: false }
     default:
       return state
   }

@@ -43,7 +43,7 @@ const ReviewRating = styled.span`
   top: 0;
   width: 36px;
   height: 36px;
-  background-color: rgba(26,25,31,0.7);
+  background-color: rgba(26, 25, 31, 0.7);
   border: 1px solid transparent;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -52,7 +52,7 @@ const ReviewRating = styled.span`
 const SubText = styled.span`
   display: block;
   font-size: 12px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 300;
   line-height: 20px;
   letter-spacing: 0.2px;
@@ -67,9 +67,9 @@ const Title = styled.span`
   letter-spacing: 0.4px;
   margin-bottom: 5px;
 `
-export default function() {
-  <Container>
-    <Avatar class="reviews__avatar" src="img/user.svg" alt=""/>
+export default function () {
+  ;<Container>
+    <Avatar class="reviews__avatar" src="img/user.svg" alt="" />
     <Title class="reviews__name">Best Marvel movie in my opinion</Title>
     <SubText class="reviews__time">24.08.2018, 17:53 by John Doe</SubText>
     <ReviewRating>8.4</ReviewRating>

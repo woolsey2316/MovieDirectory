@@ -12,6 +12,7 @@ const Title = styled.h2`
   text-decoration: none;
   text-transform: uppercase;
   margin: 34px 0;
+  padding: 0 5%;
 `
 const StyledBorder = styled.div`
   background-color: #e0041d;
@@ -19,11 +20,12 @@ const StyledBorder = styled.div`
   display: block;
   height: 1px;
   width: 48px;
+  margin-left: 5%;
 `
-export default function SectionTitle({title}) {
+export default function SectionTitle({ title }) {
   return (
     <>
-      <StyledBorder/>
+      <StyledBorder />
       <Title>{title}</Title>
     </>
   )

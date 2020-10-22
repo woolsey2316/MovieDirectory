@@ -1,29 +1,20 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import { Row, Col } from 'antd'
 import TelevisionPoster from '../../components/TelevisionPoster'
 
-export default function SimilarTvShowContainer({mayAlsoLike}) {
+import { useSelector } from 'react-redux'
+
+export default function SimilarTvShowContainer() {
+  const similar = useSelector((state) => state.similar.similar)
   return (
-    <>
-      <style type="text/css">
-        {`
-        .col {
-          padding: 0;
-          margin: 1em 0;
-        }
-        `}
-      </style>
-      <Container fluid={true}>
-        <Row>
-        {
-          mayAlsoLike?.filter((e, i) => i < mayAlsoLike.length ).map((show, index) => 
-            <Col key={index}><TelevisionPoster key={index} show={show}/></Col>
-          )
-        }
-        </Row>
-      </Container>
-    </>
+    <Row justify="space-between">
+      {similar
+        ?.filter((e, i) => i < similar.length)
+        .map((show, index) => (
+          <Col key={index}>
+            <TelevisionPoster key={index} show={show} />
+          </Col>
+        ))}
+    </Row>
   )
 }
