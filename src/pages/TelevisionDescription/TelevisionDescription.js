@@ -17,6 +17,8 @@ import FastAverageColor from 'fast-average-color'
 
 import { useLocation } from 'react-router-dom'
 
+import Navigation from '../../components/Navigation'
+
 import {
   makeStyles,
   ThemeProvider,
@@ -163,6 +165,7 @@ const TelevisionDescription = () => {
           url(https://image.tmdb.org/t/p/original/${tvShow?.backdrop_path})`
         }}
       >
+        <Navigation transparent={true} position="fixed-top" theme="dark" />
         <Card elevation={0} classes={{ root: styles.card }}>
           <CardMedia
             classes={{ root: styles.poster }}
