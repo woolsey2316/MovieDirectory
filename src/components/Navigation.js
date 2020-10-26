@@ -4,7 +4,7 @@ import { Box } from '@material-ui/core'
 
 const Navigation = ({ theme, transparent, searchBar }) => {
   function handleClick(e) {
-    window.location.href = e.key
+    window.location = '/' + e.key
   }
   return (
     <Box
