@@ -33,14 +33,20 @@ const theme = createMuiTheme({
       lineHeight: 1.1,
       margin: '0.4em 0em'
     },
+    h3: {
+      fontSize: '1.8rem',
+      fontWeight: 700,
+      lineHeight: 1.5,
+      color: '#e8e8e9'
+    },
     h6: {
-      fontSize: '1.2rem',
+      fontSize: '1.1rem',
       fontWeight: 700,
       margin: '0.8em 0em 0.35em 0em',
-      lineHeight: 1.3
+      lineHeight: 1
     },
     body1: {
-      fontSize: '1rem',
+      fontSize: '0.9rem',
       fontWeight: 200,
       lineHeight: 1.2
     }
@@ -104,7 +110,7 @@ const MovieDescription = () => {
 
   const movieItem = useSelector((state) => state.movie.movie)
 
-  const cast = useSelector((state) => state.cast)
+  const credits = useSelector((state) => state.credits)
   const similar = useSelector((state) => state.similar)
   const reviews = useSelector((state) => state.reviews)
   const recommended = useSelector((state) => state.recommended)
@@ -155,8 +161,8 @@ const MovieDescription = () => {
         classes={{ root: styles.canvas }}
         style={{
           backgroundSize: 'cover',
-          backgroundImage: `linear-gradient(0deg, ${tint + 'cc'}, ${
-            tint + 'aa'
+          backgroundImage: `linear-gradient(0deg, ${tint + 'ee'}, ${
+            tint + 'dd'
           }),
           url(https://image.tmdb.org/t/p/original/${movieItem?.backdrop_path})`
         }}
@@ -166,9 +172,9 @@ const MovieDescription = () => {
           <CardMedia
             classes={{ root: styles.poster }}
             image={`https://image.tmdb.org/t/p/w342${movieItem?.poster_path}`}
-          ></CardMedia>
+          />
           <Box classes={{ root: styles.description }}>
-            <Typography variant="h2" color="primary">
+            <Typography variant="h3" color="primary">
               {movieItem?.title}
             </Typography>
             <Box display="flex">
@@ -187,21 +193,39 @@ const MovieDescription = () => {
             <Typography variant="body1" color="primary">
               {movieItem?.overview}
             </Typography>
-            <Typography variant="h6" color="primary">
-              Cast
-            </Typography>
-            {cast?.cast?.filter((e,i) => i < 4).map((person, index) => 
-              <Typography style={{display: 'inline-block', marginRight: '20px'}} gutterBottom key={index} variant="body1" color="primary">
-                {person.name}
-              </Typography>
+            <div/>
+            {credits.credits?.cast?.filter((e,i) => i < 4).map((person, index) => 
+              <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
+                <Typography style={{display: 'inline-block', marginRight: '35px'}} gutterBottom variant="h6" color="primary">
+                  {person.name}
+                </Typography>
+                <Typography gutterBottom variant="body1" color="primary">
+                  {person.character}
+                </Typography>
+              </div>
+            )}
+            <div/>
+            {credits.credits?.crew?.filter((person, index) => 
+              person.job === "Producer" || person.job === "Director" || person.job === "Screenplay")
+              .map((person, index) =>
+                <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
+                  <Typography gutterBottom variant="h6" color="primary">
+                    {person.name}
+                  </Typography>
+                  <Typography gutterBottom variant="body1" color="primary">
+                    {person.job}
+                  </Typography>
+                </div>
             )}
           </Box>
         </Card>
       </Paper>
-      <CastList castList={cast.cast} />
+      <CastList castList={credits.credits?.cast} />
+      { similar.length &&
       <MayAlsoLikeSection title="Similar Movies">
         <SimilarCollection />
       </MayAlsoLikeSection>
+      }
       <GallerySection gallery={gallery} />
       <Footer />
     </ThemeProvider>

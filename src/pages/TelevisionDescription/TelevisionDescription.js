@@ -104,7 +104,8 @@ const TelevisionDescription = () => {
 
   const tvShow = useSelector((state) => state.tvShow.tvShow)
 
-  const cast = useSelector((state) => state.cast)
+  const credits = useSelector((state) => state.credits)
+  const similar = useSelector((state) => state.similar)
   const reviews = useSelector((state) => state.reviews)
   const recommended = useSelector((state) => state.recommended)
   const gallery = useSelector((state) => state.gallery.gallery)
@@ -200,18 +201,39 @@ const TelevisionDescription = () => {
             <Typography variant="h6" color="primary">
               Cast
             </Typography>
-            {cast?.cast?.filter((e,i) => i < 4).map((person, index) => 
-              <Typography style={{display: 'inline-block', marginRight: '20px'}} gutterBottom key={index} variant="body1" color="primary">
-                {person.name}
-              </Typography>
+            <div/>
+            {credits.credits?.cast?.filter((e,i) => i < 4).map((person, index) => 
+              <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
+                <Typography style={{display: 'inline-block', marginRight: '35px'}} gutterBottom variant="h6" color="primary">
+                  {person.name}
+                </Typography>
+                <Typography gutterBottom variant="body1" color="primary">
+                  {person.character}
+                </Typography>
+              </div>
+            )}
+            <div/>
+            {credits.credits?.crew?.filter((person, index) => 
+              person.job === "Producer" || person.job === "Director" || person.job === "Screenplay")
+              .map((person, index) =>
+                <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
+                  <Typography gutterBottom variant="h6" color="primary">
+                    {person.name}
+                  </Typography>
+                  <Typography gutterBottom variant="body1" color="primary">
+                    {person.job}
+                  </Typography>
+                </div>
             )}
           </Box>
         </Card>
       </Paper>
-      <CastList castList={cast.cast} />
-      <MayAlsoLikeSection>
+      <CastList castList={credits.credits?.cast} />
+      { similar.length &&
+      <MayAlsoLikeSection title="Similar Tv Shows">
         <SimilarTvShowContainer />
       </MayAlsoLikeSection>
+      }
       <GallerySection onClick={handleClick} gallery={gallery} />
       <Footer />
     </ThemeProvider>

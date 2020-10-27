@@ -184,7 +184,7 @@ class Home extends Component {
     return (
       <Box>
         <LandingPage movies={this.state.movieCarousel}/>
-        <Box bgcolor="#060f19" padding="2em 3em">
+        <Box bgcolor="#141316" padding="2em 3em">
           <div className={Style.collageContainer}>
             {this.state.tvCollage}
             {this.state.movieCollage}

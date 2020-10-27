@@ -3,7 +3,7 @@ import { Box } from '@material-ui/core'
 import styled from 'styled-components'
 
 const MayAlsoLikeSection = styled(Box)`
-  background-color: #060f19;
+  background-color: #141316;
   color: white;
   font-weight: 200;
   padding-top: 34px;

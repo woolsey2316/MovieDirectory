@@ -50,7 +50,7 @@ const App = () => {
         marginTop: '1em'
       },
       h4: {
-        fontSize: '1.3rem',
+        fontSize: '1rem',
         fontWeigth: 500,
         lineHeight: 2,
         color: '#e8e8e9'

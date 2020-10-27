@@ -45,7 +45,7 @@ function getCredits(id) {
     dispatch(request(id))
     televisionApi.getCredits(id).then(
       (credits) => {
-        dispatch(success(credits.cast))
+        dispatch(success(credits))
       },
       (error) => {
         dispatch(failure(error.toString()))
@@ -56,8 +56,8 @@ function getCredits(id) {
   function request(id) {
     return { type: televisionConstants.TELEVISION_CREDITS_REQUEST, id }
   }
-  function success(cast) {
-    return { type: televisionConstants.TELEVISION_CREDITS_SUCCESS, cast }
+  function success(credits) {
+    return { type: televisionConstants.TELEVISION_CREDITS_SUCCESS, credits }
   }
   function failure(error) {
     return { type: televisionConstants.TELEVISION_CREDITS_FAILURE, error }

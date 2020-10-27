@@ -7,7 +7,7 @@ const CastListSection = styled(Box)`
   background-color: #f2f2f2;
   padding-top: 34px;
   position: relative;
-  padding: 34px 10%;
+  padding: 34px 5%;
 `
 const CastListTitle = styled.h2`
   font-size: 2.313rem;

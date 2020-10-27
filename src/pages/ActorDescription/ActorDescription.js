@@ -16,24 +16,22 @@ import TvShowsStarredIn from './TvShowsStarredIn'
 import MayAlsoLikeSection from '../../components/MayAlsoLikeSection'
 import GallerySection from '../../containers/GallerySection'
 
-import img from '../../assets/images/default_poster.jpg'
-
 const useStyles = makeStyles({
   outer: {
     padding: '2em 5%'
   },
   title: {
-    textAlign: 'right',
+    textAlign: 'left',
     color: '#333333'
   },
   subTitle: {
-    textAlign: 'right'
+    textAlign: 'left'
   },
   role: {
-    textAlign: 'right'
+    textAlign: 'left'
   },
   paragraph: {
-    textAlign: 'right'
+    textAlign: 'left'
   }
 })
 

@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-block'
   },
   blackBg: {
-    backgroundColor: '#060f19'
+    backgroundColor: '#141316'
   },
   leftButton: {
     borderTopLeftRadius: '0 !important',

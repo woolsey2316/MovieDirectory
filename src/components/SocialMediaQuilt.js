@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   outer: {
     float: 'right',
     fontSize: '32px',
-    padding: '8px'
+    padding: '8px 0'
   }
 })
 

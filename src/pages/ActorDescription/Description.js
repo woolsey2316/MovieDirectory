@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { SocialMediaQuilt } from '../../components/SocialMediaQuilt'
 
 import { useSelector } from 'react-redux'
 
@@ -10,17 +9,18 @@ const useStyles = makeStyles({
     paddingLeft: '2em'
   },
   title: {
-    textAlign: 'right',
+    fontWeight: 400,
     color: '#333333'
   },
   subTitle: {
-    textAlign: 'right'
+    margin: '0'
   },
   role: {
-    textAlign: 'right'
+    margin: '0'
   },
   paragraph: {
-    textAlign: 'right'
+    margin: '0',
+    marginBottom: '0.5em'
   }
 })
 
@@ -32,17 +32,14 @@ export default function Description() {
       classes={{ root: styles.outer }}
       display="flex"
       flexDirection="column"
-      alignItems="flex-end"
+      alignItems="flex-start"
     >
       <Typography classes={{ root: styles.title }} variant="h2">
         {actor?.name}
       </Typography>
       <Box classes={{ root: styles.subTitle }}></Box>
-      <Typography classes={{ root: styles.role }} variant="body1">
-        {actor?.known_for_department}
-      </Typography>
-      <SocialMediaQuilt />
-      <Typography classes={{ root: styles.paragraph }} variant="h3">
+      
+      <Typography gutterBottom variant="h3">
         Biography
       </Typography>
       <Typography classes={{ root: styles.paragraph }} variant="body1">

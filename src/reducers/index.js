@@ -8,7 +8,7 @@ import { actor } from './actorId.reducer'
 import { recommended } from './recommended.reducer'
 import { reviews } from './reviews.reducer'
 import { similar } from './similar.reducer'
-import { cast } from './cast.reducer'
+import { credits } from './credits.reducer'
 import { gallery } from './gallery.reducer'
 
 const rootReducer = combineReducers({
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   recommended,
   reviews,
   similar,
-  cast,
+  credits,
   gallery,
   movie,
   tvShow
