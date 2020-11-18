@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans&display=swap');
 
 .outer {
-    width: 40%;
     display: flex;
+    padding: 0 1em;
 }
 
 .description {
@@ -19,7 +19,7 @@ h3 {
     text-align: left;
     margin-top: 0;
     font-size: 28px;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.85s ease;
     color: #383636;
 }
 

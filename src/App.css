@@ -8,11 +8,8 @@
 }
 
 .searchResultCanvas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  align-content: space-around;
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
 img {

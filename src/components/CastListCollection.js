@@ -3,26 +3,32 @@ import { Row, Col } from 'antd'
 import CastMember from '../pages/MovieDescription/CastMember'
 
 export default function CastListCollection({ castList }) {
+  const actor = castList?.filter((e, i) => i < 10)
+ 
   return (
     <>
-      {castList
-        ?.filter((e, i) => i < 10)
-        .map(
-          (person, rowIndex) =>
-            rowIndex % 5 === 0 && (
-              <Row justify="space-between" key={rowIndex}>
-                {castList.map(
-                  (person, index) =>
-                    index >= rowIndex &&
-                    index < rowIndex + 5 && (
-                      <Col span={4} key={index + rowIndex * index}>
-                        <CastMember person={person} />
-                      </Col>
-                    )
-                )}
-              </Row>
+      <Row justify="space-around">
+        {actor?.map(
+          (person, index) =>
+            index >= 0 &&
+            index < actor.length/2 && (
+              <Col span={4} key={index}>
+                <CastMember person={person} />
+              </Col>
             )
         )}
+      </Row>
+      <Row justify="space-around">
+        {actor?.map(
+          (person, index) =>
+            index >= actor.length/2 &&
+            index <= 10 && (
+              <Col span={4} key={index}>
+                <CastMember person={person} />
+              </Col>
+            )
+        )}
+      </Row>
     </>
   )
 }
