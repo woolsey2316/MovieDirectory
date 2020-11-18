@@ -80,7 +80,6 @@ class Home extends Component {
       )
       .then(
         (response) => {
-          console.log('Fetched data successfully')
           let resultList = this.processTop3Results('tv', response.results)
           this.setState({
             tvCollage: (
@@ -101,7 +100,6 @@ class Home extends Component {
       )
       .then(
         (response) => {
-          console.log('Fetched data successfully')
           let resultList = this.processTop3Results('movie', response.results)
           this.setState({
             movieCollage: (
@@ -129,7 +127,6 @@ class Home extends Component {
       )
       .then(
         (response) => {
-          console.log('Fetched data successfully')
 
           this.setState({
             recentMovies: this.processAPI_Response(response.results)
@@ -148,7 +145,6 @@ class Home extends Component {
       )
       .then(
         (response) => {
-          console.log('Fetched data successfully')
           this.setState({
             popularMovies: this.processAPI_Response(response.results)
           })

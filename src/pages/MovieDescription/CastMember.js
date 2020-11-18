@@ -8,7 +8,7 @@ const SubText = styled(Typography)`
   color: #737373;
   font-size: 14px;
   font-weight: 500;
-  margin-top: 8px;
+  margin: 8px 0;
   text-align: center;
 `
 const Heading = styled.h4`
@@ -17,7 +17,7 @@ const Heading = styled.h4`
   font-weight: bold;
   text-transform: uppercase;
   &:hover {
-    color: #e0041d;
+    text-decoration: underline;
     cursor: pointer;
   }
 `
@@ -28,6 +28,7 @@ const TextBox = styled.div`
 const Profile = styled.img`
   height: auto;
   max-width: 100%;
+  cursor: pointer;
 `
 export default function CastMember({ person }) {
   function handleClick() {

@@ -43,8 +43,6 @@ const TelevisionContextProvider = (props) => {
   useEffect(() => {
     const loadTelevisionPage = () => {
       console.log('before changing url, television: ')
-      console.log({ television })
-      //window.location.href = `/televisions/${television.id}`
     }
 
     if (television?.id) {

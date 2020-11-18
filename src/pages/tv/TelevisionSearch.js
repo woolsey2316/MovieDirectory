@@ -8,7 +8,6 @@ class TelevisionSearch extends Component {
     super(props)
     this.state = { televisions: [] }
     this.searchChangeHandler = this.searchChangeHandler.bind(this)
-    console.log({ props })
   }
 
   searchChangeHandler(event) {

@@ -2,12 +2,16 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box } from '@material-ui/core'
 
-import SendIcon from '@material-ui/icons/Send'
+import FacebookIcon from '@material-ui/icons/Facebook'
+import PinterestIcon from '@material-ui/icons/Pinterest'
+import TwitterIcon from '@material-ui/icons/Twitter'
+import YouTubeIcon from '@material-ui/icons/YouTube'
 
 const useStyles = makeStyles((theme) => ({
   outer: {
     margin: '0 auto',
-    padding: '2em 15px'
+    padding: '2em 15px',
+
   },
   movieCategory: {
     width: '25%',
@@ -82,14 +86,35 @@ const useStyles = makeStyles((theme) => ({
     border: 'transparent',
     borderLeft: '1px solid #fff',
     padding: '5px 10px',
-    height: '100%',
+    height: '100%'
+  },
+  icon :{
+    color: 'white',
+    cursor: 'pointer',
+    fontSize: '25px',
+    
+  },
+  iconBox: {
+    width: '2.5em',
+    height: '2.5em',
+    borderRadius: '2em',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    WebkitTransition: 'all 0.4s ease-in-out',
+    mozTransition: 'all 0.4s ease-in-out',
+    msTransition: 'all 0.4s ease-in-out',
+    oTransition: 'all 0.4s ease-in-out',
+    transition: 'all 0.4s ease-in-out',
     '&:hover, &:focus': {
-      WebkitTransition: 'all 0.4s ease-in-out',
-      mozTransition: 'all 0.4s ease-in-out',
-      msTransition: 'all 0.4s ease-in-out',
-      oTransition: 'all 0.4s ease-in-out',
-      transition: 'all 0.4s ease-in-out'
+      backgroundColor: '#1e1e1e' 
     }
+  },
+  iconContainer: {
+    margin: "0 auto",
+    display: 'flex',
+    justifyContent: "center"
   }
 }))
 
@@ -98,11 +123,23 @@ export default function Footer() {
   return (
     <Box
       classes={{ root: styles.outer }}
-      display="flex"
-      justifyContent="space-around"
-      bgcolor="#182028"
+      bgcolor="#000"
     >
-      <div classes={{ root: styles.movieCategory }}>
+      <div className={styles.iconContainer}>
+        <div className={styles.iconBox}>
+          <FacebookIcon classes={{ root: styles.icon}} />
+        </div>
+        <div className={styles.iconBox}>
+          <PinterestIcon classes={{ root: styles.icon}} />
+        </div>
+        <div className={styles.iconBox}>
+          <TwitterIcon classes={{ root: styles.icon}} />
+        </div>
+        <div className={styles.iconBox}>
+          <YouTubeIcon classes={{ root: styles.icon}} />
+        </div>
+      </div>
+      {/* <div classes={{ root: styles.movieCategory }}>
         <div>
           <h2>
             <span className={styles.title}>Movie Category</span>
@@ -121,18 +158,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a className={styles.a} href="/actor">
-                  Actor
-                </a>
-              </li>
-              <li>
                 <a className={styles.a} href="/home">
                   Upcoming Movies
-                </a>
-              </li>
-              <li>
-                <a className={styles.a} href="/home">
-                  Contact Us
                 </a>
               </li>
             </ul>
@@ -142,21 +169,11 @@ export default function Footer() {
       <div>
         <div classes={{ root: styles.movieCategory }}>
           <h2>
-            <span className={styles.title}>Information</span>
+            <span className={styles.title}>Television Category</span>
             <div className={styles.underline}></div>
           </h2>
           <div>
             <ul className={styles.ul}>
-              <li>
-                <a className={styles.a} href="/home">
-                  About Us
-                </a>{' '}
-              </li>
-              <li>
-                <a className={styles.a} href="/home">
-                  Forums
-                </a>
-              </li>
               <li>
                 <a className={styles.a} href="/home">
                   Hot Collection
@@ -164,12 +181,12 @@ export default function Footer() {
               </li>
               <li>
                 <a className={styles.a} href="/home">
-                  Upcoming Movies
+                  Upcoming Television
                 </a>
               </li>
               <li>
                 <a className={styles.a} href="/movie">
-                  All Movies
+                  All Tv Shows
                 </a>
               </li>
             </ul>
@@ -202,7 +219,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </Box>
   )
 }

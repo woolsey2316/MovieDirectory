@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Style from './MoviePoster.module.css'
 import { displayDate } from '../helpers'
+import { makeStyles } from '@material-ui/core/styles'
 import { Box, Typography, withStyles } from '@material-ui/core'
 import { Rating } from '@material-ui/lab'
 import { MovieContext } from '../context'
@@ -19,7 +20,29 @@ const StyledRating = withStyles({
   }
 })(Rating)
 
+const useStyles = makeStyles((theme) => ({
+  iconEmpty: {
+    color: '#e5e3e4'
+  },
+  iconFilled: {
+    color: '#b03226'
+  },
+  title : {
+    color: '#e8e8e9',
+    margin: '0.3em 0',
+    maxWidth: '230px',
+    cursor: 'pointer',
+    '&:hover' : {
+      textDecoration: 'underline'
+    }
+  },
+  root: {
+    marginTop: '0.4em'
+  }
+}))
+
 export default function MoviePoster(props) {
+  const styles = useStyles()
   const { setLocalStorage, setMovieContext } = useContext(MovieContext)
 
   function viewMovie() {
@@ -55,7 +78,7 @@ export default function MoviePoster(props) {
         readOnly
       />
       <Typography
-        style={{ color: '#e8e8e9', margin: '0.3em 0', maxWidth: '230px' }}
+        classes={{ root: styles.title }}
         variant="h5"
         onClick={viewMovie.bind(this)}
       >

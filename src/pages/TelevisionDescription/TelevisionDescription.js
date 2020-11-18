@@ -1,6 +1,5 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
-import { TelevisionContext } from '../../context'
 
 import MayAlsoLikeSection from '../../components/MayAlsoLikeSection'
 import SimilarTvShowContainer from './SimilarTvShowContainer'
@@ -81,8 +80,6 @@ const fac = new FastAverageColor()
 
 const TelevisionDescription = () => {
   const styles = useStyles()
-
-  const { television } = useContext(TelevisionContext)
 
   const location = useLocation()
 

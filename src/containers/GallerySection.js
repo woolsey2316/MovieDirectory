@@ -2,8 +2,6 @@ import React from 'react'
 import Styled from 'styled-components'
 import SectionTitle from '../components/SectionTitle'
 
-import { useSelector } from 'react-redux'
-
 import Gallery from 'react-photo-gallery'
 
 const SectionContent = Styled.div`
@@ -32,7 +30,6 @@ export default function GallerySection({ gallery }) {
     })
 
   function handleClick(e, obj) {
-    const src = obj.photo.src
     window.location.href =
       'https://image.tmdb.org/t/p/original/' +
       obj.photo.src.split('/').slice(-1)

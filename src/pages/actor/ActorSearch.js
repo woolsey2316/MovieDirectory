@@ -22,11 +22,9 @@ class ActorSearch extends Component {
     super(props)
     this.state = { actors: [] }
     this.searchChangeHandler = this.searchChangeHandler.bind(this)
-    console.log({ props })
   }
 
   searchChangeHandler(event) {
-    console.log(event.target.value)
     const searchTerm = event.target.value
     this.props.searchActor(searchTerm)
   }

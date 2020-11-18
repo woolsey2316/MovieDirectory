@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 
 const MovieContext = React.createContext()
 
@@ -42,8 +41,6 @@ const MovieContextProvider = (props) => {
   useEffect(() => {
     const loadMoviePage = () => {
       console.log('before changing url, movie: ')
-      console.log({ movie })
-      //window.location.href = `/movies/${movie.id}`
     }
 
     if (movie?.id) {

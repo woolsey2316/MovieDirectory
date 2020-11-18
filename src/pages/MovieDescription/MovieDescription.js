@@ -80,6 +80,10 @@ const useStyles = makeStyles((theme) => ({
   description: {
     padding: '2.5em',
     textShadow: '1px 1px 5px rgba(0,0,0,0.4)'
+  },
+  genreDetails: {
+    marginBottom: '1em',
+    paddingLeft: '0'
   }
 }))
 
@@ -177,7 +181,7 @@ const MovieDescription = () => {
             <Typography variant="h3" color="primary">
               {movieItem?.title}
             </Typography>
-            <Box display="flex">
+            <Box display="flex" classes={{ root: styles.genreDetails }}>
               <GenreList genreId={movieItem?.genres} />
               <Typography color="primary" style={{ margin: '0 0.3em' }}>
                 &middot;
@@ -190,7 +194,7 @@ const MovieDescription = () => {
             <Typography variant="h6" color="primary">
               Overview
             </Typography>
-            <Typography variant="body1" color="primary">
+            <Typography variant="body1" gutterBottom color="primary">
               {movieItem?.overview}
             </Typography>
             <div/>

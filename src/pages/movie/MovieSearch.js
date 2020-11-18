@@ -8,7 +8,6 @@ class MovieSearch extends Component {
     super(props)
     this.state = { movies: [] }
     this.searchChangeHandler = this.searchChangeHandler.bind(this)
-    console.log({ props })
   }
 
   searchChangeHandler(event) {
