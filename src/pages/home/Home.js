@@ -26,9 +26,9 @@ class Home extends Component {
   }
 
   processAPI_Response(results) {
-    var resultList = []
-    
-    for (let i = 0; i < this.context.width / 300; i++) {
+    if (!results) return
+    let resultList = []
+    for (let i = 0; i < this.context.width / 300 && i < results.length; i++) {
       results[i].poster_src =
         'https://image.tmdb.org/t/p/w185' + results[i].poster_path
       const movie = <MoviePoster key={results[i].id} show={results[i]} />
@@ -39,7 +39,8 @@ class Home extends Component {
   }
 
   processTop3Results(type, results) {
-    var resultList = []
+    if (!results) return
+    let resultList = []
     switch (type) {
       case 'tv':
         for (let i = 0; i < 3; i++) {
@@ -62,7 +63,8 @@ class Home extends Component {
   }
 
   findPopularMovies(results) {
-    var resultList = []
+    if (!results) return
+    let resultList = []
     for (let i = 3; i < 6; i++) {
       results[i].poster_src =
         'https://image.tmdb.org/t/p/original' + results[i].backdrop_path
@@ -81,6 +83,7 @@ class Home extends Component {
       .then(
         (response) => {
           let resultList = this.processTop3Results('tv', response.results)
+          if (!resultList) return
           this.setState({
             tvCollage: (
               <TelevisionCollage key={resultList[0].id} showList={resultList} />
@@ -101,6 +104,7 @@ class Home extends Component {
       .then(
         (response) => {
           let resultList = this.processTop3Results('movie', response.results)
+          if (!resultList) return
           this.setState({
             movieCollage: (
               <MovieCollage key={resultList[0].id} movieList={resultList} />
@@ -123,7 +127,7 @@ class Home extends Component {
     discoverApi
       .searchMovie(
         '&language=en-US&sort_by=popularity.desc&include_adult=false' +
-          '&include_video=false&page=1&primary_release_year=2020'
+          `&include_video=false&page=1&primary_release_year=${new Date().getFullYear()}`
       )
       .then(
         (response) => {
@@ -186,7 +190,7 @@ class Home extends Component {
             {this.state.movieCollage}
           </div>
           <SectionHeading
-            title="Released in 2020"
+            title={`Released in ${new Date().getFullYear()}`}
             description="View the latest movies"
           />
           <Box display="flex" justifyContent="space-around">{this.state.recentMovies}</Box>

@@ -10,6 +10,7 @@ const AppState = (props) => {
     genreApi.getGenreDictionary().then(
       (response) => {
         let map = new Map()
+        if (!response.genres) return
         response.genres.forEach((elem) => {
           map.set(elem.id, elem.name)
         })

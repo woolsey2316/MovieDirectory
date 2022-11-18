@@ -21,7 +21,7 @@ async function getReviews(televisionId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv/${televisionId}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/tv/${televisionId}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -36,7 +36,7 @@ async function getCredits(televisionId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv/${televisionId}/credits?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/tv/${televisionId}/credits?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -48,7 +48,7 @@ async function getSimilarTelevisions(televisionId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv/${televisionId}/similar?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/tv/${televisionId}/similar?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -60,7 +60,7 @@ async function getRecommendedTelevisions(televisionId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv/${televisionId}/reviews?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/tv/${televisionId}/reviews?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -72,7 +72,7 @@ async function getImages(televisionId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv/${televisionId}/images?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/tv/${televisionId}/images?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -84,7 +84,7 @@ async function getDetails(id) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)

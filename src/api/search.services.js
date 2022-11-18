@@ -19,7 +19,7 @@ async function searchMovie(searchTerm) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
     requestOptions
   )
   return handleResponse(response)
@@ -31,7 +31,7 @@ async function searchTelevision(searchTerm) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
     requestOptions
   )
   return handleResponse(response)
@@ -43,7 +43,7 @@ async function searchActor(searchTerm) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}search/person?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/search/person?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`,
     requestOptions
   )
   return handleResponse(response)

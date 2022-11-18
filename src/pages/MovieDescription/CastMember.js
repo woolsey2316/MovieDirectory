@@ -9,7 +9,6 @@ const SubText = styled(Typography)`
   font-size: 14px;
   font-weight: 500;
   margin: 8px 0;
-  text-align: center;
 `
 const Heading = styled.h4`
   color: #1a1d24;
@@ -22,8 +21,8 @@ const Heading = styled.h4`
   }
 `
 const TextBox = styled.div`
-  padding: 1.5em 1em 0.5em;
-  text-align: center;
+  padding: 1.5em 0em 0.5em;
+  text-align: left;
 `
 const Profile = styled.img`
   height: auto;

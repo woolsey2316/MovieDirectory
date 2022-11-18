@@ -18,7 +18,7 @@ export default function CastListCollection({ castList }) {
             )
         )}
       </Row>
-      <Row justify="space-around">
+      <Row style={{marginTop: 30}} justify="space-around">
         {actor?.map(
           (person, index) =>
             index >= actor.length/2 &&

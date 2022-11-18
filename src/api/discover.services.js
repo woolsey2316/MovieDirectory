@@ -33,10 +33,12 @@ async function searchMovie(params) {
     headers: { 'Content-Type': 'application/json' }
   }
   console.log(
-    `fetch request : ${process.env.REACT_APP_BASE_URL}discover/movie?api_key=${process.env.REACT_APP_API_KEY}${params}`
+    `fetch request : ${process.env.REACT_APP_MOVIE_DB_BASE_URL}/discover/movie?api_key=${process.env.REACT_APP_API_KEY}${params}`
   )
+  console.log(process.env.REACT_APP_MOVIE_DB_BASE_URL)
+  console.log(process.env.REACT_APP_API_KEY)
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}discover/movie?api_key=${process.env.REACT_APP_API_KEY}${params}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/discover/movie?api_key=${process.env.REACT_APP_API_KEY}${params}`,
     requestOptions
   )
   return handleResponse(response)
@@ -48,7 +50,7 @@ async function searchTelevision(params) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}discover/tv?api_key=${process.env.REACT_APP_API_KEY}${params}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/discover/tv?api_key=${process.env.REACT_APP_API_KEY}${params}`,
     requestOptions
   )
   return handleResponse(response)
@@ -60,7 +62,7 @@ async function searchActor(params) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}discover/actor?api_key=${process.env.REACT_APP_API_KEY}${params}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/discover/actor?api_key=${process.env.REACT_APP_API_KEY}${params}`,
     requestOptions
   )
   return handleResponse(response)

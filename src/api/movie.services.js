@@ -21,7 +21,7 @@ async function getReviews(movieId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/movie/${movieId}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -36,7 +36,7 @@ async function getCredits(movieId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/credits?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/movie/${movieId}/credits?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -48,7 +48,7 @@ async function getSimilarMovies(movieId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/similar?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/movie/${movieId}/similar?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -60,7 +60,7 @@ async function getRecommendedMovies(movieId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/reviews?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/movie/${movieId}/reviews?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -72,7 +72,7 @@ async function getImages(movieId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie/${movieId}/images?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/movie/${movieId}/images?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -84,7 +84,7 @@ async function getDetails(movieId) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)

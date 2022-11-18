@@ -16,7 +16,7 @@ async function getDetails(id) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}person/${id}?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/person/${id}?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -28,7 +28,7 @@ async function getImages(id) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}person/${id}/images?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/person/${id}/images?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -40,7 +40,7 @@ async function getMovieCredits(id) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}person/${id}/movie_credits?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/person/${id}/movie_credits?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
@@ -52,7 +52,7 @@ async function getTelevisionCredits(id) {
     headers: { 'Content-Type': 'application/json' }
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BASE_URL}person/${id}/tv_credits?api_key=${process.env.REACT_APP_API_KEY}`,
+    `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/person/${id}/tv_credits?api_key=${process.env.REACT_APP_API_KEY}`,
     requestOptions
   )
   return handleResponse(response)
