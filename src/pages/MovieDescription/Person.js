@@ -44,7 +44,7 @@ export default function Person({ person }) {
         }
       />
       <TextBox>
-        <Heading>{person.name}</Heading>
+        <Heading onClick={handleClick}>{person.name}</Heading>
         <SubText>{person.character}</SubText>
       </TextBox>
     </>

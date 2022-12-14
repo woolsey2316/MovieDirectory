@@ -7,7 +7,7 @@ import GallerySection from '../../containers/GallerySection'
 import SimilarCollection from './SimilarCollection'
 import Footer from '../../components/Footer'
 
-import CastList from './CastList'
+import ListOfPeople from '../../components/ListOfPeople'
 
 import FastAverageColor from 'fast-average-color'
 
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   poster: {
-    height: '80vh',
+    height: '600px',
     minWidth: '342px',
     borderRadius: '1em'
   },
@@ -175,6 +175,9 @@ const MovieDescription = () => {
               {movieItem?.overview}
             </Typography>
             <div/>
+            <Typography variant="h6" color="primary">
+              Cast
+            </Typography>
             {credits?.cast?.filter((e,i) => i < 4).map((person, index) => 
               <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
                 <Typography style={{display: 'inline-block', marginRight: '35px'}} gutterBottom variant="h6" color="primary">
@@ -185,7 +188,9 @@ const MovieDescription = () => {
                 </Typography>
               </div>
             )}
-            <div/>
+            <Typography variant="h6" color="primary">
+              Crew
+            </Typography>
             {credits?.crew?.filter((person, index) => 
               person.job === "Producer" || person.job === "Director" || person.job === "Screenplay")
               .map((person, index) =>
@@ -201,13 +206,14 @@ const MovieDescription = () => {
           </Box>
         </Card>
       </Paper>
-      <CastList castList={credits?.cast} />
+      <ListOfPeople title="Cast List" list={credits?.cast} limit={10}/>
+      <ListOfPeople title="Crew List" list={credits?.crew} limit={5}/>
       { similar?.length &&
       <MayAlsoLikeSection title="Similar Movies">
         <SimilarCollection similar={similar}/>
       </MayAlsoLikeSection>
       }
-      <GallerySection gallery={gallery} />
+      <GallerySection gallery={gallery?.posters} />
       <Footer />
     </ThemeProvider>
   )

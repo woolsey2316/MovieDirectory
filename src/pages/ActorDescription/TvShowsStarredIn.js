@@ -4,7 +4,7 @@ import TelevisionPoster from '../../components/TelevisionPoster'
 
 export default function TvShowsStarredIn({ tvShows }) {
   return (
-    <Row justify="space-between">
+    <Row>
       {tvShows
         ?.filter((e, i) => i < 15)
         .map((show, index) => (

@@ -4,7 +4,6 @@ import Style from '../pages/movie/Movie.module.css'
 
 class Television extends Component {
   viewTelevision() {
-    console.log('Trying to view television')
     const url = 'https://www.themoviedb.org/tv/' + this.props.show.id
     window.location.href = url
   }

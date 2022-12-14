@@ -17,8 +17,7 @@ const SectionContent = Styled.div`
 `
 
 export default function GallerySection({ gallery }) {
-  const photos = gallery?.posters
-    ?.filter(
+  const photos = gallery?.filter(
       (elem, index) => elem.iso_639_1 === 'en' || elem.iso_639_1 === null
     )
     .map((image) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocation} from 'react-router-dom';
 
-import {Box} from '@material-ui/core';
+import styled from 'styled-components'
 import {makeStyles} from '@material-ui/core/styles';
 
 import {ProfileImage} from './ProfileImage';
@@ -20,9 +20,19 @@ import {
   useGetTelevisionCreditsByIdQuery,
 } from '../../features/actor/actor-slice-api';
 
+const Box = styled.div`
+  padding: 2em 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+`
+
 const useStyles = makeStyles({
   outer: {
     padding: '2em 5%',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
   },
   title: {
     textAlign: 'left',
@@ -71,14 +81,11 @@ function ActorDescription() {
     refetchOnMountOrArgChange: true,
     skip: false,
   });
-console.log(detailsData)
+console.log(imageData)
   return (
     <>
       <Box
         classes={{root: styles.outer}}
-        display="flex"
-        justifyContent="space-between"
-        alignItems="flex-start"
       >
         <ProfileImage url={detailsData?.profile_path} />
         <Description details={detailsData} />

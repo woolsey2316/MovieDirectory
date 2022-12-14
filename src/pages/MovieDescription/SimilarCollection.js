@@ -4,7 +4,7 @@ import MoviePoster from '../../components/MoviePoster'
 
 export default function SimilarCollection({similar}) {
   return (
-    <Row justify="space-between">
+    <Row justify="space-around">
       {similar
         ?.filter((e, i) => i < similar.length)
         .map((show, index) => (

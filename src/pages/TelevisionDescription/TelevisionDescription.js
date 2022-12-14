@@ -7,7 +7,7 @@ import GallerySection from '../../containers/GallerySection'
 import Footer from '../../components/Footer'
 
 import { GenreList } from '../../components/GenreList'
-import ListOfPeople from './ListOfPeople'
+import ListOfPeople from '../../components/ListOfPeople'
 
 import FastAverageColor from 'fast-average-color'
 
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   poster: {
-    height: '80vh',
+    height: '600px',
     minWidth: '342px',
     borderRadius: '1em'
   },
@@ -166,7 +166,9 @@ const TelevisionDescription = () => {
                 </Typography>
               </div>
             )}
-            <div/>
+            <Typography variant="h6" color="primary">
+              Crew
+            </Typography>
             {credits?.crew?.filter((person, index) => 
               person.job === "Producer" || person.job === "Director" || person.job === "Screenplay")
               .map((person, index) =>
@@ -189,7 +191,7 @@ const TelevisionDescription = () => {
         <SimilarTvShowContainer similar={similar}/>
       </MayAlsoLikeSection>
       }
-      <GallerySection onClick={handleClick} gallery={gallery} />
+      <GallerySection onClick={handleClick} gallery={gallery?.posters} />
       <Footer />
     </ThemeProvider>
   )

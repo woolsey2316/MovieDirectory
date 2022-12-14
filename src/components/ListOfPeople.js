@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
 import styled from 'styled-components'
-import ListCollection from '../../components/ListCollection'
+import ListCollection from './ListCollection'
 
 const ListSection = styled(Box)`
   background-color: #f2f2f2;

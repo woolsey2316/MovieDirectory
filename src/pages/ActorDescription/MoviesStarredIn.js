@@ -4,7 +4,7 @@ import MoviePoster from '../../components/MoviePoster'
 
 export default function MoviesStarredIn({ movies }) {
   return (
-    <Row justify="space-between">
+    <Row>
       {movies
         ?.filter((e, i) => i < 15)
         .map((show, index) => (

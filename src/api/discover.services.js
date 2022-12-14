@@ -32,11 +32,6 @@ async function searchMovie(params) {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   }
-  console.log(
-    `fetch request : ${process.env.REACT_APP_MOVIE_DB_BASE_URL}/discover/movie?api_key=${process.env.REACT_APP_API_KEY}${params}`
-  )
-  console.log(process.env.REACT_APP_MOVIE_DB_BASE_URL)
-  console.log(process.env.REACT_APP_API_KEY)
   const response = await fetch(
     `${process.env.REACT_APP_MOVIE_DB_BASE_URL}/discover/movie?api_key=${process.env.REACT_APP_API_KEY}${params}`,
     requestOptions

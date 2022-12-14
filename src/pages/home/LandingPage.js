@@ -51,6 +51,7 @@ export default function LandingPage() {
     <>
       <Carousel
         effect="fade"
+        autoplay={true}
         prevArrow={
           <NavigationOutlinedIcon classes={{ root: style.leftArrow }} />
         }
@@ -62,9 +63,10 @@ export default function LandingPage() {
           <div
             style={{
               height: '100vh',
-              backgroundPosition: '-200px 0',
               backgroundImage:
-                'linear-gradient(to top, rgba(242, 101, 34, 0.51) -18%, rgba(10, 21, 33, 0.9) 34%), url(home.jpg)'
+                'linear-gradient(to top, rgba(242, 101, 34, 0.51) -18%, rgba(10, 21, 33, 0.9) 34%), url(home.jpg)',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover'
             }}
           >
             <Navigation transparent={true} position="fixed-top" theme="dark" />
@@ -83,7 +85,9 @@ export default function LandingPage() {
             style={{
               height: '100vh',
               backgroundPosition: '40% 0',
-              backgroundImage: 'url(author.jpg)'
+              backgroundImage: 'url(author.jpg)',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover'
             }}
           >
             <Navigation transparent={true} position="fixed-top" theme="dark" />
