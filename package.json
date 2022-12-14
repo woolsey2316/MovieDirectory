@@ -21,7 +21,7 @@
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.11.0",
-    "react-native": "^0.61.4",
+    "react-native": "^0.70.6",
     "react-photo-gallery": "^8.0.0",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.1.2",
