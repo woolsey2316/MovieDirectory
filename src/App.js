@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
-import MovieSearchContainer from './pages/movie/MovieSearchContainer'
-import ActorSearchContainer from './pages/actor/ActorSearchContainer'
-import TelevisionSearchContainer from './pages/tv/TelevisionSearchContainer'
+import MovieSearch from './pages/movie/MovieSearch'
+import ActorSearch from './pages/actor/ActorSearch'
+import TelevisionSearch from './pages/tv/TelevisionSearch'
 import { MovieDescription } from './pages/MovieDescription'
 import { TelevisionDescription } from './pages/TelevisionDescription'
 import { ActorDescription } from './pages/ActorDescription'
@@ -117,13 +117,13 @@ const App = () => {
                     <Home />
                   </Route>
                   <Route exact path="/movie">
-                    <MovieSearchContainer />
+                    <MovieSearch />
                   </Route>
                   <Route exact path="/television">
-                    <TelevisionSearchContainer />
+                    <TelevisionSearch />
                   </Route>
                   <Route exact path="/actor">
-                    <ActorSearchContainer />
+                    <ActorSearch />
                   </Route>
                   <Route path="/movie/:movieId">
                     <MovieDescription />

@@ -1,15 +1,11 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
-import { MovieContext } from '../../context'
 import { GenreList } from '../../components/GenreList'
 
 import MayAlsoLikeSection from '../../components/MayAlsoLikeSection'
 import GallerySection from '../../containers/GallerySection'
 import SimilarCollection from './SimilarCollection'
 import Footer from '../../components/Footer'
-
-import { useDispatch, useSelector } from 'react-redux'
-import { movieActions } from '../../actions'
 
 import CastList from './CastList'
 
@@ -22,10 +18,18 @@ import Navigation from '../../components/Navigation'
 import {
   makeStyles,
   ThemeProvider,
-  createMuiTheme
+  createTheme
 } from '@material-ui/core/styles'
 
-const theme = createMuiTheme({
+import {
+  useGetMovieCreditsQuery,
+  useGetSimilarMovieQuery,
+  useGetMovieDetailsQuery,
+  useGetMovieGalleryQuery
+} from '../../features/movie/movie-slice-api'
+
+
+const theme = createTheme({
   typography: {
     h2: {
       fontSize: '2.6rem',
@@ -91,62 +95,35 @@ const fac = new FastAverageColor()
 
 const MovieDescription = () => {
   const styles = useStyles()
-
-  const { movie } = useContext(MovieContext)
-
   const location = useLocation()
 
-  useEffect(
-    (movie) => {
-      if (location.pathname.includes('/movie/')) {
-        const tvId = location.pathname.split('/').slice(-1)
-        dispatch(movieActions.getDetails(tvId))
-
-        fetchMoreDetails(tvId)
-      }
-    },
-    [location]
-  )
+  const movieId = location.pathname.split('/').slice(-1)[0]
+  const {
+    data: movieItem,
+  } = useGetMovieDetailsQuery(movieId, {
+    refetchOnMountOrArgChange: true,
+    skip: false,
+  });
+  const {
+    data: credits,
+  } = useGetMovieCreditsQuery(movieId, {
+    refetchOnMountOrArgChange: true,
+    skip: false,
+  });
+  const {
+    data: similar,
+  } = useGetSimilarMovieQuery(movieId, {
+    refetchOnMountOrArgChange: true,
+    skip: false,
+  });
+  const {
+    data: gallery,
+  } = useGetMovieGalleryQuery(movieId, {
+    refetchOnMountOrArgChange: true,
+    skip: false,
+  });
 
   const [tint, setTint] = useState()
-
-  const dispatch = useDispatch()
-
-  const movieItem = useSelector((state) => state.movie.movie)
-
-  const credits = useSelector((state) => state.credits)
-  const similar = useSelector((state) => state.similar)
-  const reviews = useSelector((state) => state.reviews)
-  const recommended = useSelector((state) => state.recommended)
-  const gallery = useSelector((state) => state.gallery.gallery)
-
-  function fetchCredits(id) {
-    dispatch(movieActions.getCredits(id))
-  }
-
-  function fetchReviews(id) {
-    dispatch(movieActions.getReviews(id))
-  }
-
-  function fetchSimilar(id) {
-    dispatch(movieActions.getSimilarMovies(id))
-  }
-
-  function fetchRecommended(id) {
-    dispatch(movieActions.getRecommendedMovies(id))
-  }
-
-  function fetchGallery(id) {
-    dispatch(movieActions.getImages(id))
-  }
-
-  function fetchMoreDetails(id) {
-    fetchReviews(id)
-    fetchSimilar(id)
-    fetchRecommended(id)
-    fetchCredits(id)
-    fetchGallery(id)
-  }
 
   fac
     .getColorAsync(`https://image.tmdb.org/t/p/w342/${movieItem?.poster_path}`)
@@ -198,7 +175,7 @@ const MovieDescription = () => {
               {movieItem?.overview}
             </Typography>
             <div/>
-            {credits.credits?.cast?.filter((e,i) => i < 4).map((person, index) => 
+            {credits?.cast?.filter((e,i) => i < 4).map((person, index) => 
               <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
                 <Typography style={{display: 'inline-block', marginRight: '35px'}} gutterBottom variant="h6" color="primary">
                   {person.name}
@@ -209,7 +186,7 @@ const MovieDescription = () => {
               </div>
             )}
             <div/>
-            {credits.credits?.crew?.filter((person, index) => 
+            {credits?.crew?.filter((person, index) => 
               person.job === "Producer" || person.job === "Director" || person.job === "Screenplay")
               .map((person, index) =>
                 <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
@@ -224,10 +201,10 @@ const MovieDescription = () => {
           </Box>
         </Card>
       </Paper>
-      <CastList castList={credits.credits?.cast} />
-      { similar.length &&
+      <CastList castList={credits?.cast} />
+      { similar?.length &&
       <MayAlsoLikeSection title="Similar Movies">
-        <SimilarCollection />
+        <SimilarCollection similar={similar}/>
       </MayAlsoLikeSection>
       }
       <GallerySection gallery={gallery} />

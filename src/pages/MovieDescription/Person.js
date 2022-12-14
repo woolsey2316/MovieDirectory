@@ -29,7 +29,7 @@ const Profile = styled.img`
   max-width: 100%;
   cursor: pointer;
 `
-export default function CastMember({ person }) {
+export default function Person({ person }) {
   function handleClick() {
     window.location.href = `../actor/${person.id}`
   }

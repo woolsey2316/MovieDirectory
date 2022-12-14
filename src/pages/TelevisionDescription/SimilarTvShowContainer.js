@@ -2,10 +2,8 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import TelevisionPoster from '../../components/TelevisionPoster'
 
-import { useSelector } from 'react-redux'
 
-export default function SimilarTvShowContainer() {
-  const similar = useSelector((state) => state.similar.similar)
+export default function SimilarTvShowContainer({similar}) {
   return (
     <Row justify="space-between">
       {similar

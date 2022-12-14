@@ -1,40 +1,40 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Movie from './Movie.js'
 import SearchBar from '../../components/SearchBar.js'
 import Navigation from '../../components/Navigation.js'
 
-class MovieSearch extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { movies: [] }
-    this.searchChangeHandler = this.searchChangeHandler.bind(this)
+import { useGetMovieByNameQuery } from '../../features/movie/movie-slice-api'
+
+function MovieSearch() {
+  const [searchTerm, setSearchTerm] = useState("")
+  const {
+    data
+  } = useGetMovieByNameQuery(searchTerm, {
+    refetchOnMountOrArgChange: true,
+    skip: false,
+  })
+  function searchChangeHandler(event) {
+    const searchTerm = event.target.value
+    setSearchTerm(searchTerm)
   }
 
-  searchChangeHandler(event) {
-    console.log(event.target.value)
-    const searchTerm = event.target.value
-    this.props.searchMovie(searchTerm)
-  }
-  render() {
-    return (
-      <div>
-        <Navigation
-          bg="dark"
-          theme="dark"
-          searchBar={
-            <SearchBar type="movies" onChange={this.searchChangeHandler} />
-          }
-        />
-        <div className="searchResultCanvas">
-          {this.props.movies.movieResults?.map((show) => {
-            show.poster_src =
-              'https://image.tmdb.org/t/p/w185' + show.poster_path
-            return <Movie key={show.id} show={show} />
-          })}
-        </div>
+  return (
+    <div>
+      <Navigation
+        bg="dark"
+        theme="dark"
+        searchBar={
+          <SearchBar type="movies" onChange={searchChangeHandler} />
+        }
+      />
+      <div className="searchResultCanvas">
+        {data?.results?.map((show) => {
+          return <Movie key={show.id} show={show} />
+        })}
       </div>
-    )
-  }
+    </div>
+  )
+  
 }
 
 export default MovieSearch

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Paper, Typography, Card, CardMedia, Box } from '@material-ui/core'
 
 import MayAlsoLikeSection from '../../components/MayAlsoLikeSection'
@@ -6,11 +6,8 @@ import SimilarTvShowContainer from './SimilarTvShowContainer'
 import GallerySection from '../../containers/GallerySection'
 import Footer from '../../components/Footer'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { televisionActions } from '../../actions'
-
 import { GenreList } from '../../components/GenreList'
-import CastList from './CastList'
+import ListOfPeople from './ListOfPeople'
 
 import FastAverageColor from 'fast-average-color'
 
@@ -21,10 +18,16 @@ import Navigation from '../../components/Navigation'
 import {
   makeStyles,
   ThemeProvider,
-  createMuiTheme
+  createTheme
 } from '@material-ui/core/styles'
 
-const theme = createMuiTheme({
+import {
+  useGetTelevisionByIdQuery,
+  useGetTelevisionCreditsQuery,
+  useGetSimilarTelevisionQuery,
+  useGetTelevisionImagesQuery } from '../../features/television/tv-slice-api'
+
+const theme = createTheme({
   typography: {
     h2: {
       fontSize: '2.6rem',
@@ -58,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
   canvas: {
     verticalAlign: 'middle',
     padding: '2em 4em',
-    height: '95vh'
   },
   card: {
     background: 'transparent',
@@ -80,63 +82,18 @@ const fac = new FastAverageColor()
 
 const TelevisionDescription = () => {
   const styles = useStyles()
-
   const location = useLocation()
 
-  useEffect(
-    (movie) => {
-      if (location.pathname.includes('/tv/')) {
-        const tvId = location.pathname.split('/').slice(-1)
-        dispatch(televisionActions.getDetails(tvId))
+  const tvId = location.pathname.split('/').slice(-1)
 
-        fetchMoreDetails(tvId)
-      }
-    },
-    [location]
-  )
+  const {data: tvShow} = useGetTelevisionByIdQuery(tvId,{refetchOnMountOrArgChange: true})
+  const {data: credits} = useGetTelevisionCreditsQuery(tvId,{refetchOnMountOrArgChange: true})
+  const {data: similar} = useGetSimilarTelevisionQuery(tvId,{refetchOnMountOrArgChange: true})
+  const {data: gallery} = useGetTelevisionImagesQuery(tvId,{refetchOnMountOrArgChange: true}) 
 
   const [tint, setTint] = useState()
 
-  const dispatch = useDispatch()
-
-  const tvShow = useSelector((state) => state.tvShow.tvShow)
-
-  const credits = useSelector((state) => state.credits)
-  const similar = useSelector((state) => state.similar)
-  const reviews = useSelector((state) => state.reviews)
-  const recommended = useSelector((state) => state.recommended)
-  const gallery = useSelector((state) => state.gallery.gallery)
-
-  function fetchCredits(id) {
-    dispatch(televisionActions.getCredits(id))
-  }
-
-  function fetchReviews(id) {
-    dispatch(televisionActions.getReviews(id))
-  }
-
-  function fetchSimilar(id) {
-    dispatch(televisionActions.getSimilarTelevisions(id))
-  }
-
-  function fetchRecommended(id) {
-    dispatch(televisionActions.getRecommendedTelevisions(id))
-  }
-
-  function fetchGallery(id) {
-    dispatch(televisionActions.getImages(id))
-  }
-
-  function fetchMoreDetails(id) {
-    fetchReviews(id)
-    fetchSimilar(id)
-    fetchRecommended(id)
-    fetchCredits(id)
-    fetchGallery(id)
-  }
-
   function handleClick(e, obj) {
-    const src = obj.photo.src
     window.location.href = obj.photo.src
   }
 
@@ -199,7 +156,7 @@ const TelevisionDescription = () => {
               Cast
             </Typography>
             <div/>
-            {credits.credits?.cast?.filter((e,i) => i < 4).map((person, index) => 
+            {credits?.cast?.filter((e,i) => i < 4).map((person, index) => 
               <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
                 <Typography style={{display: 'inline-block', marginRight: '35px'}} gutterBottom variant="h6" color="primary">
                   {person.name}
@@ -210,7 +167,7 @@ const TelevisionDescription = () => {
               </div>
             )}
             <div/>
-            {credits.credits?.crew?.filter((person, index) => 
+            {credits?.crew?.filter((person, index) => 
               person.job === "Producer" || person.job === "Director" || person.job === "Screenplay")
               .map((person, index) =>
                 <div key={index} style={{display: 'inline-block', marginRight: '35px'}}>
@@ -225,10 +182,11 @@ const TelevisionDescription = () => {
           </Box>
         </Card>
       </Paper>
-      <CastList castList={credits.credits?.cast} />
-      { similar.length &&
+      <ListOfPeople title="Cast List" list={credits?.cast} limit={10}/>
+      <ListOfPeople title="Crew List" list={credits?.crew} limit={5}/>
+      { similar?.length &&
       <MayAlsoLikeSection title="Similar Tv Shows">
-        <SimilarTvShowContainer />
+        <SimilarTvShowContainer similar={similar}/>
       </MayAlsoLikeSection>
       }
       <GallerySection onClick={handleClick} gallery={gallery} />

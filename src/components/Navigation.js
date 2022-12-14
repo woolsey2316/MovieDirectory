@@ -17,10 +17,10 @@ const Navigation = ({ theme, transparent, searchBar }) => {
         mode="horizontal"
         onClick={handleClick}
         theme={theme}
-        style={{ background: transparent && 'transparent', width: '100%' }}
+        style={{ background: transparent && 'transparent', marginLeft: 'auto' }}
       >
-        <Menu.Item style={{ float: 'right' }} key="actor">
-          Actor
+        <Menu.Item style={{ float: 'right' }} key="home">
+          Home
         </Menu.Item>
         <Menu.Item style={{ float: 'right' }} key="television">
           Television
@@ -28,8 +28,8 @@ const Navigation = ({ theme, transparent, searchBar }) => {
         <Menu.Item style={{ float: 'right' }} key="movie">
           Movie
         </Menu.Item>
-        <Menu.Item style={{ float: 'right' }} key="home">
-          Home
+        <Menu.Item style={{ float: 'right' }} key="actor">
+          Actor
         </Menu.Item>
       </Menu>
     </Box>

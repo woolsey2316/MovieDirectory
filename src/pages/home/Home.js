@@ -164,7 +164,6 @@ class Home extends Component {
       )
       .then(
         (response) => {
-          console.log('Fetched best drama data successfully')
           this.setState({
             bestDramas: this.processAPI_Response(response.results)
           })
