@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import Style from './MoviePoster.module.css'
 import { displayDate } from '../helpers'
 import { Box, Typography, withStyles } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 import { Rating } from '@material-ui/lab'
 import { TelevisionContext } from '../context'
 
@@ -19,7 +19,13 @@ const StyledRating = withStyles({
   }
 })(Rating)
 
+const useStyles = makeStyles({
+  image: {
+    transition: 'all 0.3s'
+  }
+})
 export default function TelevisionPoster(props) {
+  const styles = useStyles();
   const { setLocalStorage, setTelevisionContext } = useContext(
     TelevisionContext
   )
@@ -36,7 +42,7 @@ export default function TelevisionPoster(props) {
   return (
     <Box display="flex" flexDirection="column" marginBottom="20px" marginRight="20px">
       <img
-        className={Style.image}
+        className={styles.image}
         alt="poster"
         height="350"
         width="230"

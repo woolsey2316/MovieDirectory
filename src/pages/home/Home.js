@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import MoviePoster from '../../components/MoviePoster.js'
-import Style from './Home.module.css'
 import TelevisionCollage from './TelevisionCollage.js'
 import MovieCollage from './MovieCollage.js'
 import LandingPage from './LandingPage'
@@ -9,6 +8,14 @@ import Footer from '../../components/Footer'
 import { discoverApi } from '../../api'
 import { SectionHeading } from '../../components/SectionHeading'
 import { ViewportContext } from '../../context'
+import { withStyles } from '@mui/styles';
+
+const styles = {
+  collageContainer: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+};
 
 class Home extends Component {
   static contextType = ViewportContext;
@@ -123,7 +130,7 @@ class Home extends Component {
    * Find movies belonging to all categories defined in the home page
    */
 
-  performSearch() {
+  movieCollectionRequest() {
     discoverApi
       .searchMovie(
         '&language=en-US&sort_by=popularity.desc&include_adult=false' +
@@ -175,7 +182,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.performSearch()
+    this.movieCollectionRequest()
     this.loadMainTile()
   }
 
@@ -184,7 +191,7 @@ class Home extends Component {
       <Box>
         <LandingPage movies={this.state.movieCarousel}/>
         <Box bgcolor="#141316" padding="2em 3em">
-          <div className={Style.collageContainer}>
+          <div className={this.props.classes.collageContainer}>
             {this.state.tvCollage}
             {this.state.movieCollage}
           </div>
@@ -210,4 +217,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default withStyles(styles)(Home)

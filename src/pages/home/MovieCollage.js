@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
-import Style from './HomeTile.module.css'
 import Tile from './Tile'
 import { Typography, Box } from '@material-ui/core'
+import { withStyles } from '@mui/styles';
+
+const styles = {
+  break: {
+    flexBasis: '100%',
+    height: '0'
+  },
+};
 
 class MovieCollage extends Component {
   constructor(props) {
@@ -30,11 +37,11 @@ class MovieCollage extends Component {
         <Typography variant="h2" margin="1em">
           In Theatres
         </Typography>
-        <div className={Style.break} />
+        <div className={this.props.classes.break} />
         {this.state.collage}
       </Box>
     )
   }
 }
 
-export default MovieCollage
+export default withStyles(styles)(MovieCollage)

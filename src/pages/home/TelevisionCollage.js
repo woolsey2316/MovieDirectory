@@ -13,9 +13,8 @@ class TelevisionCollage extends Component {
       <Tile show={show} key={show.id} type="main" showType="tv" />
     )
     /*
-        The second and third television show backdrop is the minor tile and takes up less space
-        */
-
+      The second and third television show backdrop is the minor tile and takes up less space
+    */
     for (let i = 1; i < 3; i++) {
       let show = this.state.showList[i]
       this.state.collage.push(

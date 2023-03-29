@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import Style from './MoviePoster.module.css'
 import { displayDate } from '../helpers'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, Typography, withStyles } from '@material-ui/core'
@@ -21,6 +20,10 @@ const StyledRating = withStyles({
 })(Rating)
 
 const useStyles = makeStyles((theme) => ({
+  image: {
+    transition: 'all 0.3s',
+    backgroundRepeat: 'no-repeat'
+  },
   iconEmpty: {
     color: '#e5e3e4'
   },
@@ -38,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     marginTop: '0.4em'
+  },
+  releaseDate: {
+    margin: '0.3em 0'
   }
 }))
 
@@ -57,7 +63,7 @@ export default function MoviePoster(props) {
   return (
     <Box display="flex" flexDirection="column" marginBottom="20px" marginRight="20px">
       <img
-        className={Style.image}
+        className={styles.image}
         alt="poster"
         height="350"
         width="230"
@@ -66,9 +72,6 @@ export default function MoviePoster(props) {
             ? 'https://image.tmdb.org/t/p/w185/' + props.show.poster_path
             : img
         }
-        style={{
-          backgroundRepeat: 'no-repeat'
-        }}
         onClick={viewMovie.bind(this)}
       />
       <StyledRating
@@ -85,7 +88,7 @@ export default function MoviePoster(props) {
         {props.show.title}
       </Typography>
       <Typography
-        style={{ margin: '0.3em 0' }}
+        classes={{root: styles.releaseDate}}
         variant="body1"
         color="secondary"
       >

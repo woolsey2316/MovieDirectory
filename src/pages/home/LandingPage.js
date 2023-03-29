@@ -6,9 +6,22 @@ import LandingPageTitle from './LandingPageTitle'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Carousel, Row, Col } from 'antd'
+import { Carousel } from 'antd'
+import { Box } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
+  movieItemContentWrap: {
+    display: 'relative'
+  },
+  landingPageTitleWrap: {
+    display: 'relative'
+  },
+  outer: {
+    paddingTop: '10vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   leftArrow: {
     transform: 'rotate(-90deg)',
     fontSize: '2em',
@@ -70,14 +83,14 @@ export default function LandingPage() {
             }}
           >
             <Navigation transparent={true} position="fixed-top" theme="dark" />
-            <Row>
-              <Col push={4} span={8}>
+            <Box classes={{root: style.outer}}>
+              <Box classes={{root: style.movieItemContentWrap}}>
                 <MovieItemContent />
-              </Col>
-              <Col push={2} span={16}>
+              </Box>
+              <Box classes={{root: style.landingPageTitleWrap}}>
                 <LandingPageTitle />
-              </Col>
-            </Row>
+              </Box>
+            </Box>
           </div>
         </div>
         <div>
@@ -91,14 +104,14 @@ export default function LandingPage() {
             }}
           >
             <Navigation transparent={true} position="fixed-top" theme="dark" />
-            <Row>
-              <Col push={4} span={8}>
+            <Box classes={{root: style.outer}}>
+              <Box classes={{root: style.movieItemContentWrap}}>
                 <MovieItemContent />
-              </Col>
-              <Col push={2} span={16}>
+              </Box>
+              <Box classes={{root: style.landingPageTitleWrap}}>
                 <LandingPageTitle />
-              </Col>
-            </Row>
+              </Box>
+            </Box>
           </div>
         </div>
       </Carousel>

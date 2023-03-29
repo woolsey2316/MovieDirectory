@@ -1,8 +1,18 @@
 import React from 'react'
-import { Menu } from 'antd'
-import { Box } from '@material-ui/core'
+import { Box, Link } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 
+const useStyles = makeStyles({
+  link: {
+    margin: '0 0.4rem',
+    float: 'right',
+    '&:hover': {
+      textDecoration: 'none'
+    }
+  }
+})
 const Navigation = ({ theme, transparent, searchBar }) => {
+  const styles = useStyles()
   function handleClick(e) {
     window.location = '/' + e.key
   }
@@ -13,25 +23,25 @@ const Navigation = ({ theme, transparent, searchBar }) => {
       bgcolor={transparent ? 'transparent' : '#001529'}
     >
       {searchBar}
-      <Menu
+      <Box
         mode="horizontal"
         onClick={handleClick}
         theme={theme}
         style={{ background: transparent && 'transparent', marginLeft: 'auto' }}
       >
-        <Menu.Item style={{ float: 'right' }} key="home">
+        <Link classes={{root: styles.link}} href="/home">
           Home
-        </Menu.Item>
-        <Menu.Item style={{ float: 'right' }} key="television">
+        </Link>
+        <Link classes={{root: styles.link}} href="/television">
           Television
-        </Menu.Item>
-        <Menu.Item style={{ float: 'right' }} key="movie">
+        </Link>
+        <Link classes={{root: styles.link}} href="/movie">
           Movie
-        </Menu.Item>
-        <Menu.Item style={{ float: 'right' }} key="actor">
+        </Link>
+        <Link classes={{root: styles.link}} href="/actor">
           Actor
-        </Menu.Item>
-      </Menu>
+        </Link>
+      </Box>
     </Box>
   )
 }

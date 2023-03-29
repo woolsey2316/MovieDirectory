@@ -3,15 +3,16 @@ import { makeStyles } from '@material-ui/core/styles'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 
 const useStyles = makeStyles((theme) => ({
+  movieItemContents: {
+    position: 'relative'
+  },
   movieItemContent: {
     overflow: 'hidden',
-    position: 'absolute',
     background:
       'linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)),url(2.jpg)',
     backgroundRepeat: 'no-repeat',
     width: '360px',
     height: '471px',
-    top: '10vh',
     zIndex: 1,
     '&:hover $movieCountTime': {
       marginLeft: '0px',

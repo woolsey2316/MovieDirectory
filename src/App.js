@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core'
+import { createTheme, ThemeProvider } from '@material-ui/core'
 import MovieSearch from './pages/movie/MovieSearch'
 import ActorSearch from './pages/actor/ActorSearch'
 import TelevisionSearch from './pages/tv/TelevisionSearch'
@@ -27,7 +27,7 @@ const App = () => {
     xl: 1920
   }
 
-  const theme = createMuiTheme({
+  const theme = createTheme({
     breakpoints: {
       keys: ['xs', 'sm', 'md', 'lg', 'xl'],
       up: (key) => `@media (min-width:${breakpoints[key]}px)`

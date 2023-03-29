@@ -5,30 +5,34 @@ import {
   TwitterOutlined
 } from '@ant-design/icons'
 import { makeStyles } from '@material-ui/core/styles'
-import { Row, Col } from 'antd'
+import { Box } from '@material-ui/core'
 
 const useStyles = makeStyles({
   outer: {
     float: 'right',
     fontSize: '32px',
-    padding: '8px 0'
+    padding: '8px 0',
+    display: 'flex'
+  },
+  iconWrap: {
+    margin: '0 0.3rem'
   }
 })
 
 function SocialMediaQuilt() {
-  const style = useStyles()
+  const styles = useStyles()
   return (
-    <Row className={style.outer} gutter={16}>
-      <Col style={{marginTop: '-1px'}} span={8}>
+    <Box className={styles.outer}>
+      <Box classes={{root: styles.iconWrap}} style={{marginTop: '-1px'}} span={8}>
         <FacebookFilled style={{fontSize: '28px'}}/>
-      </Col>
-      <Col span={8}>
+      </Box>
+      <Box classes={{root: styles.iconWrap}} span={8}>
         <YoutubeFilled />
-      </Col>
-      <Col span={8}>
+      </Box>
+      <Box classes={{root: styles.iconWrap}} span={8}>
         <TwitterOutlined />
-      </Col>
-    </Row>
+      </Box>
+    </Box>
   )
 }
 export { SocialMediaQuilt }

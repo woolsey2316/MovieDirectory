@@ -1,9 +1,0 @@
-.navItem:active {
-    color: black;
-}
-
-.navContainer {
-    justify-content: flex-end;
-    display: flex;
-    width: 100%;
-}

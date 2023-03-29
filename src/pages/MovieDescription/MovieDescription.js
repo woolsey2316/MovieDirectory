@@ -71,6 +71,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '2em 4em',
     height: '95vh'
   },
+  middot: {
+    margin: '0 0.3em'
+  },
   card: {
     background: 'transparent',
     display: 'flex',
@@ -160,7 +163,7 @@ const MovieDescription = () => {
             </Typography>
             <Box display="flex" classes={{ root: styles.genreDetails }}>
               <GenreList genreId={movieItem?.genres} />
-              <Typography color="primary" style={{ margin: '0 0.3em' }}>
+              <Typography classes={{ root: styles.middot}} color="primary">
                 &middot;
               </Typography>
               <Typography variant="body1" color="primary">
@@ -168,14 +171,14 @@ const MovieDescription = () => {
               </Typography>
             </Box>
             <Typography></Typography>
-            <Typography variant="h6" color="primary">
+            <Typography variant="h3" color="primary">
               Overview
             </Typography>
             <Typography variant="body1" gutterBottom color="primary">
               {movieItem?.overview}
             </Typography>
             <div/>
-            <Typography variant="h6" color="primary">
+            <Typography variant="h3" color="primary">
               Cast
             </Typography>
             {credits?.cast?.filter((e,i) => i < 4).map((person, index) => 
@@ -188,7 +191,7 @@ const MovieDescription = () => {
                 </Typography>
               </div>
             )}
-            <Typography variant="h6" color="primary">
+            <Typography variant="h3" color="primary">
               Crew
             </Typography>
             {credits?.crew?.filter((person, index) => 

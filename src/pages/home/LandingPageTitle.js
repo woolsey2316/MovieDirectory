@@ -6,8 +6,6 @@ const useStyles = makeStyles((theme) => ({
   sliderContent: {
     fontSize: '20px',
     marginBottom: '6px',
-    position: 'absolute',
-    top: '40vh',
     textAlign: 'center'
   },
   delay3: {
